@@ -18,6 +18,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+
+//need for butter knife with java 8
+compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+}
 }
 
 
@@ -98,6 +105,11 @@ dependencies {
     implementation 'com.github.abumoallim:Android-Multi-Select-Dialog:v1.9'
     //for bottom menu
     implementation 'com.github.clans:fab:1.6.4'
+    // Fire base
+    implementation 'com.google.firebase:firebase-core:16.0.8'
+    implementation 'com.google.firebase:firebase-messaging:17.6.0'
+    implementation 'com.google.firebase:firebase-firestore:18.2.0'
 
 
 }
+apply plugin: 'com.google.gms.google-services'
