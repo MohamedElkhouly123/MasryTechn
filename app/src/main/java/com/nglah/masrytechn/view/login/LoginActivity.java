@@ -10,16 +10,15 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.nglah.masrytechn.R;
-import com.nglah.masrytechn.network.networkModel.login.LoginResponse;
+import com.nglah.masrytechn.network.networkModel.response.User.LoginResponse;
 import com.nglah.masrytechn.view.forgetPassword.ForgetActivity;
 import com.nglah.masrytechn.view.main.MainActivity;
 import com.nglah.masrytechn.view.register.RegisterActivity;
 import com.nglah.masrytechn.view.util.CheckNetwork;
-import com.nglah.masrytechn.viewModel.UserViewModel;
+import com.nglah.masrytechn.viewModel.ViewModelUser;
 
 import butterknife.BindString;
 import butterknife.BindView;
@@ -43,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
     String noUserName;
     @BindString(R.string.noPassword)
     String noPassword;
-    UserViewModel viewModel;
+    ViewModelUser viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,12 +55,10 @@ public class LoginActivity extends AppCompatActivity {
 
     private void initListener() {
 
-        viewModel = ViewModelProviders.of(this).get(UserViewModel.class);
+        viewModel = ViewModelProviders.of(this).get(ViewModelUser.class);
         viewModel.makeLogin().observe(this, new Observer<LoginResponse>() {
             @Override
             public void onChanged(LoginResponse loginResponse) {
-                //
-                goToMain();
 
             }
         });
@@ -87,9 +84,9 @@ public class LoginActivity extends AppCompatActivity {
 
         if (checkData()) {
 
-            if (new CheckNetwork(this).getConnected()){
+            if (new CheckNetwork(this).getConnected()) {
 
-                viewModel.loginToServer(this,et_userName.getText().toString(),
+                viewModel.loginToServer(this, et_userName.getText().toString(),
                         et_password.getText().toString());
 
             }
@@ -111,7 +108,7 @@ public class LoginActivity extends AppCompatActivity {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
-    private void goToMain(){
+    private void goToMain() {
 
         startActivity(new Intent(this, MainActivity.class));
         finish();

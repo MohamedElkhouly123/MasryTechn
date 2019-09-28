@@ -1,14 +1,16 @@
 package com.nglah.masrytechn.view.register;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.nglah.masrytechn.R;
-import com.nglah.masrytechn.viewModel.UserViewModel;
+import com.nglah.masrytechn.viewModel.ViewModelUser;
 
 import butterknife.BindString;
 import butterknife.BindView;
@@ -16,17 +18,18 @@ import butterknife.ButterKnife;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    @BindView(R.id.usernamel)
+    @BindView(R.id.username)
     EditText et_userName;
     @BindView(R.id.password)
     EditText et_password;
-    @BindView(R.id.phonel)
+    @BindView(R.id.phone)
     EditText et_phone;
     @BindView(R.id.email)
     EditText et_email;
     @BindView(R.id.btn_next)
     Button btn_register;
-
+    @BindView(R.id.spinner)
+    Spinner sp_userType;
     @BindString(R.string.noUserName)
     String noUserName;
     @BindString(R.string.noPassword)
@@ -36,7 +39,7 @@ public class RegisterActivity extends AppCompatActivity {
     @BindString(R.string.noEmail)
     String noEmail;
 
-    UserViewModel viewModel;
+    ViewModelUser viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +61,12 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
     }
+    private void initListener() {
+
+        viewModel = ViewModelProviders.of(this).get(ViewModelUser.class);
+
+    }
+
 
 
 }

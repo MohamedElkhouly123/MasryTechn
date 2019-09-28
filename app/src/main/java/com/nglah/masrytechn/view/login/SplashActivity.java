@@ -10,11 +10,11 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.nglah.masrytechn.R;
 import com.nglah.masrytechn.view.main.MainActivity;
-import com.nglah.masrytechn.viewModel.UserViewModel;
+import com.nglah.masrytechn.viewModel.ViewModelUser;
 
 public class SplashActivity extends AppCompatActivity {
 
-    UserViewModel userViewModel;
+    ViewModelUser viewModelUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,25 +27,22 @@ public class SplashActivity extends AppCompatActivity {
         Handler handler = new Handler();
         Runnable r = new Runnable() {
             public void run() {
-                userViewModel.checkUser(getApplicationContext());
+                viewModelUser.checkUser(getApplicationContext());
             }
         };
-        handler.postDelayed(r, 1000);
+        handler.postDelayed(r, 2000);
     }
 
     private void initListener() {
 
-        userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
-        userViewModel.checkUSerIfLogin().observe(this, new Observer<Boolean>() {
+        viewModelUser = ViewModelProviders.of(this).get(ViewModelUser.class);
+        viewModelUser.checkUSerIfLogin().observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean response) {
-
                 if (response) {
-
                     goToMain();
                 } else {
                     goToLogin();
-
                     //Error happen
                 }
             }

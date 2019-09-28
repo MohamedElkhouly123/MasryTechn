@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.nglah.masrytechn">
 
     <application
@@ -9,24 +10,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.AllDeriver.AllDriverActivity"
-            ></activity>
+        <activity android:name=".view.AllDeriver.AllDriver"></activity>
+        <activity android:name=".view.payment.Payment" />
+        <activity android:name=".view.userProfile.EditUserProfile" />
+        <activity android:name=".view.userProfile.UserProfile" />
         <activity android:name=".view.forgetPassword.ForgetActivity" />
-        <activity android:name=".view.register.RegisterActivity"
-        />
-        <activity android:name=".view.login.SplashActivity"
-            >
+        <activity
+            android:name=".view.register.RegisterActivity"
+            android:theme="@style/HiddenTitleTheme" />
+        <activity
+            android:name=".view.login.SplashActivity"
+            android:theme="@style/HiddenTitleTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".view.login.LoginActivity"
+            android:theme="@style/HiddenTitleTheme" />
+        <activity android:name=".view.main.MainActivity" />
 
-        </activity>
-        <activity android:name=".view.login.LoginActivity"
-            />
-        <activity android:name=".view.main.MainActivity">
-        </activity>
     </application>
 
 </manifest>

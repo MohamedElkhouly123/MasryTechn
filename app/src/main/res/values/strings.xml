@@ -1,4 +1,9 @@
 <resources>
+    <array name="users">
+        <item>normal user</item>
+        <item>Driver</item>
+
+    </array>
     <string name="app_name">MasryTechn</string>
     <string name="create_new_account">Create new account</string>
     <string name="forget_password">Forget Password ?</string>
@@ -11,5 +16,6 @@
     <string name="phone">Phone</string>
     <string name="name">Name</string>
     <string name="noPhone">No Phone</string>
+
     <string name="noEmail">No Email</string>
 </resources>
