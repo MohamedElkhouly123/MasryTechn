@@ -10,15 +10,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.NoActionBar">
-        <activity android:name=".driver_data_edit">
+        <activity android:name=".drive_profile">
 
         </activity>
+        <activity android:name=".driver_data_edit"></activity>
         <activity android:name=".view.AllDeriver.AllDriver" />
         <activity android:name=".view.payment.Payment" />
-        <activity android:name=".view.userProfile.EditUserProfile" >
+        <activity android:name=".view.userProfile.EditUserProfile">
 
         </activity>
-        <activity android:name=".view.userProfile.UserProfile" />
+        <activity android:name=".view.userProfile.UserProfile" >
+
+        </activity>
         <activity android:name=".view.forgetPassword.ForgetActivity" />
         <activity
             android:name=".view.register.RegisterActivity"

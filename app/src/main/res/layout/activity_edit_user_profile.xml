@@ -66,7 +66,7 @@ tools:context=".view.userProfile.EditUserProfile">
             android:id="@+id/edit_first_name"
             android:layout_width="@dimen/_125sdp"
             android:layout_height="@dimen/_45sdp"
-            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginRight="@dimen/_10sdp"
             android:background="@drawable/bottonshape"
@@ -82,21 +82,20 @@ tools:context=".view.userProfile.EditUserProfile">
             android:text="الاسم الاول"
             android:layout_marginRight="@dimen/_10sdp"
             android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentLeft="true"/>
 
-            />
 
     </RelativeLayout>
     <RelativeLayout
         android:id="@+id/relative2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_30sdp">
+        android:layout_marginTop="@dimen/_25sdp">
         <EditText
             android:id="@+id/edit_family_name"
             android:layout_width="@dimen/_125sdp"
             android:layout_height="@dimen/_45sdp"
-            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginRight="@dimen/_10sdp"
             android:background="@drawable/bottonshape"
@@ -113,21 +112,20 @@ tools:context=".view.userProfile.EditUserProfile">
             android:text="اسم العائلة"
             android:layout_marginRight="@dimen/_10sdp"
             android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentLeft="true"/>
 
-            />
 
     </RelativeLayout>
     <RelativeLayout
         android:id="@+id/relative3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/_30sdp">
+        android:layout_marginTop="@dimen/_25sdp">
         <EditText
             android:id="@+id/edit_phone"
             android:layout_width="@dimen/_125sdp"
             android:layout_height="@dimen/_45sdp"
-            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginRight="@dimen/_10sdp"
             android:background="@drawable/bottonshape"
@@ -143,19 +141,19 @@ tools:context=".view.userProfile.EditUserProfile">
             android:text="رقم الجوال"
             android:layout_marginRight="@dimen/_10sdp"
             android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_alignParentRight="true"/>
+            android:layout_alignParentLeft="true"/>
 
     </RelativeLayout>
     <RelativeLayout
         android:id="@+id/relative4"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/_30sdp">
+        android:layout_marginTop="@dimen/_25sdp">
         <EditText
             android:id="@+id/edit_email"
             android:layout_width="@dimen/_125sdp"
             android:layout_height="@dimen/_45sdp"
-            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginRight="@dimen/_10sdp"
             android:background="@drawable/bottonshape"
@@ -171,19 +169,19 @@ tools:context=".view.userProfile.EditUserProfile">
             android:text="البريد الالكتروني"
             android:layout_marginRight="@dimen/_10sdp"
             android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_alignParentRight="true"/>
+            android:layout_alignParentLeft="true"/>
 
     </RelativeLayout>
     <RelativeLayout
         android:id="@+id/relative5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_30sdp">
+        android:layout_marginTop="@dimen/_25sdp">
         <EditText
             android:id="@+id/user_name"
             android:layout_width="@dimen/_125sdp"
             android:layout_height="@dimen/_45sdp"
-            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginRight="@dimen/_10sdp"
             android:background="@drawable/bottonshape"
@@ -199,19 +197,19 @@ tools:context=".view.userProfile.EditUserProfile">
             android:text="اسم المستخدم"
             android:layout_marginRight="@dimen/_10sdp"
             android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_alignParentRight="true"/>
+            android:layout_alignParentLeft="true"/>
 
     </RelativeLayout>
     <RelativeLayout
         android:id="@+id/relative6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_30sdp">
+        android:layout_marginTop="@dimen/_25sdp">
         <EditText
             android:id="@+id/edit_password"
             android:layout_width="@dimen/_125sdp"
             android:layout_height="@dimen/_45sdp"
-            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginRight="@dimen/_10sdp"
             android:background="@drawable/bottonshape"
@@ -228,7 +226,7 @@ tools:context=".view.userProfile.EditUserProfile">
             android:text="كلمة المرور"
             android:layout_marginRight="@dimen/_10sdp"
             android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_alignParentRight="true"/>
+            android:layout_alignParentLeft="true"/>
 
     </RelativeLayout>
     <Button
