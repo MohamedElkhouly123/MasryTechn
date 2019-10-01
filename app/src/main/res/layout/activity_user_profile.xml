@@ -7,43 +7,54 @@
     android:background="#535252"
     tools:context=".view.userProfile.UserProfile">
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_60sdp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:elevation="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    >
-                    <ImageView
-                        android:id="@+id/list"
-                        android:layout_width="@dimen/_20sdp"
-                        android:layout_height="@dimen/_20sdp"
-                        android:layout_gravity="center|left"
-                        android:layout_marginTop="8dp"
-                        android:background="@drawable/ic_arrow_w_black_24dp"
-                        android:layout_marginBottom="8dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-                <TextView
-                    android:id="@+id/driver_data"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/_10sdp"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_marginEnd="@dimen/_10sdp"
-                    android:layout_marginRight="@dimen/_10sdp"
-                    android:text="معلومات المستخدم"
-                    android:layout_gravity="center"
-                    android:textColor="@color/mdtp_white"
-                    android:textSize="@dimen/_14sdp"
-                    android:fontFamily="@font/janna"/>
-                </LinearLayout>
-            </androidx.appcompat.widget.Toolbar>
+        <LinearLayout
+            android:id="@+id/constr"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:id="@+id/list"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_gravity="center_vertical|start"
+
+                android:background="@drawable/ic_arrow_w_black_24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/search_edit_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginLeft="8dp"
+                android:fontFamily="@font/arabfont"
+                android:text="معلومات المستخدم"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:textSize="@dimen/_14ssp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/list"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/driver_image"

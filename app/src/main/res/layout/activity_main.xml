@@ -13,11 +13,19 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:elevation="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
                 android:id="@+id/constr"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/_7sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -34,7 +42,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="8dp"
 
@@ -42,13 +50,14 @@
                     android:text="نقله"
                     android:textColor="#fff"
                     android:fontFamily="@font/lemon"
-                    android:textSize="@dimen/_11ssp"
+                    android:textSize="@dimen/_12ssp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/list"
                     app:layout_constraintTop_toTopOf="parent" />
 
 
             </LinearLayout>
+            </androidx.appcompat.widget.Toolbar>
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="@dimen/_165sdp"
@@ -63,7 +72,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
 
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constr" />
+                app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
             <LinearLayout
                 android:layout_width="match_parent"

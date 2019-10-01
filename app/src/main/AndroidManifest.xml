@@ -14,7 +14,13 @@
         android:theme="@style/Theme.Design.NoActionBar">
         <activity android:name=".Verify_Dialog"></activity>
         <activity android:name=".Nagla_Location"></activity>
-        <activity android:name=".drive_profile" />
+        <activity android:name=".drive_profile" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".driver_data_edit" />
         <activity android:name=".view.AllDeriver.AllDriver" />
         <activity android:name=".view.payment.Payment"></activity>
@@ -27,11 +33,7 @@
         <activity
             android:name=".view.login.SplashActivity"
             android:theme="@style/HiddenTitleTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".view.login.LoginActivity"
