@@ -4,9 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
     android:orientation="vertical"
-    tools:context=".view.AllDeriver.AllDriver">
+    android:background="@android:color/white"
+
+    tools:context=".view.All_Naglas.All_Nagla">
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -41,7 +43,7 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="@dimen/_20sdp"
                 android:layout_marginLeft="8dp"
-                android:text="السائقين المتاحين"
+                android:text="النقلات المطلوبه"
                 android:textAlignment="center"
                 android:textColor="#fff"
                 android:fontFamily="@font/arabfont"

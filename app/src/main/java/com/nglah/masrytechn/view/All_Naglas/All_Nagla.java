@@ -1,67 +1,56 @@
-package com.nglah.masrytechn.view.AllDeriver;
+package com.nglah.masrytechn.view.All_Naglas;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nglah.masrytechn.R;
-import com.nglah.masrytechn.viewModel.Driver;
+import com.nglah.masrytechn.view.AllDeriver.DriverNotificationAdapter;
 import com.nglah.masrytechn.viewModel.NAGLA;
 
 import java.util.List;
 
-public class AllDriver extends AppCompatActivity {
-    private NglahNotificationAdapter mAdapter;
+public class All_Nagla extends AppCompatActivity {
+    private DriverNotificationAdapter mAdapter;
     private RecyclerView mRecyclerView;
-    private List<Driver> driverAcceptedList;
     private TextView emptyTextView;
+    private List<NAGLA> nglahOrdersList;
     ProgressDialog progressDialog;
-    private ImageView imageView;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_all_driver);
-
-//        imageView=findViewById(R.id.imgBackRecent);
-        // init all widgets in this activity
+        setContentView(R.layout.activity_all__nagla);
         initWidgets();
 
     }
     private void initWidgets(){
         mRecyclerView = findViewById(R.id.recyclerView);
         emptyTextView = findViewById(R.id.tv_empty_image);
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setHasFixedSize(true);
-//        imageView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-////                startActivity(new Intent(DriversList.this, User_Main.class));
-//                finish();
-//            }
-//        });
 
-        progressDialog=new ProgressDialog(this);
-        progressDialog.setMessage("loading...");
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Loading Drivers...");
     }
     private void refreshRecyclerView(){
-        if (driverAcceptedList.isEmpty()){
+//        nglahOrdersList.clear();
+
+        if (nglahOrdersList.isEmpty()){
             emptyTextView.setVisibility(View.VISIBLE);
         }else {
             emptyTextView.setVisibility(View.GONE);
-//            mAdapter = new NglahNotificationAdapter(driverAcceptedList, this);
+
+//            mAdapter = new DriverNotificationAdapter(this, nglahOrdersList);   Notice Add values to Adapter nglahOrdersList
+
             mRecyclerView.setAdapter(mAdapter);
         }
-
     }
-
 }
