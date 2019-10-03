@@ -44,6 +44,7 @@
             android:layout_toRightOf="@id/tv_nglah_name"
             android:layout_alignBottom="@id/tv_nglah_name"
             android:paddingLeft="10dp"
+            android:paddingBottom="@dimen/_2ssp"
             android:gravity="center"/>
 
         <TextView
