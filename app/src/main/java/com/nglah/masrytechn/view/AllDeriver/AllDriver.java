@@ -5,15 +5,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nglah.masrytechn.R;
-import com.nglah.masrytechn.viewModel.Driver;
-import com.nglah.masrytechn.viewModel.NAGLA;
+import com.nglah.masrytechn.model.Driver;
 
 import java.util.List;
 

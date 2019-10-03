@@ -1,65 +1,75 @@
-package com.nglah.masrytechn.network.networkModel.response.User;
+package com.nglah.masrytechn.network.networkModel.request.User;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
+public class RegisterCarOwnerRequest {
 
-public class RegisterResponse {
-
-    @SerializedName("status")
+    @SerializedName("carType")
     @Expose
-    private Boolean status;
-    @SerializedName("message")
+    private String carType;
+    @SerializedName("PlateNumber")
     @Expose
-    private String message;
-    @SerializedName("id")
+    private String plateNumber;
+    @SerializedName("MaxWeight")
     @Expose
-    private String id;
+    private String maxWeight;
     @SerializedName("fname")
     @Expose
     private String fname;
     @SerializedName("lname")
     @Expose
     private String lname;
+    @SerializedName("city")
+    @Expose
+    private String city;
+    @SerializedName("nationality")
+    @Expose
+    private String nationality;
     @SerializedName("mobileNumber")
     @Expose
     private String mobileNumber;
     @SerializedName("Email")
     @Expose
     private String email;
+    @SerializedName("CurrentCity")
+    @Expose
+    private String currentCity;
     @SerializedName("userName")
     @Expose
     private String userName;
     @SerializedName("Password")
     @Expose
     private String password;
+    @SerializedName("CarIcon")
+    @Expose
+    private String carIcon;
     @SerializedName("Token")
     @Expose
     private String token;
 
-    public Boolean getStatus() {
-        return status;
+    public String getCarType() {
+        return carType;
     }
 
-    public void setStatus(Boolean status) {
-        this.status = status;
+    public void setCarType(String carType) {
+        this.carType = carType;
     }
 
-    public String getMessage() {
-        return message;
+    public String getPlateNumber() {
+        return plateNumber;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setPlateNumber(String plateNumber) {
+        this.plateNumber = plateNumber;
     }
 
-    public String getId() {
-        return id;
+    public String getMaxWeight() {
+        return maxWeight;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setMaxWeight(String maxWeight) {
+        this.maxWeight = maxWeight;
     }
 
     public String getFname() {
@@ -78,6 +88,22 @@ public class RegisterResponse {
         this.lname = lname;
     }
 
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getNationality() {
+        return nationality;
+    }
+
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
+    }
+
     public String getMobileNumber() {
         return mobileNumber;
     }
@@ -92,6 +118,14 @@ public class RegisterResponse {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getCurrentCity() {
+        return currentCity;
+    }
+
+    public void setCurrentCity(String currentCity) {
+        this.currentCity = currentCity;
     }
 
     public String getUserName() {
@@ -110,6 +144,14 @@ public class RegisterResponse {
         this.password = password;
     }
 
+    public String getCarIcon() {
+        return carIcon;
+    }
+
+    public void setCarIcon(String carIcon) {
+        this.carIcon = carIcon;
+    }
+
     public String getToken() {
         return token;
     }
@@ -117,4 +159,5 @@ public class RegisterResponse {
     public void setToken(String token) {
         this.token = token;
     }
+
 }

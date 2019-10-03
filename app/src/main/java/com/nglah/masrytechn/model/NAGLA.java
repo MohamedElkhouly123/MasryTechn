@@ -1,4 +1,4 @@
-package com.nglah.masrytechn.viewModel;
+package com.nglah.masrytechn.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

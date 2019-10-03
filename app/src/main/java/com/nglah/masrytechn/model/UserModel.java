@@ -20,24 +20,26 @@ public class UserModel implements Serializable {
     @ColumnInfo(name = "access_token")
     private String accessToken = "";
 
-    @ColumnInfo(name = "expires_in")
-    @SerializedName("expiresIn")
-    private String expiresIn;
-
-    @SerializedName("refresh_token")
-    @ColumnInfo(name = "refreshToken")
-    private String refreshToken;
-
     @SerializedName("isActive")
     @ColumnInfo(name = "active")
     private int active = 0;
 
     @SerializedName("id")
     @ColumnInfo(name = "id")
-    private Integer id;
+    private String id;
+
     @SerializedName("userName")
     @ColumnInfo(name = "userName")
     private String UserName;
+
+    @SerializedName("firstName")
+    @ColumnInfo(name = "firstName")
+    private String firstName;
+
+
+    @SerializedName("lastName")
+    @ColumnInfo(name = "lastName")
+    private String lastName;
 
     @SerializedName("userType")
     @ColumnInfo(name = "userType")
@@ -59,24 +61,10 @@ public class UserModel implements Serializable {
     @ColumnInfo(name = "image")
     private String imageUrl;
 
-    @SerializedName("loginType")
-    @ColumnInfo(name = "loginType")
-    private Integer loginType;
 
-    @SerializedName("category_id")
-    @ColumnInfo(name = "category_id")
-    private String categoryId;
-
-    private int detailsId;
 
     @Ignore
     public static UserModel loggedInUser = null;
-
-    public UserModel() {
-    }
-
-    // Getter and Setter
-
 
     @NonNull
     public String getAccessToken() {
@@ -87,22 +75,6 @@ public class UserModel implements Serializable {
         this.accessToken = accessToken;
     }
 
-    public String getExpiresIn() {
-        return expiresIn;
-    }
-
-    public void setExpiresIn(String expiresIn) {
-        this.expiresIn = expiresIn;
-    }
-
-    public String getRefreshToken() {
-        return refreshToken;
-    }
-
-    public void setRefreshToken(String refreshToken) {
-        this.refreshToken = refreshToken;
-    }
-
     public int getActive() {
         return active;
     }
@@ -111,12 +83,44 @@ public class UserModel implements Serializable {
         this.active = active;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getUserName() {
         return UserName;
     }
 
     public void setUserName(String userName) {
         UserName = userName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public Integer getUserType() {
+        return userType;
+    }
+
+    public void setUserType(Integer userType) {
+        this.userType = userType;
     }
 
     public String getEmail() {
@@ -149,45 +153,5 @@ public class UserModel implements Serializable {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getLoginType() {
-        return loginType;
-    }
-
-    public void setLoginType(Integer loginType) {
-        this.loginType = loginType;
-    }
-
-    public Integer getUserType() {
-        return userType;
-    }
-
-    public void setUserType(Integer userType) {
-        this.userType = userType;
-    }
-
-    public String getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(String categoryId) {
-        this.categoryId = categoryId;
-    }
-
-    public int getDetailsId() {
-        return detailsId;
-    }
-
-    public void setDetailsId(int detailsId) {
-        this.detailsId = detailsId;
     }
 }

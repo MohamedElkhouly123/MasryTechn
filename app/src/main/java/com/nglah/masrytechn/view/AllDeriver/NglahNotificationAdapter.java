@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.nglah.masrytechn.R;
-import com.nglah.masrytechn.viewModel.Driver;
+import com.nglah.masrytechn.model.Driver;
 
 import java.util.List;
 

@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.nglah.masrytechn.R;
 import com.nglah.masrytechn.view.AllDeriver.DriverNotificationAdapter;
-import com.nglah.masrytechn.viewModel.NAGLA;
+import com.nglah.masrytechn.model.NAGLA;
 
 import java.util.List;
 

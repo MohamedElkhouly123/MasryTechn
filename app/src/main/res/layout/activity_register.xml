@@ -172,7 +172,7 @@
                     android:layout_marginBottom="8dp">
                     <Spinner
                         android:entries="@array/users"
-                        android:id="@+id/spinner"
+                        android:id="@+id/spinner_userType"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1" />
@@ -184,7 +184,7 @@
                         android:layout_marginEnd="@dimen/_25sdp"
                         android:layout_marginLeft="8dp"
                         android:textStyle="bold"
-                        android:text="هويه المستخدم"
+                        android:text="@string/userType"
                         android:textColor="#fff"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/list"
@@ -212,7 +212,7 @@
 
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout">
                 <Button
-                    android:id="@+id/btn_next"
+                    android:id="@+id/btn_next_register"
                     android:layout_width="@dimen/_160sdp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"

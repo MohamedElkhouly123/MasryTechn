@@ -18,4 +18,9 @@
     <string name="noPhone">No Phone</string>
 
     <string name="noEmail">No Email</string>
+    <string name="enterCode">Enter Code here</string>
+    <string name="userType">User Type</string>
+    <string name="completeData">Complete Data</string>
+    <string name="shortPassword">Password Should be more than 6 char</string>
+    <string name="poorConnection">Poor Connection</string>
 </resources>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#535252"
-    tools:context=".driver_data_edit">
+    tools:context=".view.userProfile.DriverDataModel">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -92,6 +92,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
+                android:id="@+id/et_nationality"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/lemon"
@@ -125,6 +126,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
+                android:id="@+id/et_license"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/lemon"
@@ -158,6 +160,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
+                android:id="@+id/et_driverFirstName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/lemon"
@@ -192,6 +195,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
+                android:id="@+id/et_driverLastName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/lemon"
@@ -225,6 +229,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
+                android:id="@+id/et_driverFamilyName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/lemon"
@@ -258,6 +263,8 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
+                android:id="@+id/et_driverIdNumber"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/lemon"
@@ -291,6 +298,8 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
+                android:inputType="phone"
+                android:id="@+id/et_driverPhone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/lemon"
@@ -324,6 +333,8 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
+                android:inputType="textEmailAddress"
+                android:id="@+id/et_driverEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/lemon"
@@ -357,6 +368,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
+                android:id="@+id/et_driverUserNAme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/lemon"
@@ -390,6 +402,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
+                android:id="@+id/et_driverPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/lemon"
@@ -406,7 +419,7 @@
 
 
         <Button
-            android:id="@+id/btn_next"
+            android:id="@+id/btn_DriverNext"
             android:layout_width="@dimen/_182sdp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"

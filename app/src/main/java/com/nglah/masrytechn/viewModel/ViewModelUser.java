@@ -14,6 +14,7 @@ import com.nglah.masrytechn.network.networkModel.request.User.LoginRequest;
 import com.nglah.masrytechn.network.networkModel.request.User.RegisterRequest;
 import com.nglah.masrytechn.network.networkModel.request.User.UpdateUserDataRequest;
 import com.nglah.masrytechn.network.networkModel.request.User.UpdateUserImageRequest;
+import com.nglah.masrytechn.network.networkModel.request.User.VerifyEmailRequest;
 import com.nglah.masrytechn.network.networkModel.response.User.ChangePasswordResponse;
 import com.nglah.masrytechn.network.networkModel.response.User.ForgetPasswordResponse;
 import com.nglah.masrytechn.network.networkModel.response.User.GetUserInfoResponse;
@@ -21,6 +22,7 @@ import com.nglah.masrytechn.network.networkModel.response.User.LoginResponse;
 import com.nglah.masrytechn.network.networkModel.response.User.RegisterResponse;
 import com.nglah.masrytechn.network.networkModel.response.User.UpdateUserDataResponse;
 import com.nglah.masrytechn.network.networkModel.response.User.UpdateUserImageResponse;
+import com.nglah.masrytechn.network.networkModel.response.User.VerifyEmailResponse;
 import com.nglah.masrytechn.repository.UserRepository;
 
 import io.reactivex.Observer;
@@ -32,6 +34,7 @@ import static com.nglah.masrytechn.model.UserModel.loggedInUser;
 public class ViewModelUser extends ViewModel {
 
     private MutableLiveData<LoginResponse> loginResponse = new MutableLiveData<>();
+    private MutableLiveData<VerifyEmailResponse> verifyResponse = new MutableLiveData<>();
     private MutableLiveData<RegisterResponse> registerResponse = new MutableLiveData<>();
     private MutableLiveData<UpdateUserDataResponse> editUserProfile = new MutableLiveData<>();
     private MutableLiveData<UpdateUserImageResponse> updateProfileImage = new MutableLiveData<>();
@@ -46,19 +49,7 @@ public class ViewModelUser extends ViewModel {
         return registerResponse;
     }
 
-    public void registerToServer(final Context context, String name, String phone, String location, String email, String password) {
-
-        RegisterRequest request = new RegisterRequest();
-        request.setName(name);
-        request.setEmail(email);
-        request.setPassword(password);
-        request.setPasswordConfirmation(password);
-        request.setPhone(phone);
-        request.setAddress(location);
-        request.setCityId("15585");
-        request.setStateId("1072");
-        request.setToken(new FireBaseToken().getToken());
-
+    public void registerToServer(final Context context, RegisterRequest request) {
 
         UserRepository.getInstance().registrationRepository(request).subscribe(new Observer<RegisterResponse>() {
             @Override
@@ -69,9 +60,10 @@ public class ViewModelUser extends ViewModel {
             @Override
             public void onNext(RegisterResponse value) {
                 if (value.getStatus()) {
-                    saveDataInDataBase(context, value.getData().getUser().getEmail(), value.getData().getUser().getName()
-                            , value.getData().getUser().getPhone(), value.getData().getUser().getAddress(), ""
-                            , value.getData().getUser().getToken(), 1, value.getData().getUser().getId(), 1);
+                    saveDataInDataBase(context, value.getEmail(), value.getFname(),
+                            value.getMobileNumber(), value.getUserName(), value.getLname()
+                            , value.getToken(),
+                            1, value.getId());
                 }
                 registerResponse.postValue(value);
 
@@ -79,7 +71,6 @@ public class ViewModelUser extends ViewModel {
 
             @Override
             public void onError(Throwable e) {
-
                 registerResponse.postValue(null);
             }
 
@@ -110,9 +101,7 @@ public class ViewModelUser extends ViewModel {
 
                 //Save dataBase
                 if (value.isStatus()) {
-                    saveDataInDataBase(context, value.getData().getUser().getEmail(), value.getData().getUser().getName()
-                            , value.getData().getUser().getPhone(), value.getData().getUser().getAddress(), value.getData().getUser().getImage()
-                            , value.getData().getUser().getToken(),1, value.getData().getUser().getId(), 1);
+
                 }
                 loginResponse.postValue(value);
             }
@@ -131,6 +120,33 @@ public class ViewModelUser extends ViewModel {
         });
     }
 
+    public MutableLiveData<VerifyEmailResponse> makeVerify() {
+        return verifyResponse;
+    }
+
+    public void sendEmailToServer(String email) {
+        VerifyEmailRequest request = new VerifyEmailRequest();
+        UserRepository.getInstance().verifyEmailRepository(request).subscribe(new Observer<VerifyEmailResponse>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+            }
+
+            @Override
+            public void onNext(VerifyEmailResponse value) {
+                verifyResponse.postValue(value);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                verifyResponse.postValue(null);
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        });
+    }
 
 
     public MutableLiveData<Boolean> checkUSerIfLogin() {
@@ -165,151 +181,21 @@ public class ViewModelUser extends ViewModel {
         return editUserProfile;
     }
 
-    public void updateUserDataToServer(final Context context, final String email, final String name, final String location, final String phone) {
-        UpdateUserDataRequest request = new UpdateUserDataRequest();
-        request.setAddress(location);
-        request.setName(name);
-        request.setPhone(phone);
-        request.setEmail(email);
-        request.setCityId("15585");
-        request.setStateId("1072");
-        UserRepository.getInstance().editProfileRepository(request).subscribe(new Observer<UpdateUserDataResponse>() {
-            @Override
-            public void onSubscribe(Disposable d) {
-            }
-
-            @Override
-            public void onNext(UpdateUserDataResponse value) {
-
-                if (value.getStatus()) {
-                    updateDataInDataBase(context, email, name, location, phone);
-                }
-                editUserProfile.postValue(value);
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                editUserProfile.postValue(null);
-
-
-            }
-
-            @Override
-            public void onComplete() {
-
-            }
-        });
-    }
 
     public MutableLiveData<UpdateUserImageResponse> makeUpdateImageProfile() {
         return updateProfileImage;
     }
 
-    public void updateImageProfileToServer(final String image) {
-
-
-        UpdateUserImageRequest request = new UpdateUserImageRequest();
-        request.setName(loggedInUser.getUserName());
-        request.setPhone(loggedInUser.getPhone());
-        request.setEmail(loggedInUser.getEmail());
-        request.setImage(image);
-        request.setCityId("15585");
-        request.setStateId("1072");
-        UserRepository.getInstance().updateProfileImageRepository(request).subscribe(new Observer<UpdateUserImageResponse>() {
-            @Override
-            public void onSubscribe(Disposable d) {
-            }
-
-            @Override
-            public void onNext(UpdateUserImageResponse value) {
-                updateProfileImage.postValue(value);
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                updateProfileImage.postValue(null);
-
-            }
-
-            @Override
-            public void onComplete() {
-
-            }
-        });
-    }
 
     public MutableLiveData<GetUserInfoResponse> makeGetUserInfo() {
         return getUserInfo;
     }
 
-    public void getUserInfoFromServer(final Context context) {
-
-        UserRepository.getInstance().getUSerInfoRepository().subscribe(new Observer<GetUserInfoResponse>() {
-            @Override
-            public void onSubscribe(Disposable d) {
-            }
-
-            @Override
-            public void onNext(GetUserInfoResponse response) {
-
-                if (response.getStatus()) {
-                    updateImageInDataBase(context, response.getData().getUser().getImageUrl());
-                }
-                getUserInfo.postValue(response);
-            }
-
-            @Override
-            public void onError(Throwable e) {
-
-                getUserInfo.postValue(null);
-                //Handel Error
-            }
-
-            @Override
-            public void onComplete() {
-
-            }
-        });
-    }
 
     public MutableLiveData<ChangePasswordResponse> makeChangePassword() {
         return changePassword;
     }
 
-    public void changePasswordToServer(String oldPassword, String newPassword) {
-        ChangePasswordRequest request = new ChangePasswordRequest();
-        request.setOldPassword(oldPassword);
-        request.setPassword(newPassword);
-        request.setPasswordConfirmation(newPassword);
-
-        UserRepository.getInstance().changePasswordRepository(request).subscribe(new Observer<ChangePasswordResponse>() {
-            @Override
-            public void onSubscribe(Disposable d) {
-            }
-
-            @Override
-            public void onNext(ChangePasswordResponse response) {
-                changePassword.postValue(response);
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                if (e.toString().equals("java.net.SocketTimeoutException")) {
-                    ChangePasswordResponse response = new ChangePasswordResponse();
-//                    response.setStatus(false);
-//                    response.setMsg("java.net.SocketTimeoutException");
-                    changePassword.postValue(response);
-                } else
-                    changePassword.postValue(null);
-                //Handel Error
-            }
-
-            @Override
-            public void onComplete() {
-
-            }
-        });
-    }
 
     public MutableLiveData<ForgetPasswordResponse> makeForgetPassword() {
         return forgetPassword;
@@ -369,21 +255,20 @@ public class ViewModelUser extends ViewModel {
 
     }
 
-    private void saveDataInDataBase(Context context, String email, String name, String phone,
-                                    String location, String image, String accessToken, int type,
-                                    int id, int loginType) {
+    private void saveDataInDataBase(Context context, String email, String fNAme, String phone,
+                                    String userName, String lName, String accessToken, int type,
+                                    String id) {
 
         UserModel userData = new UserModel();
-        userData.setLoginType(loginType);
-        userData.setRefreshToken(accessToken);
         userData.setEmail(email);
-        userData.setUserName(name);
+        userData.setUserName(userName);
+        userData.setFirstName(fNAme);
+        userData.setLastName(lName);
         userData.setPhone(phone);
-        userData.setImageUrl(image);
-        userData.setLocation(location);
         userData.setActive(1);
         userData.setUserType(type);
         userData.setId(id);
+        userData.setAccessToken(accessToken);
         loggedInUser = userData;
         DataBase.getInstance(context).userProfileDao().insert(loggedInUser);
 
@@ -398,9 +283,5 @@ public class ViewModelUser extends ViewModel {
         DataBase.getInstance(context).userProfileDao().updateUserDate(loggedInUser);
     }
 
-    private void updateImageInDataBase(final Context context, String imageUrl) {
-        loggedInUser.setImageUrl(imageUrl);
-        DataBase.getInstance(context).userProfileDao().updateUserDate(loggedInUser);
-    }
 
 }

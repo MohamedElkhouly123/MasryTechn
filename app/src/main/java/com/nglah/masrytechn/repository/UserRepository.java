@@ -1,13 +1,11 @@
 package com.nglah.masrytechn.repository;
-
-
-
 import com.nglah.masrytechn.network.networkModel.request.User.ChangePasswordRequest;
 import com.nglah.masrytechn.network.networkModel.request.User.ForgetPasswordRequest;
 import com.nglah.masrytechn.network.networkModel.request.User.LoginRequest;
 import com.nglah.masrytechn.network.networkModel.request.User.RegisterRequest;
 import com.nglah.masrytechn.network.networkModel.request.User.UpdateUserDataRequest;
 import com.nglah.masrytechn.network.networkModel.request.User.UpdateUserImageRequest;
+import com.nglah.masrytechn.network.networkModel.request.User.VerifyEmailRequest;
 import com.nglah.masrytechn.network.networkModel.response.User.ChangePasswordResponse;
 import com.nglah.masrytechn.network.networkModel.response.User.ForgetPasswordResponse;
 import com.nglah.masrytechn.network.networkModel.response.User.GetUserInfoResponse;
@@ -15,6 +13,7 @@ import com.nglah.masrytechn.network.networkModel.response.User.LoginResponse;
 import com.nglah.masrytechn.network.networkModel.response.User.RegisterResponse;
 import com.nglah.masrytechn.network.networkModel.response.User.UpdateUserDataResponse;
 import com.nglah.masrytechn.network.networkModel.response.User.UpdateUserImageResponse;
+import com.nglah.masrytechn.network.networkModel.response.User.VerifyEmailResponse;
 import com.nglah.masrytechn.network.webservices.WebServicesUSer;
 
 import io.reactivex.Observable;
@@ -40,7 +39,7 @@ public class UserRepository {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
-        String BASE_URL = "http://handasah.net/api/";
+        String BASE_URL = "https://pwalgs.com/nglah2/Users/";
         Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL).client(client).addConverterFactory(GsonConverterFactory.create()).addCallAdapterFactory(RxJava2CallAdapterFactory.create()).build();
         webServicesUSer = retrofit.create(WebServicesUSer.class);
     }
@@ -74,7 +73,41 @@ public class UserRepository {
                     public void onError(Throwable e) {
                         RegisterResponse response = new RegisterResponse();
                         response.setStatus(false);
-                        response.setMsg(e.toString());
+                        response.setMessage(e.toString());
+                        emitter.onNext(response);
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+            }
+        });
+    }
+
+    public Observable<VerifyEmailResponse> verifyEmailRepository(final VerifyEmailRequest request) {
+        return Observable.create(new ObservableOnSubscribe<VerifyEmailResponse>() {
+            @Override
+            public void subscribe(final ObservableEmitter<VerifyEmailResponse> emitter) {
+
+                webServicesUSer.verifyEmail(request).subscribeOn(Schedulers.io())
+                        .observeOn(Schedulers.io()).subscribe(new Observer<VerifyEmailResponse>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                    }
+
+                    @Override
+                    public void onNext(VerifyEmailResponse response) {
+                        emitter.onNext(response);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        VerifyEmailResponse response = new VerifyEmailResponse();
+//                        response.setStatus(false);
+//                        response.setMsg(e.toString());
                         emitter.onNext(response);
 
                     }
@@ -121,143 +154,6 @@ public class UserRepository {
         });
     }
 
-
-    public Observable<UpdateUserDataResponse> editProfileRepository(final UpdateUserDataRequest request) {
-        return Observable.create(new ObservableOnSubscribe<UpdateUserDataResponse>() {
-            @Override
-            public void subscribe(final ObservableEmitter<UpdateUserDataResponse> emitter) {
-
-
-                webServicesUSer.EditUserProfile("Bearer " + loggedInUser.getRefreshToken(), loggedInUser.getId(), request).subscribeOn(Schedulers.io()).observeOn(Schedulers.io()).subscribe(new Observer<UpdateUserDataResponse>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                    }
-
-                    @Override
-                    public void onNext(UpdateUserDataResponse response) {
-
-                        emitter.onNext(response);
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        UpdateUserDataResponse response = new UpdateUserDataResponse();
-                        response.setStatus(false);
-                        response.setMsg(e.toString());
-                        emitter.onNext(response);
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
-            }
-        });
-    }
-
-    public Observable<UpdateUserImageResponse> updateProfileImageRepository(final UpdateUserImageRequest request) {
-        return Observable.create(new ObservableOnSubscribe<UpdateUserImageResponse>() {
-            @Override
-            public void subscribe(final ObservableEmitter<UpdateUserImageResponse> emitter) {
-                webServicesUSer.EditUserProfileImage("Bearer " + loggedInUser.getRefreshToken(), loggedInUser.getId(), request).subscribeOn(Schedulers.io()).observeOn(Schedulers.io()).subscribe(new Observer<UpdateUserImageResponse>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                    }
-
-                    @Override
-                    public void onNext(UpdateUserImageResponse response) {
-                        emitter.onNext(response);
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        UpdateUserImageResponse response = new UpdateUserImageResponse();
-                        response.setStatus(false);
-                        response.setMsg(e.toString());
-                        emitter.onNext(response);
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
-            }
-        });
-    }
-
-    public Observable<GetUserInfoResponse> getUSerInfoRepository() {
-        return Observable.create(new ObservableOnSubscribe<GetUserInfoResponse>() {
-            @Override
-            public void subscribe(final ObservableEmitter<GetUserInfoResponse> emitter) {
-
-
-                webServicesUSer.getUserData("Bearer " + loggedInUser.getRefreshToken(), loggedInUser.getId()).subscribeOn(Schedulers.io()).observeOn(Schedulers.io()).subscribe(new Observer<GetUserInfoResponse>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                    }
-
-                    @Override
-                    public void onNext(GetUserInfoResponse response) {
-
-                        emitter.onNext(response);
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        GetUserInfoResponse response = new GetUserInfoResponse();
-                        response.setStatus(false);
-                        response.setMsg(e.toString());
-                        emitter.onNext(response);
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
-            }
-        });
-    }
-
-    public Observable<ChangePasswordResponse> changePasswordRepository(final ChangePasswordRequest request) {
-        return Observable.create(new ObservableOnSubscribe<ChangePasswordResponse>() {
-            @Override
-            public void subscribe(final ObservableEmitter<ChangePasswordResponse> emitter) {
-
-
-                webServicesUSer.changePassword("Bearer " + loggedInUser.getRefreshToken(), loggedInUser.getId(), request).subscribeOn(Schedulers.io()).observeOn(Schedulers.io()).subscribe(new Observer<ChangePasswordResponse>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                    }
-
-                    @Override
-                    public void onNext(ChangePasswordResponse response) {
-
-                        emitter.onNext(response);
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        ChangePasswordResponse response = new ChangePasswordResponse();
-                        response.setStatus(false);
-                        response.setMsg(e.toString());
-                        emitter.onNext(response);
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
-            }
-        });
-    }
 
     public Observable<ForgetPasswordResponse> forgetPasswordRepository(final ForgetPasswordRequest request) {
         return Observable.create(new ObservableOnSubscribe<ForgetPasswordResponse>() {

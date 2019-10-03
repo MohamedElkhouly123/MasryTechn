@@ -14,10 +14,11 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.nglah.masrytechn.R;
 import com.nglah.masrytechn.network.networkModel.response.User.LoginResponse;
+import com.nglah.masrytechn.view.Utils.CheckNetwork;
 import com.nglah.masrytechn.view.forgetPassword.ForgetActivity;
 import com.nglah.masrytechn.view.main.MainActivity;
 import com.nglah.masrytechn.view.register.RegisterActivity;
-import com.nglah.masrytechn.view.util.CheckNetwork;
+
 import com.nglah.masrytechn.viewModel.ViewModelUser;
 
 import butterknife.BindString;

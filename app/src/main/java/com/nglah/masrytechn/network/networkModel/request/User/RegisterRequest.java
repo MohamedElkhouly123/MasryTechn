@@ -4,40 +4,50 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class RegisterRequest {
-    @SerializedName("name")
+    @SerializedName("fname")
     @Expose
-    private String name;
-    @SerializedName("email")
+    private String fname;
+    @SerializedName("lname")
+    @Expose
+    private String lname;
+    @SerializedName("mobileNumber")
+    @Expose
+    private String mobileNumber;
+    @SerializedName("Email")
     @Expose
     private String email;
-    @SerializedName("password")
+    @SerializedName("userName")
+    @Expose
+    private String userName;
+    @SerializedName("Password")
     @Expose
     private String password;
-    @SerializedName("password_confirmation")
-    @Expose
-    private String passwordConfirmation;
-    @SerializedName("phone")
-    @Expose
-    private String phone;
-    @SerializedName("state_id")
-    @Expose
-    private String stateId;
-    @SerializedName("city_id")
-    @Expose
-    private String cityId;
-    @SerializedName("address")
-    @Expose
-    private String address;
-    @SerializedName("token")
+    @SerializedName("Token")
     @Expose
     private String token;
 
-    public String getName() {
-        return name;
+    public String getFname() {
+        return fname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFname(String fname) {
+        this.fname = fname;
+    }
+
+    public String getLname() {
+        return lname;
+    }
+
+    public void setLname(String lname) {
+        this.lname = lname;
+    }
+
+    public String getMobileNumber() {
+        return mobileNumber;
+    }
+
+    public void setMobileNumber(String mobileNumber) {
+        this.mobileNumber = mobileNumber;
     }
 
     public String getEmail() {
@@ -48,6 +58,14 @@ public class RegisterRequest {
         this.email = email;
     }
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -56,47 +74,6 @@ public class RegisterRequest {
         this.password = password;
     }
 
-    public String getPasswordConfirmation() {
-        return passwordConfirmation;
-    }
-
-    public void setPasswordConfirmation(String passwordConfirmation) {
-        this.passwordConfirmation = passwordConfirmation;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getStateId() {
-        return stateId;
-    }
-
-    public void setStateId(String stateId) {
-        this.stateId = stateId;
-    }
-
-    public String getCityId() {
-        return cityId;
-    }
-
-    public void setCityId(String cityId) {
-        this.cityId = cityId;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-
     public String getToken() {
         return token;
     }
@@ -104,4 +81,5 @@ public class RegisterRequest {
     public void setToken(String token) {
         this.token = token;
     }
+
 }
