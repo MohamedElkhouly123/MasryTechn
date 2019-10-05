@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#535252"
-    tools:context=".drive_profile">
+    tools:context=".view.drive_Profile.drive_profile">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">

@@ -148,12 +148,13 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/bottonshapeblack"
-                android:layout_marginStart="@dimen/_90sdp"
-                android:layout_marginEnd="@dimen/_90sdp"
+                android:layout_marginStart="@dimen/_85sdp"
+                android:layout_marginEnd="@dimen/_85sdp"
+                android:padding="@dimen/_5sdp"
                 android:layout_marginTop="@dimen/_25sdp"
                 android:text="التالي"
                 android:textColor="@color/mdtp_white"
-                android:textSize="@dimen/_15ssp"
+                android:textSize="@dimen/_16ssp"
                 android:fontFamily="@font/lemon"/>
 
         </LinearLayout>

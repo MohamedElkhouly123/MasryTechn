@@ -21,7 +21,7 @@ import com.nglah.masrytechn.model.UserModel;
 import com.nglah.masrytechn.network.networkModel.response.User.VerifyEmailResponse;
 
 import com.nglah.masrytechn.view.Utils.Dialog.Views;
-import com.nglah.masrytechn.view.userProfile.DriverDataModel;
+import com.nglah.masrytechn.view.drive_Profile.DriverDataModel;
 import com.nglah.masrytechn.view.userProfile.EditUserProfile;
 import com.nglah.masrytechn.viewModel.ViewModelUser;
 
