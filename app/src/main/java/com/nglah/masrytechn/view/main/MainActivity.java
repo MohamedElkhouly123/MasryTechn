@@ -16,6 +16,7 @@ import com.nglah.masrytechn.view.userProfile.UserProfile;
 import com.nglah.masrytechn.viewModel.ViewModelUser;
 
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -51,7 +52,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void logOut() {
+    @OnClick(R.id.logout)
+     void logOut() {
         viewModelUser.setLogout(this);
     }
 
@@ -64,7 +66,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void goToPayment(){
+    @OnClick(R.id.mybag)
+     void goToPayment(){
         startActivity(new Intent(this, Payment.class));
     }
 }

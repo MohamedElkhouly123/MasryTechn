@@ -23,6 +23,7 @@
     <string name="completeData">Complete Data</string>
     <string name="shortPassword">Password Should be more than 6 char</string>
     <string name="poorConnection">Poor Connection</string>
+    <string name="uploadImage">Upload Image</string>
 
     <string name="date_and_time_order">Choose Trip Time</string>
     <string name="immediately">now</string>

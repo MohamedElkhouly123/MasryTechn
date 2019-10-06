@@ -18,16 +18,12 @@
         <activity android:name=".view.choose_place.Choose_Element" />
         <activity android:name=".view.choose_place.Choose_Place_Outside_City" />
         <activity android:name=".view.choose_place.Choose_Place_Inside_City">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".view.All_Naglas.All_Nagla" />
         <activity android:name=".Verify_Dialog" />
         <activity android:name=".Nagla_Location" />
         <activity android:name=".view.drive_Profile.drive_profile" />
+        <activity android:name=".view.drive_Profile.DriverDataModel" />
         <activity android:name=".view.drive_Profile.driver_data_edit" />
         <activity android:name=".view.AllDeriver.AllDriver" />
         <activity android:name=".view.payment.Payment" />
@@ -39,7 +35,14 @@
             android:theme="@style/HiddenTitleTheme" />
         <activity
             android:name=".view.login.SplashActivity"
-            android:theme="@style/HiddenTitleTheme" />
+            android:theme="@style/HiddenTitleTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
         <activity
             android:name=".view.login.LoginActivity"
             android:theme="@style/HiddenTitleTheme" />

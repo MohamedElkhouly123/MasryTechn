@@ -28,20 +28,21 @@ public class UserModel implements Serializable {
     @ColumnInfo(name = "id")
     private String id;
 
-    @SerializedName("userName")
+    @SerializedName("user_name")
     @ColumnInfo(name = "userName")
     private String UserName;
 
-    @SerializedName("firstName")
+    @SerializedName("first_name")
     @ColumnInfo(name = "firstName")
     private String firstName;
 
 
-    @SerializedName("lastName")
+    @SerializedName("last_name")
     @ColumnInfo(name = "lastName")
     private String lastName;
 
-    @SerializedName("userType")
+
+    @SerializedName("user_type")
     @ColumnInfo(name = "userType")
     private Integer userType;
 
@@ -57,9 +58,33 @@ public class UserModel implements Serializable {
     @ColumnInfo(name = "location")
     private String location;
 
-    @SerializedName("imageUrl")
+    @SerializedName("image_url")
     @ColumnInfo(name = "image")
     private String imageUrl;
+    @SerializedName("car_type")
+    @ColumnInfo(name = "carType")
+    private String carType;
+
+    @SerializedName("PlateNumber")
+    @ColumnInfo(name = "Plate_number")
+    private String PlateNumber;
+
+    @SerializedName("max_weight")
+    @ColumnInfo(name = "MaxWeight")
+    private String MaxWeight;
+
+    @SerializedName("city")
+    @ColumnInfo(name = "city")
+    private String city;
+
+    @SerializedName("current_city")
+    @ColumnInfo(name = "CurrentCity")
+    private String CurrentCity;
+
+    @SerializedName("car_icon")
+    @ColumnInfo(name = "CarIcon")
+    private String CarIcon;
+
 
 
 
@@ -154,4 +179,54 @@ public class UserModel implements Serializable {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
+
+    public String getCarType() {
+        return carType;
+    }
+
+    public void setCarType(String carType) {
+        this.carType = carType;
+    }
+
+    public String getPlateNumber() {
+        return PlateNumber;
+    }
+
+    public void setPlateNumber(String plateNumber) {
+        PlateNumber = plateNumber;
+    }
+
+    public String getMaxWeight() {
+        return MaxWeight;
+    }
+
+    public void setMaxWeight(String maxWeight) {
+        MaxWeight = maxWeight;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getCurrentCity() {
+        return CurrentCity;
+    }
+
+    public void setCurrentCity(String currentCity) {
+        CurrentCity = currentCity;
+    }
+
+    public String getCarIcon() {
+        return CarIcon;
+    }
+
+    public void setCarIcon(String carIcon) {
+        CarIcon = carIcon;
+    }
+
+
 }

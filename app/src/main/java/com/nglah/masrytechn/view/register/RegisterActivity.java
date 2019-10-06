@@ -127,14 +127,12 @@ public class RegisterActivity extends AppCompatActivity {
     private void registerNormalUSer() {
         Intent intent = new Intent(this, EditUserProfile.class);
         intent.putExtra("type", "register");
-        intent.putExtra("model", model);
         startActivity(intent);
     }
 
     private void registerCarOwner() {
         Intent intent = new Intent(this, DriverDataModel.class);
         intent.putExtra("type", "register");
-        intent.putExtra("model", model);
         startActivity(intent);
     }
 

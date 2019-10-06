@@ -1,18 +1,14 @@
 package com.nglah.masrytechn.repository;
-import com.nglah.masrytechn.network.networkModel.request.User.ChangePasswordRequest;
+
 import com.nglah.masrytechn.network.networkModel.request.User.ForgetPasswordRequest;
 import com.nglah.masrytechn.network.networkModel.request.User.LoginRequest;
+import com.nglah.masrytechn.network.networkModel.request.User.RegisterCarOwnerRequest;
 import com.nglah.masrytechn.network.networkModel.request.User.RegisterRequest;
-import com.nglah.masrytechn.network.networkModel.request.User.UpdateUserDataRequest;
-import com.nglah.masrytechn.network.networkModel.request.User.UpdateUserImageRequest;
 import com.nglah.masrytechn.network.networkModel.request.User.VerifyEmailRequest;
-import com.nglah.masrytechn.network.networkModel.response.User.ChangePasswordResponse;
 import com.nglah.masrytechn.network.networkModel.response.User.ForgetPasswordResponse;
-import com.nglah.masrytechn.network.networkModel.response.User.GetUserInfoResponse;
 import com.nglah.masrytechn.network.networkModel.response.User.LoginResponse;
+import com.nglah.masrytechn.network.networkModel.response.User.RegisterCarOwnerResponse;
 import com.nglah.masrytechn.network.networkModel.response.User.RegisterResponse;
-import com.nglah.masrytechn.network.networkModel.response.User.UpdateUserDataResponse;
-import com.nglah.masrytechn.network.networkModel.response.User.UpdateUserImageResponse;
 import com.nglah.masrytechn.network.networkModel.response.User.VerifyEmailResponse;
 import com.nglah.masrytechn.network.webservices.WebServicesUSer;
 
@@ -27,8 +23,6 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
-
-import static com.nglah.masrytechn.model.UserModel.loggedInUser;
 
 
 public class UserRepository {
@@ -72,6 +66,41 @@ public class UserRepository {
                     @Override
                     public void onError(Throwable e) {
                         RegisterResponse response = new RegisterResponse();
+                        response.setStatus(false);
+                        response.setMessage(e.toString());
+                        emitter.onNext(response);
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+            }
+        });
+    }
+
+    public Observable<RegisterCarOwnerResponse> registrationCarOwnerRepository
+            (final RegisterCarOwnerRequest request) {
+        return Observable.create(new ObservableOnSubscribe<RegisterCarOwnerResponse>() {
+            @Override
+            public void subscribe(final ObservableEmitter<RegisterCarOwnerResponse> emitter) {
+
+                webServicesUSer.RegistrationCarOwner(request).subscribeOn(Schedulers.io()).
+                        observeOn(Schedulers.io()).subscribe(new Observer<RegisterCarOwnerResponse>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                    }
+
+                    @Override
+                    public void onNext(RegisterCarOwnerResponse response) {
+                        emitter.onNext(response);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        RegisterCarOwnerResponse response = new RegisterCarOwnerResponse();
                         response.setStatus(false);
                         response.setMessage(e.toString());
                         emitter.onNext(response);
