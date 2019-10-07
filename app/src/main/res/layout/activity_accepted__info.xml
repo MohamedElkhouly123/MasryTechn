@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#535252"
-    tools:context=".Accepted_Info">
+    tools:context=".view.Accepted_Info.Accepted_Info">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,69 +17,72 @@
             android:layout_height="0dp"
             android:layout_marginStart="19dp"
             android:layout_marginLeft="19dp"
-            android:layout_marginBottom="33dp"
             android:text="Details"
             android:textColor="#535252"
             android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/tv_price"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
-        <TextView
-            android:id="@+id/tv_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="19dp"
-            android:layout_marginLeft="19dp"
-            android:layout_marginEnd="48dp"
-            android:layout_marginRight="48dp"
-            android:layout_marginBottom="115dp"
-            android:text="سعرك"
-            android:textColor="#535252"
-
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/et_price"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_details" />
-
         <Button
             android:id="@+id/bt_ok"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="19dp"
-            android:layout_marginLeft="19dp"
             android:layout_marginBottom="30dp"
-            android:text="تأكيد"
-            android:textSize="16sp"
-            android:textColor="#535252"
             android:background="@drawable/btn_style"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <EditText
-            android:id="@+id/et_price"
-            android:layout_width="0dp"
-            android:layout_height="41dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="159dp"
-            android:layout_marginRight="159dp"
-            android:layout_marginBottom="30dp"
-            android:ems="10"
-            android:hint=" سعر النقلة"
-            android:inputType="textPersonName"
-            android:minLines="1"
+            android:gravity="center"
+            android:text="تأكيد"
             android:textColor="#535252"
-            android:textColorHint="#535252"
-            android:textSize="20sp"
-            android:textAlignment="center"
-            android:background="@drawable/bottonshape"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            app:layout_goneMarginTop="@dimen/_25sdp"
+            android:layout_marginBottom="@dimen/_25sdp"
+            android:orientation="horizontal"
             app:layout_constraintBottom_toTopOf="@+id/bt_ok"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tv_price"
             app:layout_constraintTop_toBottomOf="@+id/tv_details"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="1.0"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/tv_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:textColor="@color/mdtp_white"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:textSize="20sp"
+                android:text="السعر"
+                />
+
+
+            <EditText
+                android:id="@+id/et_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:ems="10"
+                android:hint="ادخل السعر"
+                android:inputType="number"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:minLines="1"
+                android:textColor="#535252"
+                android:background="@drawable/bottonshape"
+                android:textColorHint="#535252"
+                android:textSize="20sp" />
+
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/textView3"

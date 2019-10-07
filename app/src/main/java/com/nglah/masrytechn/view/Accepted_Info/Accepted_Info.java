@@ -1,8 +1,10 @@
-package com.nglah.masrytechn;
+package com.nglah.masrytechn.view.Accepted_Info;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.nglah.masrytechn.R;
 
 public class Accepted_Info extends AppCompatActivity {
 

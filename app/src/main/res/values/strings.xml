@@ -47,4 +47,10 @@
     <string name="ok">OK</string>
     <string name="userNameError">Username or passwor not correct</string>
     <string name="selectTypeOfLogin">Select type of user</string>
+    <string name="order_owner">Order Owner</string>
+    <string name="order_type">Order Type</string>
+    <string name="nglah_type">Nglah Type</string>
+    <string name="details">Nglah Details</string>
+    <string name="price">Price</string>
+    <string name="order_page">Order Page</string>
 </resources>
