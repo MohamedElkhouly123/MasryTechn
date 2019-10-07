@@ -22,8 +22,11 @@
     <string name="userType">User Type</string>
     <string name="completeData">Complete Data</string>
     <string name="shortPassword">Password Should be more than 6 char</string>
-    <string name="poorConnection">Poor Connection</string>
+    <string name="poorConnection">Poor Internet Connection</string>
+    <string name="serverError">Error Server</string>
     <string name="uploadImage">Upload Image</string>
+    <string name="networkException">failed to connect to tr.cict-sa.net/109.203.118.19 (port 80) after 10000ms</string>
+
 
     <string name="date_and_time_order">Choose Trip Time</string>
     <string name="immediately">now</string>
@@ -42,4 +45,6 @@
     <string name="driver_name">Driver Name</string>
     <string name="city">City</string>
     <string name="ok">OK</string>
+    <string name="userNameError">Username or passwor not correct</string>
+    <string name="selectTypeOfLogin">Select type of user</string>
 </resources>

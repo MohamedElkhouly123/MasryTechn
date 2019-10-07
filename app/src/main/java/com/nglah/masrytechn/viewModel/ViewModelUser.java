@@ -33,6 +33,7 @@ import static com.nglah.masrytechn.model.UserModel.loggedInUser;
 public class ViewModelUser extends ViewModel {
 
     private MutableLiveData<LoginResponse> loginResponse = new MutableLiveData<>();
+    private MutableLiveData<RegisterCarOwnerResponse> loginCarOwnerResponse = new MutableLiveData<>();
     private MutableLiveData<VerifyEmailResponse> verifyResponse = new MutableLiveData<>();
     private MutableLiveData<RegisterResponse> registerResponse = new MutableLiveData<>();
     private MutableLiveData<RegisterCarOwnerResponse> registerCarOwnerResponse = new MutableLiveData<>();
@@ -51,35 +52,36 @@ public class ViewModelUser extends ViewModel {
 
     public void registerToServer(final Context context, RegisterRequest request) {
 
-        UserRepository.getInstance().registrationRepository(request).subscribe(new Observer<RegisterResponse>() {
-            @Override
-            public void onSubscribe(Disposable d) {
+        UserRepository.getInstance().registrationRepository(request)
+                .subscribe(new Observer<RegisterResponse>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
 
-            }
+                    }
 
-            @Override
-            public void onNext(RegisterResponse value) {
-                if (value.getStatus()) {
-                    saveDataInDataBase(context, value.getEmail(), value.getFname(),
-                            value.getMobileNumber(), value.getUserName(), value.getLname()
-                            , value.getToken(),
-                            1, value.getId(), "", "", "", "",
-                            "", "");
-                }
-                registerResponse.postValue(value);
+                    @Override
+                    public void onNext(RegisterResponse value) {
+                        if (value.getStatus()) {
+                            saveDataInDataBase(context, value.getEmail(), value.getFname(),
+                                    value.getMobileNumber(), value.getUserName(), value.getLname()
+                                    , value.getToken(),
+                                    1, value.getId(), "", "", "", "",
+                                    "", "");
+                        }
+                        registerResponse.postValue(value);
 
-            }
+                    }
 
-            @Override
-            public void onError(Throwable e) {
-                registerResponse.postValue(null);
-            }
+                    @Override
+                    public void onError(Throwable e) {
+                        registerResponse.postValue(null);
+                    }
 
-            @Override
-            public void onComplete() {
+                    @Override
+                    public void onComplete() {
 
-            }
-        });
+                    }
+                });
 
     }
 
@@ -99,7 +101,7 @@ public class ViewModelUser extends ViewModel {
                     @Override
                     public void onNext(RegisterCarOwnerResponse value) {
 
-                        if (value.getId()!=null) {
+                        if (value.getId() != null) {
                             saveDataInDataBase(context, value.getEmail(), value.getFname(),
                                     value.getMobileNumber(), value.getUserName(), value.getLname()
                                     , value.getToken(), 2, value.getId(), value.getCarType(),
@@ -130,7 +132,7 @@ public class ViewModelUser extends ViewModel {
 
     public void loginToServer(final Context context, String email, String password) {
         LoginRequest request = new LoginRequest();
-        request.setEmail(email);
+        request.setUserName(email);
         request.setPassword(password);
         request.setToken(new FireBaseToken().getToken());
         UserRepository.getInstance().loginRepository(request).subscribe(new Observer<LoginResponse>() {
@@ -142,8 +144,15 @@ public class ViewModelUser extends ViewModel {
             public void onNext(LoginResponse value) {
 
                 //Save dataBase
-                if (value.isStatus()) {
+                if (value.getStatus()) {
 
+                    if (value.getId() != null) {
+                        saveDataInDataBase(context, value.getEmail(), value.getFname(),
+                                value.getMobileNumber(), value.getUserName(), value.getLname()
+                                , value.getToken(),
+                                1, value.getId(), "", "", "", "",
+                                "", "");
+                    }
                 }
                 loginResponse.postValue(value);
             }
@@ -160,6 +169,55 @@ public class ViewModelUser extends ViewModel {
 
             }
         });
+    }
+
+
+    public MutableLiveData<RegisterCarOwnerResponse> makeLoginCarOwner() {
+        return loginCarOwnerResponse;
+    }
+
+    public void loginCarOwnerToServer(final Context context, String email, String password) {
+        LoginRequest request = new LoginRequest();
+        request.setUserName(email);
+        request.setPassword(password);
+        request.setToken(new FireBaseToken().getToken());
+        UserRepository.getInstance().loginCarOWnerRepository(request).
+                subscribe(new Observer<RegisterCarOwnerResponse>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                    }
+
+                    @Override
+                    public void onNext(RegisterCarOwnerResponse value) {
+
+                        //Save dataBase
+                        if (value.getStatus()) {
+
+                            if (value.getId() != null) {
+                                if (value.getStatus() && value.getId() != null) {
+                                    saveDataInDataBase(context, value.getEmail(), value.getFname(),
+                                            value.getMobileNumber(), value.getUserName(), value.getLname()
+                                            , value.getToken(), 2, value.getId(), value.getCarType(),
+                                            value.getPlateNumber(), value.getMaxWeight(), value.getCurrentCity()
+                                            , value.getCity(), value.getCarIcon());
+                                }
+                            }
+                        }
+                        loginCarOwnerResponse.postValue(value);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                        loginCarOwnerResponse.postValue(null);
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 
     public MutableLiveData<VerifyEmailResponse> makeVerify() {

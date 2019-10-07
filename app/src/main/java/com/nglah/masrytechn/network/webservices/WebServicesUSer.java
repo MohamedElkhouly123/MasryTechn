@@ -42,10 +42,13 @@ public interface WebServicesUSer {
     @POST("person/register")
     @Headers({"Content-Type: application/json"})
     Observable<VerifyEmailResponse> verifyEmail(@Body VerifyEmailRequest request);
-    @POST("person/login")
+    @POST("NaqlaOwnerLogin.php")
     @Headers({"Content-Type: application/json"})
     Observable<LoginResponse> login(@Body LoginRequest request);
 
+    @POST("CarOwnerLogin.php")
+    @Headers({"Content-Type: application/json"})
+    Observable<RegisterCarOwnerResponse> carOwnerLogin(@Body LoginRequest request);
 
     @PUT("persons/user/{userId}")
     @Headers({"Content-Type: application/json"})

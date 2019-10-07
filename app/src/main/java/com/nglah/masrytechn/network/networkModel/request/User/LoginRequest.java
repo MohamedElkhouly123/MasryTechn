@@ -4,24 +4,22 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class LoginRequest {
-
-
-    @SerializedName("email")
+    @SerializedName("userName")
     @Expose
-    private String email;
-    @SerializedName("password")
+    private String userName;
+    @SerializedName("Password")
     @Expose
     private String password;
-    @SerializedName("token")
+    @SerializedName("Token")
     @Expose
     private String token;
 
-    public String getEmail() {
-        return email;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {

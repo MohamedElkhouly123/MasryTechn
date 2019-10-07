@@ -74,6 +74,31 @@
                 android:textColor="#fff" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <RadioGroup
+            android:layout_marginStart="@dimen/_25sdp"
+            android:layout_marginEnd="@dimen/_25sdp"
+            android:orientation="horizontal"
+            android:ems="10"
+            android:weightSum="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/rb_normalUser"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Normal user"
+                />
+            <RadioButton
+                android:id="@+id/rb_carOWner"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Car Owner"
+                />
+
+        </RadioGroup>
     </LinearLayout>
 
     <LinearLayout

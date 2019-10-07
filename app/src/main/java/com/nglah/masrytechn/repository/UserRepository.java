@@ -156,7 +156,8 @@ public class UserRepository {
             public void subscribe(final ObservableEmitter<LoginResponse> emitter) {
 
 
-                webServicesUSer.login(request).subscribeOn(Schedulers.io()).observeOn(Schedulers.io()).subscribe(new Observer<LoginResponse>() {
+                webServicesUSer.login(request).subscribeOn(Schedulers.io()).
+                        observeOn(Schedulers.io()).subscribe(new Observer<LoginResponse>() {
                     @Override
                     public void onSubscribe(Disposable d) {
                     }
@@ -170,7 +171,40 @@ public class UserRepository {
                     public void onError(Throwable e) {
                         LoginResponse response = new LoginResponse();
                         response.setStatus(false);
-                        response.setMsg(e.toString());
+                        response.setMessage(e.toString());
+                        emitter.onNext(response);
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+            }
+        });
+    }
+    public Observable<RegisterCarOwnerResponse> loginCarOWnerRepository(final LoginRequest request) {
+        return Observable.create(new ObservableOnSubscribe<RegisterCarOwnerResponse>() {
+            @Override
+            public void subscribe(final ObservableEmitter<RegisterCarOwnerResponse> emitter) {
+
+
+                webServicesUSer.carOwnerLogin(request).subscribeOn(Schedulers.io()).
+                        observeOn(Schedulers.io()).subscribe(new Observer<RegisterCarOwnerResponse>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                    }
+
+                    @Override
+                    public void onNext(RegisterCarOwnerResponse response) {
+                        emitter.onNext(response);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        RegisterCarOwnerResponse response = new RegisterCarOwnerResponse();
+                        response.setStatus(false);
+                        response.setMessage(e.toString());
                         emitter.onNext(response);
                     }
 
