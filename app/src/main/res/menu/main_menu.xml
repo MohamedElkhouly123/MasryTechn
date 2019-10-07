@@ -3,17 +3,13 @@
 
 
     <item
-        android:id="@+id/Setting"
-        android:title="Edit"
+        android:id="@+id/All_Drivers"
+        android:title="كل السائقين"
         app:showAsAction="never"
 
         />
 
-    <item
-        android:id="@+id/Logout"
-        android:title="Sin Out"
-        app:showAsAction="never"
-        />
+
 
 
 </menu>

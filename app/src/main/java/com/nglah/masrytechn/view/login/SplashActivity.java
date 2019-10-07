@@ -9,7 +9,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.nglah.masrytechn.R;
-import com.nglah.masrytechn.view.main.MainActivity;
+import com.nglah.masrytechn.view.main.MainActivity_User;
 import com.nglah.masrytechn.viewModel.ViewModelUser;
 
 public class SplashActivity extends AppCompatActivity {
@@ -50,7 +50,7 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void goToMain() {
-        startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(this, MainActivity_User.class));
 
     }
 

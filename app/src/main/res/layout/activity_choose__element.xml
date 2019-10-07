@@ -24,7 +24,7 @@
 
 
             <ImageView
-                android:id="@+id/list"
+                android:id="@+id/imgBackRecent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|start"
@@ -59,7 +59,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="@dimen/_90sdp"
+        android:layout_marginTop="@dimen/_70sdp"
         android:paddingBottom="@dimen/_40sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -76,21 +76,21 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="25dp"
-            android:layout_marginTop="@dimen/_65sdp"
+            android:layout_marginTop="@dimen/_50sdp"
             android:orientation="horizontal"
             >
 
             <Spinner
                 android:id="@+id/car"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="@dimen/_35sdp"
                 android:layout_gravity="center"
+                android:textAlignment="center"
                 style="@style/Widget.AppCompat.Spinner"
-                android:layout_marginLeft="@dimen/_40sdp"
-                android:layout_marginRight="@dimen/_40sdp"
+                android:layout_marginLeft="@dimen/_48sdp"
+                android:layout_marginRight="@dimen/_48sdp"
                 android:background="@drawable/spin_shape"
-                android:backgroundTint="@android:color/white"
-                android:gravity="center"/>
+                android:gravity="center" />
 
 
 
@@ -108,14 +108,13 @@
             <Spinner
                 android:id="@+id/asas"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="@dimen/_35sdp"
                 android:layout_gravity="center"
+                android:textAlignment="center"
                 style="@style/Widget.AppCompat.Spinner"
-                android:layout_marginLeft="@dimen/_40sdp"
-                android:layout_marginRight="@dimen/_40sdp"
-                android:backgroundTint="@android:color/white"
+                android:layout_marginLeft="@dimen/_48sdp"
+                android:layout_marginRight="@dimen/_48sdp"
                 android:background="@drawable/spin_shape"
-
                 android:gravity="center"  />
 
 
@@ -133,14 +132,14 @@
             <Spinner
                 android:id="@+id/building"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="@dimen/_35sdp"
                 android:layout_gravity="center"
+                android:textAlignment="center"
                 style="@style/Widget.AppCompat.Spinner"
-                android:layout_marginLeft="@dimen/_40sdp"
-                android:layout_marginRight="@dimen/_40sdp"
+                android:layout_marginLeft="@dimen/_48sdp"
+                android:layout_marginRight="@dimen/_48sdp"
                 android:background="@drawable/spin_shape"
-                android:backgroundTint="@android:color/white"
-                android:gravity="center" />  />
+                android:gravity="center"   />
 
 
 
@@ -159,14 +158,15 @@
             <Spinner
                 android:id="@+id/other"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="@dimen/_35sdp"
                 android:layout_gravity="center"
+                android:textAlignment="center"
                 style="@style/Widget.AppCompat.Spinner"
-                android:layout_marginLeft="@dimen/_40sdp"
-                android:layout_marginRight="@dimen/_40sdp"
+                android:layout_marginLeft="@dimen/_48sdp"
+                android:layout_marginRight="@dimen/_48sdp"
                 android:background="@drawable/spin_shape"
-                android:backgroundTint="@android:color/white"
-                android:gravity="center" /> />
+
+                android:gravity="center"/>
 
 
 

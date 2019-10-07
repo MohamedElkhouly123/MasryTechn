@@ -12,13 +12,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.NoActionBar">
-        <activity android:name=".Accepted_Info"></activity>
+        <activity android:name=".view.main.Main2Activity_Driver"></activity>
+        <activity android:name=".Accepted_Info" />
         <activity android:name=".view.drive_Profile.CarInformation" />
         <activity android:name=".view.Choose_Nagla_Dat.Choose_Nagla_Date" />
-        <activity android:name=".view.choose_place.Choose_Element" />
-        <activity android:name=".view.choose_place.Choose_Place_Outside_City" />
-        <activity android:name=".view.choose_place.Choose_Place_Inside_City">
+        <activity android:name=".view.choose_place.Choose_Element">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
+        <activity android:name=".view.choose_place.Choose_Place_Outside_City" />
+        <activity android:name=".view.choose_place.Choose_Place_Inside_City"></activity>
         <activity android:name=".view.All_Naglas.All_Nagla" />
         <activity android:name=".Verify_Dialog" />
         <activity android:name=".Nagla_Location" />
@@ -35,18 +41,11 @@
             android:theme="@style/HiddenTitleTheme" />
         <activity
             android:name=".view.login.SplashActivity"
-            android:theme="@style/HiddenTitleTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-        </activity>
+            android:theme="@style/HiddenTitleTheme"></activity>
         <activity
             android:name=".view.login.LoginActivity"
             android:theme="@style/HiddenTitleTheme" />
-        <activity android:name=".view.main.MainActivity" />
+        <activity android:name=".view.main.MainActivity_User" />
     </application>
 
 </manifest>

@@ -19,7 +19,7 @@ import com.nglah.masrytechn.network.networkModel.response.User.RegisterCarOwnerR
 import com.nglah.masrytechn.view.Utils.CheckNetwork;
 import com.nglah.masrytechn.view.Utils.Dialog.Views;
 import com.nglah.masrytechn.view.forgetPassword.ForgetActivity;
-import com.nglah.masrytechn.view.main.MainActivity;
+import com.nglah.masrytechn.view.main.MainActivity_User;
 import com.nglah.masrytechn.view.register.RegisterActivity;
 import com.nglah.masrytechn.viewModel.ViewModelUser;
 
@@ -166,7 +166,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void goToMain() {
-        startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(this, MainActivity_User.class));
         finish();
     }
 }

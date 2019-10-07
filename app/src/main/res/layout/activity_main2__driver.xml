@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#CC535252"
-    tools:context=".view.main.MainActivity_User">
+    tools:context=".view.main.Main2Activity_Driver">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -22,40 +22,40 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-            <LinearLayout
-                android:id="@+id/constr"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/_7sdp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:orientation="horizontal"
-                >
+                <LinearLayout
+                    android:id="@+id/constr"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/_7sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:orientation="horizontal"
+                    >
 
 
 
 
-                <TextView
-                    android:id="@+id/search_edit_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_marginEnd="@dimen/_10sdp"
-                    android:layout_marginTop="8dp"
+                    <TextView
+                        android:id="@+id/search_edit_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_marginTop="8dp"
 
-                    android:layout_marginBottom="4dp"
-                    android:text="نقله"
-                    android:textColor="#fff"
-                    android:fontFamily="@font/lemon"
-                    android:textSize="@dimen/_14ssp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/list"
-                    app:layout_constraintTop_toTopOf="parent" />
+                        android:layout_marginBottom="4dp"
+                        android:text="نقله"
+                        android:textColor="#fff"
+                        android:fontFamily="@font/lemon"
+                        android:textSize="@dimen/_14ssp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/list"
+                        app:layout_constraintTop_toTopOf="parent" />
 
 
-            </LinearLayout>
+                </LinearLayout>
             </androidx.appcompat.widget.Toolbar>
             <ImageView
                 android:id="@+id/imageView"

@@ -1,7 +1,6 @@
 package com.nglah.masrytechn.view.userProfile;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.EditText;
@@ -16,8 +15,7 @@ import com.nglah.masrytechn.R;
 import com.nglah.masrytechn.network.networkModel.request.User.RegisterRequest;
 import com.nglah.masrytechn.network.networkModel.response.User.RegisterResponse;
 import com.nglah.masrytechn.view.Utils.CheckNetwork;
-import com.nglah.masrytechn.view.Utils.ConvertImageToBase64;
-import com.nglah.masrytechn.view.main.MainActivity;
+import com.nglah.masrytechn.view.main.MainActivity_User;
 import com.nglah.masrytechn.viewModel.ViewModelUser;
 
 import butterknife.BindString;
@@ -137,7 +135,7 @@ public class EditUserProfile extends AppCompatActivity {
 
 
     void goToMain() {
-        startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(this, MainActivity_User.class));
         finish();
     }
 

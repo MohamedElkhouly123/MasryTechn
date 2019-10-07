@@ -85,16 +85,15 @@
         android:layout_marginBottom="@dimen/_20sdp"
         android:paddingBottom="@dimen/_30sdp"
         >
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="25dp"
+            android:orientation="horizontal">
             <TextView
                 android:id="@+id/text"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/_45sdp"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
+
                 android:text="الدوله"
                 android:textSize="@dimen/_16ssp"
                 android:textColor="#535252"
@@ -102,35 +101,74 @@
 
             </TextView>
             <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true" />
-        </RelativeLayout>
+                android:id="@+id/sp_country"
+                style="@style/Widget.AppCompat.Spinner"
+                android:layout_width="@dimen/_140sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:background="@drawable/spin_shape"/>
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_marginTop="@dimen/_35sdp"
+        android:orientation="horizontal"
+        >
         <TextView
             android:id="@+id/text2"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/_45sdp"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
+
             android:text="المنطقه"
             android:textSize="@dimen/_16ssp"
+
             android:textColor="#535252"
-            android:layout_marginTop="@dimen/_20sdp"
             android:fontFamily="@font/lemon"/>
+
+        <Spinner
+            android:id="@+id/sp_region"
+            style="@style/Widget.AppCompat.Spinner"
+            android:layout_width="@dimen/_140sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:background="@drawable/spin_shape"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_marginTop="@dimen/_35sdp"
+        android:orientation="horizontal"
+        >
         <TextView
             android:id="@+id/text3"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/_45sdp"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
             android:text="المدينه"
             android:textSize="@dimen/_16ssp"
             android:textColor="#535252"
-            android:layout_marginTop="@dimen/_20sdp"
             android:fontFamily="@font/lemon"/>
+        <Spinner
+            android:id="@+id/sp_city"
+            style="@style/Widget.AppCompat.Spinner"
+            android:layout_width="@dimen/_140sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:background="@drawable/spin_shape"
+            />
+    </LinearLayout>
 
         <Button
             android:layout_width="match_parent"
