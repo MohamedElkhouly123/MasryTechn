@@ -65,9 +65,11 @@
             <Spinner
                 android:id="@+id/sp_carType"
                 style="@style/Widget.AppCompat.Spinner"
-                android:layout_width="110dp"
+                android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
+                android:entries="@array/carsType"
+
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
                 android:backgroundTint="@color/mdtp_white"
@@ -76,6 +78,7 @@
 
         </LinearLayout>
         <TextView
+            android:id="@+id/tv_selectImage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -157,6 +160,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+
                 android:gravity="center"
                 android:layout_weight="1"
                 android:hint="@string/driver_name"

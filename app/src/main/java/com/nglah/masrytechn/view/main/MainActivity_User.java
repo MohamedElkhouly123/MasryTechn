@@ -82,6 +82,13 @@ public class MainActivity_User extends AppCompatActivity {
 
     }
 
+    @OnClick(R.id.askNagla)
+    void askNaglah(){
+        startActivity(new Intent(this, UserProfile.class));
+
+
+    }
+
     @OnClick(R.id.mybag)
      void goToPayment(){
         startActivity(new Intent(this, Payment.class));

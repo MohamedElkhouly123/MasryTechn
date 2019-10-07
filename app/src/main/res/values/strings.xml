@@ -4,6 +4,13 @@
         <item>Driver</item>
 
     </array>
+    <array name="carsType">
+        <item>Toyota</item>
+        <item>Mazda</item>
+        <item>Lancer</item>
+
+    </array>
+
     <string name="app_name">MasryTechn</string>
     <string name="create_new_account">Create new account</string>
     <string name="forget_password">Forget Password ?</string>

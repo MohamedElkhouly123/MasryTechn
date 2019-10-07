@@ -9,8 +9,11 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.nglah.masrytechn.R;
+import com.nglah.masrytechn.view.main.Main2Activity_Driver;
 import com.nglah.masrytechn.view.main.MainActivity_User;
 import com.nglah.masrytechn.viewModel.ViewModelUser;
+
+import static com.nglah.masrytechn.model.UserModel.loggedInUser;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -40,7 +43,11 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void onChanged(Boolean response) {
                 if (response) {
+                    if (loggedInUser.getUserType()==1){
                     goToMain();
+                    }else {
+                        goToMainDriver();
+                    }
                 } else {
                     goToLogin();
                     //Error happen
@@ -51,6 +58,10 @@ public class SplashActivity extends AppCompatActivity {
 
     private void goToMain() {
         startActivity(new Intent(this, MainActivity_User.class));
+
+    }
+    private void goToMainDriver() {
+        startActivity(new Intent(this, Main2Activity_Driver.class));
 
     }
 

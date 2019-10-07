@@ -3,7 +3,9 @@ package com.nglah.masrytechn.network.networkModel.request.User;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class RegisterCarOwnerRequest {
+import java.io.Serializable;
+
+public class RegisterCarOwnerRequest implements Serializable {
 
     @SerializedName("carType")
     @Expose

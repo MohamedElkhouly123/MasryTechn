@@ -16,9 +16,11 @@ import androidx.lifecycle.ViewModelProviders;
 import com.nglah.masrytechn.Firebase.FireBaseToken;
 import com.nglah.masrytechn.R;
 import com.nglah.masrytechn.network.networkModel.request.User.RegisterCarOwnerRequest;
+import com.nglah.masrytechn.network.networkModel.request.User.RegisterRequest;
 import com.nglah.masrytechn.network.networkModel.response.User.RegisterCarOwnerResponse;
 import com.nglah.masrytechn.view.Utils.ConvertImageToBase64;
 import com.nglah.masrytechn.view.Utils.Dialog.Views;
+import com.nglah.masrytechn.view.main.Main2Activity_Driver;
 import com.nglah.masrytechn.view.main.MainActivity_User;
 import com.nglah.masrytechn.viewModel.ViewModelUser;
 
@@ -71,6 +73,8 @@ public class DriverDataModel extends AppCompatActivity {
     String base64Image = "";
     Views.LoadingView dialog;
 
+    RegisterCarOwnerRequest request;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +83,8 @@ public class DriverDataModel extends AppCompatActivity {
         ButterKnife.bind(this);
 
         type = getIntent().getStringExtra("type");
+        request= (RegisterCarOwnerRequest) getIntent().getSerializableExtra("request");
+
         dialog = new Views.LoadingView(this);
         initListener();
 
@@ -131,7 +137,7 @@ public class DriverDataModel extends AppCompatActivity {
             if (validate()) {
 
                 dialog.show();
-                RegisterCarOwnerRequest request = new RegisterCarOwnerRequest();
+
                 request.setNationality(et_nationality.getText().toString());
                 request.setFname(et_firstName.getText().toString());
                 request.setLname(et_familyName.getText().toString());
@@ -140,12 +146,6 @@ public class DriverDataModel extends AppCompatActivity {
                 request.setUserName(et_userName.getText().toString());
                 request.setToken(new FireBaseToken().getToken());
                 request.setPassword(et_password.getText().toString());
-                request.setCarType("Toyota");
-                request.setPlateNumber("1231123");
-                request.setMaxWeight("12300");
-                request.setCarIcon("21");
-                request.setCurrentCity("cairo");
-                request.setCity("Giza");
                 viewModel.registerCarOwnerToServer(this, request);
             }
         }
@@ -191,7 +191,7 @@ public class DriverDataModel extends AppCompatActivity {
             public void onChanged(RegisterCarOwnerResponse registerResponse) {
 
                 dialog.dismiss();
-                if (registerResponse.getId()!=null) {
+                if (registerResponse.getId() != null) {
                     goToMain();
                 } else {
                     showToast("error happen tray again later");
@@ -202,7 +202,7 @@ public class DriverDataModel extends AppCompatActivity {
     }
 
     void goToMain() {
-        startActivity(new Intent(this, MainActivity_User.class));
+        startActivity(new Intent(this, Main2Activity_Driver.class));
         finish();
     }
 }

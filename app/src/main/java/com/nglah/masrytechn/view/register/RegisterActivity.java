@@ -21,6 +21,7 @@ import com.nglah.masrytechn.model.UserModel;
 import com.nglah.masrytechn.network.networkModel.response.User.VerifyEmailResponse;
 
 import com.nglah.masrytechn.view.Utils.Dialog.Views;
+import com.nglah.masrytechn.view.drive_Profile.CarInformation;
 import com.nglah.masrytechn.view.drive_Profile.DriverDataModel;
 import com.nglah.masrytechn.view.userProfile.EditUserProfile;
 import com.nglah.masrytechn.viewModel.ViewModelUser;
@@ -131,8 +132,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void registerCarOwner() {
-        Intent intent = new Intent(this, DriverDataModel.class);
-        intent.putExtra("type", "register");
+        Intent intent = new Intent(this, CarInformation.class);
         startActivity(intent);
     }
 
