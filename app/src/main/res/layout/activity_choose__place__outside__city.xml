@@ -28,7 +28,7 @@
 
 
                 <ImageView
-                    android:id="@+id/list"
+                    android:id="@+id/imgBackRecent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|start"
@@ -173,7 +173,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_35sdp"
                 android:id="@+id/choose_City"
-                android:hint="ادخل الموقع"
                 android:background="@drawable/bottonshape"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/_25sdp"

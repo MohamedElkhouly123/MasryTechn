@@ -1,14 +1,23 @@
 package com.nglah.masrytechn.view.choose_place;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.nglah.masrytechn.R;
 
@@ -28,6 +37,8 @@ public class Choose_Place_Outside_City extends AppCompatActivity {
     ArrayList<String>chooseCitylist=new ArrayList<>();
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
+    boolean flag=false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,5 +72,263 @@ public class Choose_Place_Outside_City extends AppCompatActivity {
         startActivity(new Intent(this, Choose_Element.class));
 
 
+    }
+
+    private void initView() {
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        imgBackRecent = (ImageView) findViewById(R.id.imgBackRecent);
+        spinnerCountry = (Spinner) findViewById(R.id.sp_country);
+        spinnerRegion = (Spinner) findViewById(R.id.sp_region);
+        spinnerCity = (Spinner) findViewById(R.id.sp_city);
+        choose_City = (Spinner) findViewById(R.id.choose_City);
+    }
+
+
+    private void action(){
+
+        imgBackRecent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                startActivity(new Intent(Choose_Element.this,InsideOrOutsideTown.class));
+                finish();
+            }
+        });
+
+        adapterCountry = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, countryList) {
+
+            @NonNull
+            @Override
+            public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+                TextView tv = view.findViewById(android.R.id.text1);
+                tv.setTextColor(Color.parseColor("#037D8D"));
+
+                return view;
+            }
+            @Override
+            public View getDropDownView(int position, View convertView, ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+
+                TextView text = (TextView) view.findViewById(android.R.id.text1);
+                text.setTextColor(Color.parseColor("#037D8D"));
+
+                return view;
+
+            }
+        };
+        spinnerCountry.setAdapter(adapterCountry);
+
+        spinnerCountry.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                if (i==0){
+                    spinnerRegion.setVisibility(View.GONE);
+                    spinnerCity.setVisibility(View.GONE);
+                    choose_City.setVisibility(View.GONE);
+                    flag=false;
+
+//                }else if(i==carlist.size()-1){
+//                    showAlertDialog();
+                } else {
+                    editor.putString("thing_type_elment"," سيارات "+spinnerCountry.getSelectedItem().toString());
+                    editor.commit();
+                    spinnerRegion.setVisibility(View.VISIBLE);
+
+                    flag=true;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+        adapterRegion = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, regionList) {
+
+            @NonNull
+            @Override
+            public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+                TextView tv = view.findViewById(android.R.id.text1);
+                tv.setTextColor(Color.parseColor("#037D8D"));
+                return view;
+            }
+            @Override
+            public View getDropDownView(int position, View convertView, ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+
+                TextView text = (TextView) view.findViewById(android.R.id.text1);
+                text.setTextColor(Color.parseColor("#037D8D"));
+
+                return view;
+
+            }
+        };
+        spinnerRegion.setAdapter(adapterRegion);
+
+        spinnerRegion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                if (i==0){
+                    spinnerCity.setVisibility(View.GONE);
+                    choose_City.setVisibility(View.GONE);
+                    flag=false;
+
+//                }else if(i==asaslist.size()-1){
+//                    showAlertDialog();
+                }else {
+                    editor.putString("thing_type_elment"," أثاث "+spinnerRegion.getSelectedItem().toString());
+                    spinnerCity.setVisibility(View.VISIBLE);
+                    flag=true;
+                    editor.commit();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+
+        adapterCity = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, citylist) {
+
+            @NonNull
+            @Override
+            public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+                TextView tv = view.findViewById(android.R.id.text1);
+                tv.setTextColor(Color.parseColor("#037D8D"));
+                return view;
+            }
+            @Override
+            public View getDropDownView(int position, View convertView, ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+
+                TextView text = (TextView) view.findViewById(android.R.id.text1);
+                text.setTextColor(Color.parseColor("#037D8D"));
+
+                return view;
+
+            }
+        };
+        spinnerCity.setAdapter(adapterCity);
+
+        spinnerCity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                if (i==0){
+
+                    choose_City.setVisibility(View.GONE);
+                    flag=false;
+
+//                }else if(i==citylist.size()-1){
+//                    showAlertDialog();
+                }else {
+                    editor.putString("thing_type_elment"," مواد بناء "+spinnerCity.getSelectedItem().toString());
+                    choose_City.setVisibility(View.VISIBLE);
+
+                    flag=true;
+                    editor.commit();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+        adapterChooseCity = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, chooseCitylist) {
+
+            @NonNull
+            @Override
+            public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+                TextView tv = view.findViewById(android.R.id.text1);
+                tv.setTextColor(Color.parseColor("#037D8D"));
+                return view;
+            }
+            @Override
+            public View getDropDownView(int position, View convertView, ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+
+                TextView text = (TextView) view.findViewById(android.R.id.text1);
+                text.setTextColor(Color.parseColor("#037D8D"));
+
+                return view;
+
+            }
+        };
+        choose_City.setAdapter(adapterChooseCity);
+
+
+        choose_City.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                if (i == 1) {
+
+//                    showAlertDialog();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+    }
+
+
+//    private void showAlertDialog(){
+//
+//        AlertDialog.Builder builder = new AlertDialog.Builder(Choose_Element.this);
+//        final EditText editText = new EditText(Choose_Element.this);
+//        builder.setView(editText);
+////        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+////            @Override
+////            public void onClick(DialogInterface dialogInterface, int i) {
+////
+////                editor.putString("thing_type_elment", editText.getText().toString());
+////                editor.commit();
+////                flag = true;
+////                dialogInterface.dismiss();
+////            }
+////        });
+////
+////        builder.setNegativeButton(R.string.cancle, new DialogInterface.OnClickListener() {
+////            @Override
+////            public void onClick(DialogInterface dialogInterface, int i) {
+////                flag = false;
+////                dialogInterface.dismiss();
+////            }
+////        });
+//
+//        builder.show();
+//        if (editText.getText().toString().isEmpty()){
+//            flag=false;
+//        }
+//
+//    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+//        startActivity(new Intent(Choose_Element.this,InsideOrOutsideTown.class));
+        finish();
     }
 }
