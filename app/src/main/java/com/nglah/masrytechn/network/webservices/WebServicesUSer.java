@@ -7,6 +7,7 @@ import com.nglah.masrytechn.network.networkModel.request.User.ForgetPasswordRequ
 import com.nglah.masrytechn.network.networkModel.request.User.LoginRequest;
 import com.nglah.masrytechn.network.networkModel.request.User.RegisterCarOwnerRequest;
 import com.nglah.masrytechn.network.networkModel.request.User.RegisterRequest;
+import com.nglah.masrytechn.network.networkModel.request.User.UpdateDriverDataRequest;
 import com.nglah.masrytechn.network.networkModel.request.User.UpdateUserDataRequest;
 import com.nglah.masrytechn.network.networkModel.request.User.UpdateUserImageRequest;
 import com.nglah.masrytechn.network.networkModel.request.User.VerifyEmailRequest;
@@ -16,6 +17,7 @@ import com.nglah.masrytechn.network.networkModel.response.User.GetUserInfoRespon
 import com.nglah.masrytechn.network.networkModel.response.User.LoginResponse;
 import com.nglah.masrytechn.network.networkModel.response.User.RegisterCarOwnerResponse;
 import com.nglah.masrytechn.network.networkModel.response.User.RegisterResponse;
+import com.nglah.masrytechn.network.networkModel.response.User.UpdateDriverDataResponse;
 import com.nglah.masrytechn.network.networkModel.response.User.UpdateUserDataResponse;
 import com.nglah.masrytechn.network.networkModel.response.User.UpdateUserImageResponse;
 import com.nglah.masrytechn.network.networkModel.response.User.VerifyEmailResponse;
@@ -50,21 +52,15 @@ public interface WebServicesUSer {
     @Headers({"Content-Type: application/json"})
     Observable<RegisterCarOwnerResponse> carOwnerLogin(@Body LoginRequest request);
 
-    @PUT("persons/user/{userId}")
-    @Headers({"Content-Type: application/json"})
-    Observable<UpdateUserDataResponse> EditUserProfile(@Header("Authorization") String token, @Path("userId") int userId, @Body UpdateUserDataRequest request);
 
-    @PUT("persons/user/{userId}")
+    @POST("CarOwnerLogin.php")
     @Headers({"Content-Type: application/json"})
-    Observable<UpdateUserImageResponse> EditUserProfileImage(@Header("Authorization") String token, @Path("userId") int userId, @Body UpdateUserImageRequest request);
+    Observable<UpdateUserDataResponse> updateUserData(@Body UpdateUserDataRequest request);
 
-    @GET("persons/user/{userId}")
+    @POST("CarOwnerLogin.php")
     @Headers({"Content-Type: application/json"})
-    Observable<GetUserInfoResponse> getUserData(@Header("Authorization") String token, @Path("userId") int userId);
+    Observable<UpdateDriverDataResponse> updateDriverData(@Body UpdateDriverDataRequest request);
 
-    @POST("person/password/change/{userId}")
-    @Headers({"Content-Type: application/json"})
-    Observable<ChangePasswordResponse> changePassword(@Header("Authorization") String token, @Path("userId") int userId, @Body ChangePasswordRequest request);
 
     @POST("person/password/email")
     @Headers({"Content-Type: application/json"})

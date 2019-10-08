@@ -4,11 +4,15 @@ import com.nglah.masrytechn.network.networkModel.request.User.ForgetPasswordRequ
 import com.nglah.masrytechn.network.networkModel.request.User.LoginRequest;
 import com.nglah.masrytechn.network.networkModel.request.User.RegisterCarOwnerRequest;
 import com.nglah.masrytechn.network.networkModel.request.User.RegisterRequest;
+import com.nglah.masrytechn.network.networkModel.request.User.UpdateDriverDataRequest;
+import com.nglah.masrytechn.network.networkModel.request.User.UpdateUserDataRequest;
 import com.nglah.masrytechn.network.networkModel.request.User.VerifyEmailRequest;
 import com.nglah.masrytechn.network.networkModel.response.User.ForgetPasswordResponse;
 import com.nglah.masrytechn.network.networkModel.response.User.LoginResponse;
 import com.nglah.masrytechn.network.networkModel.response.User.RegisterCarOwnerResponse;
 import com.nglah.masrytechn.network.networkModel.response.User.RegisterResponse;
+import com.nglah.masrytechn.network.networkModel.response.User.UpdateDriverDataResponse;
+import com.nglah.masrytechn.network.networkModel.response.User.UpdateUserDataResponse;
 import com.nglah.masrytechn.network.networkModel.response.User.VerifyEmailResponse;
 import com.nglah.masrytechn.network.webservices.WebServicesUSer;
 
@@ -183,6 +187,7 @@ public class UserRepository {
             }
         });
     }
+
     public Observable<RegisterCarOwnerResponse> loginCarOWnerRepository(final LoginRequest request) {
         return Observable.create(new ObservableOnSubscribe<RegisterCarOwnerResponse>() {
             @Override
@@ -205,6 +210,74 @@ public class UserRepository {
                         RegisterCarOwnerResponse response = new RegisterCarOwnerResponse();
                         response.setStatus(false);
                         response.setMessage(e.toString());
+                        emitter.onNext(response);
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+            }
+        });
+    }
+
+    public Observable<UpdateUserDataResponse> updateUserDataRepository(final UpdateUserDataRequest request) {
+        return Observable.create(new ObservableOnSubscribe<UpdateUserDataResponse>() {
+            @Override
+            public void subscribe(final ObservableEmitter<UpdateUserDataResponse> emitter) {
+
+
+                webServicesUSer.updateUserData(request).subscribeOn(Schedulers.io()).
+                        observeOn(Schedulers.io()).subscribe(new Observer<UpdateUserDataResponse>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                    }
+
+                    @Override
+                    public void onNext(UpdateUserDataResponse response) {
+                        emitter.onNext(response);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        UpdateUserDataResponse response = new UpdateUserDataResponse();
+                        response.setStatus(false);
+                        response.setMsg(e.toString());
+                        emitter.onNext(response);
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+            }
+        });
+    }
+
+    public Observable<UpdateDriverDataResponse> updateDriverDataRepository(final UpdateDriverDataRequest request) {
+        return Observable.create(new ObservableOnSubscribe<UpdateDriverDataResponse>() {
+            @Override
+            public void subscribe(final ObservableEmitter<UpdateDriverDataResponse> emitter) {
+
+
+                webServicesUSer.updateDriverData(request).subscribeOn(Schedulers.io()).
+                        observeOn(Schedulers.io()).subscribe(new Observer<UpdateDriverDataResponse>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                    }
+
+                    @Override
+                    public void onNext(UpdateDriverDataResponse response) {
+                        emitter.onNext(response);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        UpdateDriverDataResponse response = new UpdateDriverDataResponse();
+//                        response.setStatus(false);
+//                        response.setMsg(e.toString());
                         emitter.onNext(response);
                     }
 

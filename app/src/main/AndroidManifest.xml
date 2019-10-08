@@ -25,7 +25,6 @@
         <activity android:name=".view.choose_place.Nagla_Location" />
         <activity android:name=".view.drive_Profile.drive_profile" />
         <activity android:name=".view.drive_Profile.DriverDataModel" />
-        <activity android:name=".view.drive_Profile.driver_data_edit" />
         <activity android:name=".view.AllDeriver.AllDriver" />
         <activity android:name=".view.payment.Payment" />
         <activity android:name=".view.userProfile.EditUserProfile" />

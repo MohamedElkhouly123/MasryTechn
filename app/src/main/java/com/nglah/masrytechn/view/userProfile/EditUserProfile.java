@@ -3,7 +3,9 @@ package com.nglah.masrytechn.view.userProfile;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +25,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import static com.nglah.masrytechn.model.UserModel.loggedInUser;
+
 public class EditUserProfile extends AppCompatActivity {
 
     @BindView(R.id.edit_first_name)
@@ -37,6 +41,8 @@ public class EditUserProfile extends AppCompatActivity {
     EditText et_useName;
     @BindView(R.id.edit_password)
     EditText et_password;
+    @BindView(R.id.tv_pass)
+    TextView tv_password;
     @BindString(R.string.completeData)
     String completeData;
     @BindString(R.string.shortPassword)
@@ -55,7 +61,21 @@ public class EditUserProfile extends AppCompatActivity {
         initListener();
 
         type = getIntent().getStringExtra("type");
+        if (type.equals("edit")) {
+            updateUi();
+            et_password.setVisibility(View.GONE);
+            tv_password.setVisibility(View.GONE);
+        }
 
+
+    }
+
+    void updateUi() {
+        et_email.setText(loggedInUser.getEmail());
+        et_firstName.setText(loggedInUser.getFirstName());
+        et_familyName.setText(loggedInUser.getLastName());
+        et_phone.setText(loggedInUser.getPhone());
+        et_useName.setText(loggedInUser.getUserName());
 
     }
 
@@ -106,8 +126,24 @@ public class EditUserProfile extends AppCompatActivity {
                 } else {
                     showToast(completeData);
                 }
-            }else {
+            } else {
                 showToast(poorConection);
+            }
+        } else if (type.equals("edit")) {
+            if (validate()) {
+
+                RegisterRequest request = new RegisterRequest();
+                request.setFname(et_firstName.getText().toString());
+                request.setLname(et_familyName.getText().toString());
+                request.setEmail(et_email.getText().toString());
+                request.setMobileNumber(et_phone.getText().toString());
+                request.setUserName(et_useName.getText().toString());
+                request.setToken(new FireBaseToken().getToken());
+//                viewModel.registerToServer(this, request);
+
+
+            } else {
+                showToast(completeData);
             }
         }
 

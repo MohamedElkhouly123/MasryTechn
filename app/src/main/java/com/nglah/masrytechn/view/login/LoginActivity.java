@@ -19,6 +19,7 @@ import com.nglah.masrytechn.network.networkModel.response.User.RegisterCarOwnerR
 import com.nglah.masrytechn.view.Utils.CheckNetwork;
 import com.nglah.masrytechn.view.Utils.Dialog.Views;
 import com.nglah.masrytechn.view.forgetPassword.ForgetActivity;
+import com.nglah.masrytechn.view.main.Main2Activity_Driver;
 import com.nglah.masrytechn.view.main.MainActivity_User;
 import com.nglah.masrytechn.view.register.RegisterActivity;
 import com.nglah.masrytechn.viewModel.ViewModelUser;
@@ -98,7 +99,7 @@ public class LoginActivity extends AppCompatActivity {
                 loadingView.dismiss();
                 if (response != null) {
                     if (response.getStatus()) {
-                        goToMain();
+                        goToMainDriver();
                     }else if (!response.getStatus()&&
                             response.getMessage().equals("Wrong User Name Or Password !!")){
                         showToast(userNameError);
@@ -167,6 +168,10 @@ public class LoginActivity extends AppCompatActivity {
 
     private void goToMain() {
         startActivity(new Intent(this, MainActivity_User.class));
+        finish();
+    }
+    private void goToMainDriver() {
+        startActivity(new Intent(this, Main2Activity_Driver.class));
         finish();
     }
 }
