@@ -224,6 +224,7 @@ tools:context=".view.userProfile.EditUserProfile">
             android:textColor="@color/black"
             />
         <TextView
+            android:id="@+id/tv_pass"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"

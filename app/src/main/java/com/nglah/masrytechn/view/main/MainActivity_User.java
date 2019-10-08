@@ -77,17 +77,16 @@ public class MainActivity_User extends AppCompatActivity {
         startActivity(new Intent(this, LoginActivity.class));
     }
 
-    private void goToUserProfile() {
+    @OnClick(R.id.my_info)
+     void goToUserProfile() {
         startActivity(new Intent(this, UserProfile.class));
-
     }
 
     @OnClick(R.id.askNagla)
     void askNaglah(){
         startActivity(new Intent(this, UserProfile.class));
-
-
     }
+
 
     @OnClick(R.id.mybag)
      void goToPayment(){

@@ -5,7 +5,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -16,12 +18,11 @@ import androidx.lifecycle.ViewModelProviders;
 import com.nglah.masrytechn.Firebase.FireBaseToken;
 import com.nglah.masrytechn.R;
 import com.nglah.masrytechn.network.networkModel.request.User.RegisterCarOwnerRequest;
-import com.nglah.masrytechn.network.networkModel.request.User.RegisterRequest;
 import com.nglah.masrytechn.network.networkModel.response.User.RegisterCarOwnerResponse;
+import com.nglah.masrytechn.network.networkModel.response.User.UpdateDriverDataResponse;
 import com.nglah.masrytechn.view.Utils.ConvertImageToBase64;
 import com.nglah.masrytechn.view.Utils.Dialog.Views;
 import com.nglah.masrytechn.view.main.Main2Activity_Driver;
-import com.nglah.masrytechn.view.main.MainActivity_User;
 import com.nglah.masrytechn.viewModel.ViewModelUser;
 
 import net.alhazmy13.mediapicker.Image.ImagePicker;
@@ -34,6 +35,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import static com.nglah.masrytechn.model.UserModel.loggedInUser;
+
 public class DriverDataModel extends AppCompatActivity {
 
     @BindView(R.id.et_nationality)
@@ -44,8 +47,7 @@ public class DriverDataModel extends AppCompatActivity {
     EditText et_firstName;
     @BindView(R.id.et_driverLastName)
     EditText et_lastName;
-    @BindView(R.id.et_driverFamilyName)
-    EditText et_familyName;
+
     @BindView(R.id.et_driverIdNumber)
     EditText et_idNumber;
     @BindView(R.id.et_driverPhone)
@@ -58,6 +60,8 @@ public class DriverDataModel extends AppCompatActivity {
     EditText et_password;
     @BindView(R.id.driver_image)
     CircleImageView civ_driverImage;
+    @BindView(R.id.textView10)
+    TextView tv_password;
     @BindString(R.string.completeData)
     String completeData;
     @BindString(R.string.shortPassword)
@@ -83,12 +87,25 @@ public class DriverDataModel extends AppCompatActivity {
         ButterKnife.bind(this);
 
         type = getIntent().getStringExtra("type");
-        request= (RegisterCarOwnerRequest) getIntent().getSerializableExtra("request");
+        request = (RegisterCarOwnerRequest) getIntent().getSerializableExtra("request");
 
         dialog = new Views.LoadingView(this);
         initListener();
+        if (type.equals("edit")) {
+            updateUi();
+        }
 
+    }
 
+    void updateUi() {
+        et_nationality.setText("------------");
+        et_firstName.setText(loggedInUser.getFirstName());
+        et_lastName.setText(loggedInUser.getLastName());
+        et_email.setText(loggedInUser.getEmail());
+        et_userName.setText(loggedInUser.getUserName());
+        et_phone.setText(loggedInUser.getPhone());
+        et_password.setVisibility(View.GONE);
+        tv_password.setVisibility(View.GONE);
     }
 
     private boolean validate() {
@@ -109,9 +126,7 @@ public class DriverDataModel extends AppCompatActivity {
 
             return false;
         }
-        if (TextUtils.isEmpty(et_familyName.getText().toString())) {
-            return false;
-        }
+
         if (TextUtils.isEmpty(et_phone.getText().toString())) {
             return false;
         }
@@ -135,18 +150,27 @@ public class DriverDataModel extends AppCompatActivity {
     void registerDriver() {
         if (type.equals("register")) {
             if (validate()) {
-
                 dialog.show();
-
                 request.setNationality(et_nationality.getText().toString());
                 request.setFname(et_firstName.getText().toString());
-                request.setLname(et_familyName.getText().toString());
+                request.setLname(et_lastName.getText().toString());
                 request.setEmail(et_email.getText().toString());
                 request.setMobileNumber(et_phone.getText().toString());
                 request.setUserName(et_userName.getText().toString());
                 request.setToken(new FireBaseToken().getToken());
                 request.setPassword(et_password.getText().toString());
                 viewModel.registerCarOwnerToServer(this, request);
+            }
+        }else if (type.equals("edit")){
+            if (validate()) {
+                dialog.show();
+                request.setNationality(et_nationality.getText().toString());
+                request.setFname(et_firstName.getText().toString());
+                request.setLname(et_lastName.getText().toString());
+                request.setEmail(et_email.getText().toString());
+                request.setMobileNumber(et_phone.getText().toString());
+                request.setUserName(et_userName.getText().toString());
+//                viewModel.registerCarOwnerToServer(this, request);
             }
         }
 
@@ -199,6 +223,13 @@ public class DriverDataModel extends AppCompatActivity {
             }
         });
 
+        viewModel.makeEditDriverProfile().observe(this, new Observer<UpdateDriverDataResponse>() {
+            @Override
+            public void onChanged(UpdateDriverDataResponse updateDriverDataResponse) {
+                dialog.dismiss();
+
+            }
+        });
     }
 
     void goToMain() {

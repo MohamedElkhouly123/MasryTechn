@@ -6,14 +6,6 @@
         android:id="@+id/Setting"
         android:title="Edit"
         app:showAsAction="never"
-
         />
-
-    <item
-        android:id="@+id/Logout"
-        android:title="Sin Out"
-        app:showAsAction="never"
-        />
-
 
 </menu>

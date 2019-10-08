@@ -12,15 +12,15 @@ import com.nglah.masrytechn.network.networkModel.request.User.ForgetPasswordRequ
 import com.nglah.masrytechn.network.networkModel.request.User.LoginRequest;
 import com.nglah.masrytechn.network.networkModel.request.User.RegisterCarOwnerRequest;
 import com.nglah.masrytechn.network.networkModel.request.User.RegisterRequest;
+import com.nglah.masrytechn.network.networkModel.request.User.UpdateDriverDataRequest;
+import com.nglah.masrytechn.network.networkModel.request.User.UpdateUserDataRequest;
 import com.nglah.masrytechn.network.networkModel.request.User.VerifyEmailRequest;
-import com.nglah.masrytechn.network.networkModel.response.User.ChangePasswordResponse;
 import com.nglah.masrytechn.network.networkModel.response.User.ForgetPasswordResponse;
-import com.nglah.masrytechn.network.networkModel.response.User.GetUserInfoResponse;
 import com.nglah.masrytechn.network.networkModel.response.User.LoginResponse;
 import com.nglah.masrytechn.network.networkModel.response.User.RegisterCarOwnerResponse;
 import com.nglah.masrytechn.network.networkModel.response.User.RegisterResponse;
+import com.nglah.masrytechn.network.networkModel.response.User.UpdateDriverDataResponse;
 import com.nglah.masrytechn.network.networkModel.response.User.UpdateUserDataResponse;
-import com.nglah.masrytechn.network.networkModel.response.User.UpdateUserImageResponse;
 import com.nglah.masrytechn.network.networkModel.response.User.VerifyEmailResponse;
 import com.nglah.masrytechn.repository.UserRepository;
 
@@ -38,9 +38,7 @@ public class ViewModelUser extends ViewModel {
     private MutableLiveData<RegisterResponse> registerResponse = new MutableLiveData<>();
     private MutableLiveData<RegisterCarOwnerResponse> registerCarOwnerResponse = new MutableLiveData<>();
     private MutableLiveData<UpdateUserDataResponse> editUserProfile = new MutableLiveData<>();
-    private MutableLiveData<UpdateUserImageResponse> updateProfileImage = new MutableLiveData<>();
-    private MutableLiveData<GetUserInfoResponse> getUserInfo = new MutableLiveData<>();
-    private MutableLiveData<ChangePasswordResponse> changePassword = new MutableLiveData<>();
+    private MutableLiveData<UpdateDriverDataResponse> editDriverProfile = new MutableLiveData<>();
     private MutableLiveData<ForgetPasswordResponse> forgetPassword = new MutableLiveData<>();
     private MutableLiveData<Boolean> logout = new MutableLiveData<>();
     private MutableLiveData<Boolean> userLogin = new MutableLiveData<>();
@@ -281,19 +279,65 @@ public class ViewModelUser extends ViewModel {
         return editUserProfile;
     }
 
+    public void updateUserDataToServer(Context context, UpdateUserDataRequest request) {
 
-    public MutableLiveData<UpdateUserImageResponse> makeUpdateImageProfile() {
-        return updateProfileImage;
+
+        UserRepository.getInstance().updateUserDataRepository(request)
+                .subscribe(new Observer<UpdateUserDataResponse>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                    }
+
+                    @Override
+                    public void onNext(UpdateUserDataResponse response) {
+                        editUserProfile.postValue(response);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                        editDriverProfile.postValue(null);
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 
 
-    public MutableLiveData<GetUserInfoResponse> makeGetUserInfo() {
-        return getUserInfo;
+    public MutableLiveData<UpdateDriverDataResponse> makeEditDriverProfile() {
+        return editDriverProfile;
     }
 
+    public void updateDriverDataToServer(Context context, UpdateDriverDataRequest request) {
 
-    public MutableLiveData<ChangePasswordResponse> makeChangePassword() {
-        return changePassword;
+
+        UserRepository.getInstance().updateDriverDataRepository(request)
+                .subscribe(new Observer<UpdateDriverDataResponse>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                    }
+
+                    @Override
+                    public void onNext(UpdateDriverDataResponse response) {
+                        editDriverProfile.postValue(response);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                        editDriverProfile.postValue(null);
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 
 
@@ -383,14 +427,30 @@ public class ViewModelUser extends ViewModel {
     }
 
 
-    private void updateDataInDataBase(final Context context, String email, String name,
-                                      String location, String phone) {
-        loggedInUser.setLocation(location);
-        loggedInUser.setUserName(name);
+    private void update(Context context, String email, String firstName, String phone,
+                        String userName, String lastName, String accessToken, int type,
+                        String id, String carType, String paletNumber, String maxWeight,
+                        String currentCity, String city, String carIcon) {
+
+
         loggedInUser.setEmail(email);
+        loggedInUser.setUserName(userName);
+        loggedInUser.setFirstName(firstName);
+        loggedInUser.setLastName(lastName);
         loggedInUser.setPhone(phone);
-        DataBase.getInstance(context).userProfileDao().updateUserDate(loggedInUser);
+        loggedInUser.setActive(1);
+        loggedInUser.setUserType(type);
+        loggedInUser.setId(id);
+        loggedInUser.setCurrentCity(currentCity);
+        loggedInUser.setCity(city);
+        loggedInUser.setCarType(carType);
+        loggedInUser.setPlateNumber(paletNumber);
+        loggedInUser.setMaxWeight(maxWeight);
+        loggedInUser.setCarIcon(carIcon);
+        loggedInUser.setAccessToken(accessToken);
+
+        DataBase.getInstance(context).userProfileDao().update(loggedInUser);
+
+
     }
-
-
 }

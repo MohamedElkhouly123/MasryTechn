@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.nglah.masrytechn.R;
+import com.nglah.masrytechn.view.drive_Profile.drive_profile;
 import com.nglah.masrytechn.view.login.LoginActivity;
 import com.nglah.masrytechn.viewModel.ViewModelUser;
 
@@ -41,6 +42,11 @@ public class Main2Activity_Driver extends AppCompatActivity {
 
     private void goToLogin() {
         startActivity(new Intent(this, LoginActivity.class));
+    }
+
+    @OnClick(R.id.my_info)
+    void goToUserProfile() {
+        startActivity(new Intent(this, drive_profile.class));
     }
 
     @OnClick(R.id.logout)
