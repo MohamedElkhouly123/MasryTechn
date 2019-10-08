@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#CC535252"
-    tools:context=".Nagla_Location">
+    tools:context=".view.choose_place.Nagla_Location">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -79,7 +79,8 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="@dimen/_50sdp">
         <Button
-            android:layout_marginTop="@dimen/_40sdp"
+            android:id="@+id/insideCity"
+            android:layout_marginTop="@dimen/_30sdp"
             android:layout_width="@dimen/_165sdp"
             android:layout_height="@dimen/_50sdp"
             android:background="@drawable/bottonshape"
@@ -89,7 +90,8 @@
             android:text="بين المدن"
             android:fontFamily="@font/lemon"/>
         <Button
-            android:layout_marginTop="@dimen/_30sdp"
+            android:id="@+id/outsideCity"
+            android:layout_marginTop="@dimen/_25sdp"
             android:layout_width="@dimen/_165sdp"
             android:layout_height="@dimen/_50sdp"
             android:background="@drawable/bottonshape"

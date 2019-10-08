@@ -12,23 +12,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.NoActionBar">
-        <activity android:name=".view.Accepted_Info.Accepted_User_Info"></activity>
-        <activity android:name=".view.main.Main2Activity_Driver" />
+        <activity android:name=".view.main.Main2Activity_Driver"></activity>
         <activity android:name=".view.Accepted_Info.Accepted_Info" />
         <activity android:name=".view.drive_Profile.CarInformation" />
         <activity android:name=".view.Choose_Nagla_Dat.Choose_Nagla_Date" />
         <activity android:name=".view.choose_place.Choose_Element">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".view.choose_place.Choose_Place_Outside_City" />
-        <activity android:name=".view.choose_place.Choose_Place_Inside_City" />
+        <activity android:name=".view.choose_place.Choose_Place_Inside_City"></activity>
         <activity android:name=".view.All_Naglas.All_Nagla" />
         <activity android:name=".Verify_Dialog" />
-        <activity android:name=".Nagla_Location" />
+        <activity android:name=".view.choose_place.Nagla_Location" />
         <activity android:name=".view.drive_Profile.drive_profile" />
         <activity android:name=".view.drive_Profile.DriverDataModel" />
         <activity android:name=".view.drive_Profile.driver_data_edit" />
@@ -42,11 +36,21 @@
             android:theme="@style/HiddenTitleTheme" />
         <activity
             android:name=".view.login.SplashActivity"
-            android:theme="@style/HiddenTitleTheme" />
+            android:theme="@style/HiddenTitleTheme">
+
+
+
+        </activity>
         <activity
             android:name=".view.login.LoginActivity"
             android:theme="@style/HiddenTitleTheme" />
-        <activity android:name=".view.main.MainActivity_User" />
+        <activity android:name=".view.main.MainActivity_User" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

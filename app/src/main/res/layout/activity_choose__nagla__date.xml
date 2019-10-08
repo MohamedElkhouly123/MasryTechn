@@ -10,13 +10,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/mdtp_white">
+        android:background="#535252"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="#535252">
+            android:background="#535252"
+            >
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"

@@ -168,7 +168,6 @@
                         android:id="@+id/logout"
                         android:layout_width="@dimen/_83sdp"
                         android:layout_height="@dimen/_83sdp"
-
                         android:layout_marginStart="@dimen/_30sdp"
                         android:layout_marginLeft="6dp"
                         android:layout_marginEnd="@dimen/_8sdp"

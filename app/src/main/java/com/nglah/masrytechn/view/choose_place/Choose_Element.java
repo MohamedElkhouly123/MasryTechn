@@ -20,8 +20,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.nglah.masrytechn.R;
+import com.nglah.masrytechn.view.Choose_Nagla_Dat.Choose_Nagla_Date;
 
 import java.util.ArrayList;
+
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class Choose_Element extends AppCompatActivity {
     private Toolbar toolbar;
@@ -71,20 +75,36 @@ public class Choose_Element extends AppCompatActivity {
         buldinglist.add("المزيد");
         otherlist.add("- شئ اخر -");
         otherlist.add("ادخال الشئ");
+        ButterKnife.bind(this);
+
         initView();
         action();
     }
 
-    public void Submit(View view) {
-
+    @OnClick(R.id.btn_next)
+    void next(){
         if (flag==false){
 
 //            Toast.makeText(this, getString(R.string.enter_item), Toast.LENGTH_SHORT).show();
         }else {
-            startActivity(new Intent(this,Choose_Element.class));
+            startActivity(new Intent(this,Choose_Nagla_Date.class));
         }
 
+       // startActivity(new Intent(this, Choose_Nagla_Date.class));
+
+
     }
+
+//    public void Submit(View view) {
+//
+//        if (flag==false){
+//
+////            Toast.makeText(this, getString(R.string.enter_item), Toast.LENGTH_SHORT).show();
+//        }else {
+//            startActivity(new Intent(this,Choose_Element.class));
+//        }
+//
+//    }
 
     private void initView() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
