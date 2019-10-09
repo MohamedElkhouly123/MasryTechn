@@ -139,8 +139,8 @@ public class UserRepository {
                     @Override
                     public void onError(Throwable e) {
                         VerifyEmailResponse response = new VerifyEmailResponse();
-//                        response.setStatus(false);
-//                        response.setMsg(e.toString());
+                        response.setStatus(false);
+                        response.setMessage(e.toString());
                         emitter.onNext(response);
 
                     }

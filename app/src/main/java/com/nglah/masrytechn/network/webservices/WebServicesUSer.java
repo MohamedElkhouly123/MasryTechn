@@ -41,7 +41,7 @@ public interface WebServicesUSer {
     @Headers({"Content-Type: application/json"})
     Observable<RegisterCarOwnerResponse> RegistrationCarOwner(@Body RegisterCarOwnerRequest request);
 
-    @POST("person/register")
+    @POST("SendCode.php")
     @Headers({"Content-Type: application/json"})
     Observable<VerifyEmailResponse> verifyEmail(@Body VerifyEmailRequest request);
     @POST("NaqlaOwnerLogin.php")

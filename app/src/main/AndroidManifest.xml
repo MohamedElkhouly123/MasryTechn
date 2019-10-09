@@ -57,9 +57,7 @@
         <activity
             android:name=".view.login.LoginActivity"
             android:theme="@style/HiddenTitleTheme" />
-        <activity android:name=".view.main.MainActivity_User" >
-
-        </activity>
+        <activity android:name=".view.main.MainActivity_User" />
     </application>
 
 </manifest>

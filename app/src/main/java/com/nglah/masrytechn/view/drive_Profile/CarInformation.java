@@ -57,7 +57,7 @@ public class CarInformation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car_information);
         ButterKnife.bind(this);
-        convertImageToBase64=new ConvertImageToBase64();
+        convertImageToBase64 = new ConvertImageToBase64();
 
         sp_carType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -84,9 +84,7 @@ public class CarInformation extends AppCompatActivity {
             request.setCurrentCity(et_city.getText().toString());
             request.setCity(et_city.getText().toString());
             goToCompleteRegister();
-
         }
-
     }
 
     @OnClick(R.id.tv_selectImage)

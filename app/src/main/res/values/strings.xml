@@ -60,4 +60,6 @@
     <string name="details">Nglah Details</string>
     <string name="price">Price</string>
     <string name="order_page">Order Page</string>
+    <string name="errorCode">Code is error</string>
+    <string name="complteData">Complete Data</string>
 </resources>

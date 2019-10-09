@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -19,10 +20,8 @@ import androidx.lifecycle.ViewModelProviders;
 import com.nglah.masrytechn.R;
 import com.nglah.masrytechn.model.UserModel;
 import com.nglah.masrytechn.network.networkModel.response.User.VerifyEmailResponse;
-
 import com.nglah.masrytechn.view.Utils.Dialog.Views;
 import com.nglah.masrytechn.view.drive_Profile.CarInformation;
-import com.nglah.masrytechn.view.drive_Profile.DriverDataModel;
 import com.nglah.masrytechn.view.userProfile.EditUserProfile;
 import com.nglah.masrytechn.viewModel.ViewModelUser;
 
@@ -53,19 +52,26 @@ public class RegisterActivity extends AppCompatActivity {
     String noPhone;
     @BindString(R.string.noEmail)
     String noEmail;
+    @BindString(R.string.networkException)
+    String newtworkException;
+    @BindString(R.string.poorConnection)
+    String poorConnection;
+    @BindString(R.string.serverError)
+    String serverError;
 
     int userType;
 
     ViewModelUser viewModel;
     UserModel model;
     Views.LoadingView dialog;
+    private String code;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
-        dialog=new Views.LoadingView(this);
+        dialog = new Views.LoadingView(this);
         initListener();
         initSpinner();
 
@@ -89,16 +95,16 @@ public class RegisterActivity extends AppCompatActivity {
 
     private Boolean checkData() {
         if (TextUtils.isEmpty(et_userName.getText().toString())) {
-            et_userName.setHint(noUserName);
+            et_userName.setError(noUserName);
             return false;
         } else if (TextUtils.isEmpty(et_password.getText().toString())) {
-            et_password.setHint(noPassword);
+            et_password.setError(noPassword);
             return false;
         } else if (TextUtils.isEmpty(et_userName.getText().toString())) {
-            et_userName.setHint(noUserName);
+            et_userName.setError(noUserName);
             return false;
         } else if (TextUtils.isEmpty(et_phone.getText().toString())) {
-            et_phone.setHint(noPhone);
+            et_phone.setError(noPhone);
             return false;
         } else {
             return true;
@@ -109,21 +115,42 @@ public class RegisterActivity extends AppCompatActivity {
     private void initListener() {
 
         viewModel = ViewModelProviders.of(this).get(ViewModelUser.class);
+
         viewModel.makeVerify().observe(this, new Observer<VerifyEmailResponse>() {
             @Override
             public void onChanged(VerifyEmailResponse response) {
                 dialog.dismiss();
-                if (userType == 0) {//normal user
-                    registerNormalUSer();
-                } else if (userType == 1) {//car owner
-                    registerCarOwner();
+
+                if (response != null) {
+                    if (response.getStatus()) {
+                        code = response.getCode();
+                        showDialog();
+
+
+                    } else {
+                        showToast(serverError);
+                    }
+
                 }
+
 
             }
         });
 
-
     }
+
+    void goToMain() {
+        if (userType == 0) {//normal user
+            registerNormalUSer();
+        } else if (userType == 1) {//car owner
+            registerCarOwner();
+        }
+    }
+
+    private void showToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
 
     private void registerNormalUSer() {
         Intent intent = new Intent(this, EditUserProfile.class);
@@ -140,7 +167,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setCancelable(false);
+        dialog.setCancelable(true);
         dialog.setContentView(R.layout.confirm_email_dialog);
 
         final EditText et_code = dialog.findViewById(R.id.et_confirmEmailDialog_code);
@@ -151,9 +178,15 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!TextUtils.isEmpty(et_code.getText().toString())) {
-                    viewModel.sendEmailToServer(et_email.getText().toString());
+                    if (code.equals(et_code.getText().toString())) {
+                        dialog.dismiss();
+                        goToMain();
+                    } else {
+                        showToast(getString(R.string.errorCode));
+                    }
+
                 }
-                dialog.dismiss();
+
             }
         });
 
@@ -164,13 +197,15 @@ public class RegisterActivity extends AppCompatActivity {
     @OnClick(R.id.btn_next_register)
     void register() {
         if (checkData()) {
+            dialog.show();
             model = new UserModel();
             model.setEmail(et_email.getText().toString());
             model.setPhone(et_phone.getText().toString());
             model.setUserName(et_userName.getText().toString());
-            showDialog();
+            viewModel.sendEmailToServer(et_email.getText().toString());
+        } else {
+            showToast(getString(R.string.complteData));
         }
-        showDialog();
     }
 
 }
