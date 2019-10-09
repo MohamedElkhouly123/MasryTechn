@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.nglah.masrytechn.R;
+import com.nglah.masrytechn.view.choose_place.Nagla_Location;
 import com.nglah.masrytechn.view.login.LoginActivity;
 import com.nglah.masrytechn.view.payment.Payment;
 import com.nglah.masrytechn.view.userProfile.UserProfile;
@@ -84,7 +85,7 @@ public class MainActivity_User extends AppCompatActivity {
 
     @OnClick(R.id.askNagla)
     void askNaglah(){
-        startActivity(new Intent(this, UserProfile.class));
+        startActivity(new Intent(this, Nagla_Location.class));
 
 
     }

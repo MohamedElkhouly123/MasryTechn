@@ -7,10 +7,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.nglah.masrytechn.R;
 import com.nglah.masrytechn.view.choose_place.Choose_Element;
+import com.nglah.masrytechn.view.main.MainActivity_User;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -21,11 +23,16 @@ import butterknife.OnClick;
 
 public class Choose_Nagla_Date extends AppCompatActivity {
 
+    TextView date ,time;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose__nagla__date);
         ButterKnife.bind(this);
+        date =(TextView)findViewById(R.id.dateTxt);
+        time =(TextView)findViewById(R.id.time_txt);
+
     }
 
     @OnClick(R.id.later)
@@ -50,8 +57,8 @@ public class Choose_Nagla_Date extends AppCompatActivity {
                 SimpleDateFormat tf = new SimpleDateFormat("HH:mm:ss");
                 String formattedDate = df.format(calendar.getTime());
                 String formattedTime = tf.format(calendar.getTime());
-//                time.setText(formattedTime);
-//                date.setText(formattedDate);
+                time.setText(formattedTime);
+                date.setText(formattedDate);
                 alertDialog.dismiss();
             }});
         alertDialog.setView(dialogView);
@@ -69,9 +76,20 @@ public class Choose_Nagla_Date extends AppCompatActivity {
         SimpleDateFormat tf = new SimpleDateFormat("HH:mm:ss");
         String formattedDate = df.format(c.getTime());
         String formattedTime = tf.format(c.getTime());
-//        time.setText(formattedTime);
-//        date.setText(formattedDate);
+        time.setText(formattedTime);
+        date.setText(formattedDate);
 //        Type=getString(R.string.now);
+
+    }
+    @OnClick(R.id.submit)
+    void submit(){
+
+    }
+    @OnClick(R.id.cancel)
+    void cancel(){
+        startActivity(new Intent(this, MainActivity_User.class));
+
+
 
     }
 }

@@ -170,7 +170,7 @@
             </LinearLayout>
 
             <Spinner
-                android:layout_width="match_parent"
+                android:layout_width="@dimen/_130sdp"
                 android:layout_height="@dimen/_35sdp"
                 android:id="@+id/choose_City"
                 android:background="@drawable/bottonshape"
@@ -180,7 +180,7 @@
                 android:layout_marginStart="@dimen/_50sdp"
                 android:textColorHint="#535252"
                 android:layout_marginEnd="@dimen/_50sdp"
-                android:gravity="center"
+                android:textAlignment="center"
                 />
             <Button
                 android:id="@+id/btn_next"
