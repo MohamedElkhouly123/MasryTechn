@@ -1,7 +1,5 @@
 package com.nglah.masrytechn.view.Choose_Nagla_Dat;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,9 +8,14 @@ import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+
 import com.nglah.masrytechn.R;
-import com.nglah.masrytechn.view.choose_place.Choose_Element;
+import com.nglah.masrytechn.network.networkModel.response.Naglaha.UserRequestNaqlahResponse;
 import com.nglah.masrytechn.view.main.MainActivity_User;
+import com.nglah.masrytechn.viewModel.ViewModelNaglaha;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -23,20 +26,25 @@ import butterknife.OnClick;
 
 public class Choose_Nagla_Date extends AppCompatActivity {
 
-    TextView date ,time;
+    TextView date, time;
+    ViewModelNaglaha viewModelNaglaha;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose__nagla__date);
         ButterKnife.bind(this);
-        date =(TextView)findViewById(R.id.dateTxt);
-        time =(TextView)findViewById(R.id.time_txt);
+        initListener();
+
+        date = (TextView) findViewById(R.id.dateTxt);
+        time = (TextView) findViewById(R.id.time_txt);
+
 
     }
 
     @OnClick(R.id.later)
-    void laterTime(){
+    void laterTime() {
         final View dialogView = View.inflate(Choose_Nagla_Date.this, R.layout.date_time_picker, null);
         final AlertDialog alertDialog = new AlertDialog.Builder(Choose_Nagla_Date.this).create();
 
@@ -60,15 +68,17 @@ public class Choose_Nagla_Date extends AppCompatActivity {
                 time.setText(formattedTime);
                 date.setText(formattedDate);
                 alertDialog.dismiss();
-            }});
+            }
+        });
         alertDialog.setView(dialogView);
         alertDialog.show();
 //        Type=getString(R.string.later);
 
 
     }
+
     @OnClick(R.id.now)
-    void now(){
+    void now() {
         Calendar c = Calendar.getInstance();
         System.out.println("Current time => " + c.getTime());
 
@@ -80,16 +90,35 @@ public class Choose_Nagla_Date extends AppCompatActivity {
         date.setText(formattedDate);
 //        Type=getString(R.string.now);
 
-    }
-    @OnClick(R.id.submit)
-    void submit(){
 
     }
+
+    @OnClick(R.id.submitNaglaha)
+    void submit() {
+
+
+    }
+
     @OnClick(R.id.cancel)
-    void cancel(){
+    void cancel() {
+        goToMain();
+    }
+
+
+    private void initListener() {
+        viewModelNaglaha = ViewModelProviders.of(this).get(ViewModelNaglaha.class);
+
+        viewModelNaglaha.makeNewNaglaha().
+                observe(this, new Observer<UserRequestNaqlahResponse>() {
+            @Override
+            public void onChanged(UserRequestNaqlahResponse response) {
+                goToMain();
+            }
+        });
+    }
+
+
+    void goToMain() {
         startActivity(new Intent(this, MainActivity_User.class));
-
-
-
     }
 }

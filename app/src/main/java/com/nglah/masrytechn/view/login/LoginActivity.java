@@ -115,11 +115,11 @@ public class LoginActivity extends AppCompatActivity {
 
     private Boolean checkData() {
         if (TextUtils.isEmpty(et_userName.getText().toString())) {
-            et_userName.setText(noUserName);
+            et_userName.setError(noUserName);
             return false;
 
         } else if (TextUtils.isEmpty(et_password.getText().toString())) {
-            et_password.setText(noPassword);
+            et_password.setError(noPassword);
             return false;
         } else {
             return true;

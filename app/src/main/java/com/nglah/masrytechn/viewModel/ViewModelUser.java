@@ -224,6 +224,7 @@ public class ViewModelUser extends ViewModel {
 
     public void sendEmailToServer(String email) {
         VerifyEmailRequest request = new VerifyEmailRequest();
+        request.setTO(email);
         UserRepository.getInstance().verifyEmailRepository(request).subscribe(new Observer<VerifyEmailResponse>() {
             @Override
             public void onSubscribe(Disposable d) {

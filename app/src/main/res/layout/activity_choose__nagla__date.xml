@@ -227,7 +227,7 @@
             android:weightSum="2">
 
             <Button
-                android:id="@+id/submit"
+                android:id="@+id/submitNaglaha"
                 android:layout_width="@dimen/_110sdp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top|center"
