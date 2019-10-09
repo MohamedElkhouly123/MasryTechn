@@ -25,13 +25,13 @@
         app:layout_constraintTop_toTopOf="parent" />
     <ProgressBar
         android:id="@+id/progressbar"
-        android:layout_width="@dimen/_40sdp"
-        android:layout_height="@dimen/_40sdp"
+        android:layout_width="@dimen/_35sdp"
+        android:layout_height="@dimen/_35sdp"
         app:layout_constraintTop_toBottomOf="@id/imageView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        android:layout_marginTop="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_60sdp"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
