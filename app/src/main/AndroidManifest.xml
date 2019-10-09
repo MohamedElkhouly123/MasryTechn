@@ -37,18 +37,18 @@
             android:name=".view.login.SplashActivity"
             android:theme="@style/HiddenTitleTheme">
 
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
         <activity
             android:name=".view.login.LoginActivity"
             android:theme="@style/HiddenTitleTheme" />
         <activity android:name=".view.main.MainActivity_User" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
