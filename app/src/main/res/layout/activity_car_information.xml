@@ -25,15 +25,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="@dimen/_20sdp"
                     android:src="@drawable/ic_arrow_w_black_24dp"
                     android:tint="#fff" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="@string/car_info"
-                    android:textSize="@dimen/_18ssp"
+                    android:text="معلومات السياره"
+                    android:textSize="@dimen/_14ssp"
                     android:textStyle="bold"
                     android:gravity="center"
                     android:textColor="@android:color/white"/>
@@ -54,24 +53,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="10dp"
-                android:layout_weight="1"
-                android:text="@string/car_type"
+                android:layout_marginLeft="@dimen/_30sdp"
+                android:layout_marginRight="@dimen/_30sdp"
+                android:text="نوع السياره"
+                android:padding="@dimen/_8sdp"
                 android:textColor="#fff"
-                android:textSize="@dimen/_20ssp"
+                android:textSize="@dimen/_14ssp"
                 android:textStyle="bold" />
 
             <Spinner
                 android:id="@+id/sp_carType"
                 style="@style/Widget.AppCompat.Spinner"
                 android:layout_width="150dp"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/_35sdp"
                 android:layout_gravity="center"
                 android:entries="@array/carsType"
 
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginRight="@dimen/_20sdp"
                 android:backgroundTint="@color/mdtp_white"
                 android:gravity="center" />
 
@@ -86,9 +85,9 @@
             android:layout_marginTop="@dimen/_10sdp"
             android:gravity="center"
             android:layout_marginRight="@dimen/_40sdp"
-            android:text="@string/choose_car_image"
+            android:text="اختار صوره السياره"
             android:textColor="#fff"
-            android:textSize="@dimen/_20sdp"
+            android:textSize="@dimen/_14sdp"
             android:textStyle="bold" />
 
 
@@ -109,9 +108,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:layout_marginRight="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_30sdp"
             android:orientation="horizontal"
-            android:layout_marginLeft="@dimen/_20ssp"
+            android:layout_marginLeft="@dimen/_30ssp"
             android:weightSum="2">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -120,9 +119,9 @@
                 android:layout_height="50dp"
                 android:gravity="center"
                 android:layout_weight="1"
-                android:hint="@string/panal_id"
+                android:hint="رقم البورده"
                 android:textColorHint="@color/mdtp_white"
-                android:textSize="@dimen/_18ssp"
+                android:textSize="@dimen/_14ssp"
                 android:textColor="#000"
                 android:textStyle="italic"/>
         </LinearLayout>
@@ -131,8 +130,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_20ssp"
             android:orientation="horizontal"
-            android:layout_marginLeft="@dimen/_20ssp"
-            android:layout_marginRight="@dimen/_20ssp"
+            android:layout_marginLeft="@dimen/_30ssp"
+            android:layout_marginRight="@dimen/_30ssp"
             android:weightSum="2">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -141,9 +140,9 @@
                 android:gravity="center"
                 android:id="@+id/et_maxWeight"
                 android:layout_weight="1"
-                android:hint="@string/maximum_weight"
+                android:hint="اقصى وزن"
                 android:textColorHint="@color/mdtp_white"
-                android:textSize="@dimen/_18ssp"
+                android:textSize="@dimen/_14ssp"
                 android:textColor="#000"
                 android:textStyle="italic"/>
 
@@ -153,8 +152,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_20ssp"
             android:orientation="horizontal"
-            android:layout_marginLeft="@dimen/_20ssp"
-            android:layout_marginRight="@dimen/_20ssp"
+            android:layout_marginLeft="@dimen/_30ssp"
+            android:layout_marginRight="@dimen/_30ssp"
             android:weightSum="2">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -163,10 +162,10 @@
 
                 android:gravity="center"
                 android:layout_weight="1"
-                android:hint="@string/driver_name"
+                android:hint="اسم السائق"
                 android:id="@+id/et_driveName"
                 android:textColorHint="@color/mdtp_white"
-                android:textSize="@dimen/_18ssp"
+                android:textSize="@dimen/_14ssp"
                 android:textColor="#000"
                 android:textStyle="italic"/>
 
@@ -174,8 +173,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/_20sdp"
-            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_30sdp"
+            android:layout_marginLeft="@dimen/_30sdp"
             android:layout_marginTop="30dp"
             android:orientation="horizontal"
             android:weightSum="2">
@@ -184,10 +183,10 @@
                 android:layout_height="50dp"
                 android:gravity="center"
                 android:layout_weight="1"
-                android:hint="@string/city"
+                android:hint="المدينه"
                 android:id="@+id/et_city"
                 android:textColorHint="@color/mdtp_white"
-                android:textSize="@dimen/_18ssp"
+                android:textSize="@dimen/_14ssp"
                 android:textColor="#000"
                 android:textStyle="italic" />
 
@@ -210,9 +209,7 @@
                 android:layout_height="50dp"
                 android:gravity="center"
                 android:layout_gravity="end"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:text="@string/ok"
+                android:text="تاكيد"
                 android:textColor="@color/colorPrimary"
                 android:textSize="18dp"
                 android:background="@color/mdtp_white"
@@ -223,10 +220,8 @@
                 android:layout_height="50dp"
                 android:gravity="center"
                 android:layout_gravity="end"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:background="@color/mdtp_white"
-                android:text="@string/cancel"
+                android:text="الغاء"
                 android:textColor="@color/colorPrimary"
                 android:textSize="18dp"
                 android:textStyle="bold" />
