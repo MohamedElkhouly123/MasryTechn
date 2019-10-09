@@ -55,34 +55,60 @@
         </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
 
-
-
-
-
-
-
-    <RelativeLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:layout_marginTop="20dp">
+        android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+            android:id="@+id/rv_allDriver_allBranches"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#fff" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
 
-        <TextView
-            android:id="@+id/tv_empty_image"
+            />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/view_handelLoading"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="فارغ"
-            android:gravity="center"
-            android:textSize="50sp"
-            android:visibility="gone"/>
+            android:layout_height="match_parent">
 
-    </RelativeLayout>
+            <ProgressBar
+
+                android:id="@+id/pb_allDriver_loading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text=""
+                android:padding="@dimen/_8sdp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_15ssp"
+                android:id="@+id/tv_branchFragment_message"
+                app:layout_constraintTop_toBottomOf="@id/pb_allDriver_loading"
+                />
+
+            <ImageButton
+                android:id="@+id/ib_allDriver_refresh"
+                app:layout_constraintTop_toBottomOf="@+id/tv_branchFragment_message"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_width="@dimen/_25sdp"
+                android:background="@android:color/white"
+                android:tint="@color/black"
+                android:layout_height="@dimen/_25sdp"
+                android:src="@drawable/ic_refresh_button"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
 
 
 </LinearLayout>

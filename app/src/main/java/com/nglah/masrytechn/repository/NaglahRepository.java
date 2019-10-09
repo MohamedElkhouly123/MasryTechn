@@ -1,7 +1,9 @@
 package com.nglah.masrytechn.repository;
 
 import com.nglah.masrytechn.network.networkModel.request.User.RegisterRequest;
+import com.nglah.masrytechn.network.networkModel.request.naglaha.AllDriverRequest;
 import com.nglah.masrytechn.network.networkModel.request.naglaha.UserRequestNaqlahRequest;
+import com.nglah.masrytechn.network.networkModel.response.Naglaha.AllDriverResponse;
 import com.nglah.masrytechn.network.networkModel.response.Naglaha.UserRequestNaqlahResponse;
 import com.nglah.masrytechn.network.networkModel.response.User.RegisterResponse;
 import com.nglah.masrytechn.network.webservices.NaglahaWebServices;
@@ -44,7 +46,7 @@ public class NaglahRepository {
         return NaglahRepository.Loader.INSTANCE;
     }
 
-    public Observable<UserRequestNaqlahResponse> registrationRepository(final UserRequestNaqlahRequest request) {
+    public Observable<UserRequestNaqlahResponse> addNaglahaRepository(final UserRequestNaqlahRequest request) {
         return Observable.create(new ObservableOnSubscribe<UserRequestNaqlahResponse>() {
             @Override
             public void subscribe(final ObservableEmitter<UserRequestNaqlahResponse> emitter) {
@@ -77,4 +79,39 @@ public class NaglahRepository {
     });
 
 }
+
+    public Observable<AllDriverResponse> allDriverRepository(final AllDriverRequest request) {
+        return Observable.create(new ObservableOnSubscribe<AllDriverResponse>() {
+            @Override
+            public void subscribe(final ObservableEmitter<AllDriverResponse> emitter) {
+                naglahaWebServices.getAllDriver(request).subscribeOn(Schedulers.io()).
+                        observeOn(Schedulers.io()).subscribe(new Observer<AllDriverResponse>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(AllDriverResponse requestNaqlahRequest) {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        AllDriverResponse response = new AllDriverResponse();
+//                        response.setStatus(false);
+//                        response.setMessage(e.toString());
+                        emitter.onNext(response);
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+            }
+        });
+
+    }
+
 }

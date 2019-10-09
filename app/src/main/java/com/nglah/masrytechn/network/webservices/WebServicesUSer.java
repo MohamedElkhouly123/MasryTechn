@@ -62,7 +62,7 @@ public interface WebServicesUSer {
     Observable<UpdateDriverDataResponse> updateDriverData(@Body UpdateDriverDataRequest request);
 
 
-    @POST("person/password/email")
+    @POST("ResetPassword.php")
     @Headers({"Content-Type: application/json"})
     Observable<ForgetPasswordResponse> forgetPassword(@Body ForgetPasswordRequest request);
 

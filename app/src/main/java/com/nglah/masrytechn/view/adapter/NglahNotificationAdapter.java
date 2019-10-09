@@ -1,4 +1,4 @@
-package com.nglah.masrytechn.view.AllDeriver;
+package com.nglah.masrytechn.view.adapter;
 
 import android.content.Context;
 import android.util.Log;
@@ -28,7 +28,6 @@ public class NglahNotificationAdapter extends RecyclerView.Adapter<NglahNotifica
     }
 
     public NglahNotificationAdapter(List<Driver> drivers, ListItemClickListener listener) {
-
         this.drivers = drivers;
         this.mOnClickListener = listener;
     }
@@ -48,36 +47,18 @@ public class NglahNotificationAdapter extends RecyclerView.Adapter<NglahNotifica
         return viewHolder;
     }
 
-    /**
-     * OnBindViewHolder is called by the RecyclerView to display the data at the specified
-     * position. In this method, we update the contents of the ViewHolder to display the correct
-     * indices in the list for this particular position, using the "position" argument that is conveniently
-     * passed into us.
-     *
-     * @param holder   The ViewHolder which should be updated to represent the contents of the
-     *                 item at the given position in the data set.
-     * @param position The position of the item within the adapter's data set.
-     */
     @Override
     public void onBindViewHolder(NumberViewHolder holder, int position) {
         Log.d(TAG, "#" + position);
         holder.bind(position);
     }
 
-    /**
-     * This method simply returns the number of items to display. It is used behind the scenes
-     * to help layout our Views and for animations.
-     *
-     * @return The number of items available in our forecast
-     */
+
     @Override
     public int getItemCount() {
         return drivers.size();
     }
 
-    /**
-     * Cache of the children views for a list item.
-     */
     class NumberViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         TextView listItemDriverName;

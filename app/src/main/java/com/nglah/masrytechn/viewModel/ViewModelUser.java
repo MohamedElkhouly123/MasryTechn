@@ -59,7 +59,7 @@ public class ViewModelUser extends ViewModel {
 
                     @Override
                     public void onNext(RegisterResponse value) {
-                        if (value.getStatus()) {
+                        if (value.getId()!=null) {
                             saveDataInDataBase(context, value.getEmail(), value.getFname(),
                                     value.getMobileNumber(), value.getUserName(), value.getLname()
                                     , value.getToken(),
@@ -346,9 +346,11 @@ public class ViewModelUser extends ViewModel {
         return forgetPassword;
     }
 
-    public void forgetPasswordToServer(String email) {
+    public void forgetPasswordToServer(String email,String userName,String userType) {
         ForgetPasswordRequest request = new ForgetPasswordRequest();
-        request.setEmail(email);
+        request.setTO(email);
+        request.setUserName(userName);
+        request.setUserType(userType);
 
         UserRepository.getInstance().forgetPasswordRepository(request).subscribe(new Observer<ForgetPasswordResponse>() {
             @Override

@@ -120,6 +120,7 @@ public class EditUserProfile extends AppCompatActivity {
                     request.setUserName(et_useName.getText().toString());
                     request.setToken(new FireBaseToken().getToken());
                     request.setPassword(et_password.getText().toString());
+
                     viewModel.registerToServer(this, request);
 
 
@@ -158,7 +159,7 @@ public class EditUserProfile extends AppCompatActivity {
         viewModel.makeRegister().observe(this, new Observer<RegisterResponse>() {
             @Override
             public void onChanged(RegisterResponse registerResponse) {
-                if (registerResponse.getStatus()) {
+                if (registerResponse.getId()!=null) {
                     goToMain();
                 } else {
                     showToast("error happen tray again later");

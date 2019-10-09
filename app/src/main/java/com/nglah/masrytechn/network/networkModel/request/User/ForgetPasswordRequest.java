@@ -5,18 +5,38 @@ import com.google.gson.annotations.SerializedName;
 
 public class ForgetPasswordRequest {
 
-
-    @SerializedName("email")
+    @SerializedName("TO")
     @Expose
-    private String email;
+    private String tO;
+    @SerializedName("userName")
+    @Expose
+    private String userName;
+    @SerializedName("userType")
+    @Expose
+    private String userType;
 
-    public String getEmail() {
-        return email;
+    public String getTO() {
+        return tO;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setTO(String tO) {
+        this.tO = tO;
     }
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
 
 }
