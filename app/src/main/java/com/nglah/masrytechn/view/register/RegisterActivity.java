@@ -125,10 +125,10 @@ public class RegisterActivity extends AppCompatActivity {
                     if (response.getStatus()) {
                         code = response.getCode();
                         showDialog();
-
-
-                    } else {
-                        showToast(serverError);
+                    } else if (response.getMessage().equals(newtworkException)){
+                        showToast(poorConnection);
+                    }else {
+                        showToast(response.getMessage());
                     }
 
                 }

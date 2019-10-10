@@ -44,7 +44,7 @@
             android:layout_marginStart="@dimen/_25sdp"
             android:layout_marginEnd="@dimen/_25sdp"
             android:layout_marginRight="@dimen/_30sdp"
-            android:hint="@string/email">
+            android:hint="@string/userName">
 
             <EditText
                 android:id="@+id/username"

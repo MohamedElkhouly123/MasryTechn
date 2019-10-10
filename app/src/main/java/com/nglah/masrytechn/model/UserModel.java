@@ -6,6 +6,7 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
@@ -84,8 +85,13 @@ public class UserModel implements Serializable {
     @SerializedName("car_icon")
     @ColumnInfo(name = "CarIcon")
     private String CarIcon;
+    @SerializedName("UserPhoto")
 
-
+    @Expose
+    private String LicenseNum;
+    @SerializedName("nationality")
+    @Expose
+    private String nationality;
 
 
     @Ignore
@@ -229,4 +235,19 @@ public class UserModel implements Serializable {
     }
 
 
+    public String getLicenseNum() {
+        return LicenseNum;
+    }
+
+    public void setLicenseNum(String licenseNum) {
+        LicenseNum = licenseNum;
+    }
+
+    public String getNationality() {
+        return nationality;
+    }
+
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
+    }
 }

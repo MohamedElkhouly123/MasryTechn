@@ -82,13 +82,23 @@ public class LoginActivity extends AppCompatActivity {
                 if (response != null) {
                     if (response.getStatus()) {
                         goToMain();
-                    }else if (!response.getStatus()&&
-                            response.getMessage().equals("Wrong User Name Or Password !!")){
-                        showToast(userNameError);
-                    }else {
-                        showToast(serverError);
-                    }
+                    } else if (!response.getStatus() && response.getMessage() != null &&
+                            response.getMessage().equals("Wrong User Name Or Password !!")) {
 
+                        showToast(userNameError);
+
+                    } else if (response.getMessage() != null && response.getMessage().equals(newtworkException)) {
+
+                        showToast(poorConnection);
+
+                    } else {
+
+                        showToast(response.getMessage());
+
+                    }
+                } else {
+
+                    showToast(serverError);
                 }
             }
         });
@@ -100,10 +110,10 @@ public class LoginActivity extends AppCompatActivity {
                 if (response != null) {
                     if (response.getStatus()) {
                         goToMainDriver();
-                    }else if (!response.getStatus()&&
-                            response.getMessage().equals("Wrong User Name Or Password !!")){
+                    } else if (!response.getStatus() &&
+                            response.getMessage().equals("Wrong User Name Or Password !!")) {
                         showToast(userNameError);
-                    }else {
+                    } else {
                         showToast(serverError);
                     }
 
@@ -130,23 +140,27 @@ public class LoginActivity extends AppCompatActivity {
     @OnClick(R.id.btn_next)
     void login() {
 
-        if (rb_normalUser.isSelected()||rb_normalUser.isChecked()) {
+        if (rb_normalUser.isSelected() || rb_normalUser.isChecked()) {
             if (checkData()) {
                 if (new CheckNetwork(this).getConnected()) {
                     loadingView.show();
                     viewModel.loginToServer(this, et_userName.getText().toString(),
                             et_password.getText().toString());
+                } else {
+                    showToast(poorConnection);
                 }
             }
-        } else if (rb_carOwner.isSelected()||rb_carOwner.isChecked()) {
+        } else if (rb_carOwner.isSelected() || rb_carOwner.isChecked()) {
             if (checkData()) {
                 if (new CheckNetwork(this).getConnected()) {
                     loadingView.show();
                     viewModel.loginCarOwnerToServer(this, et_userName.getText().toString(),
                             et_password.getText().toString());
                 }
+            } else {
+                showToast(poorConnection);
             }
-        }else {
+        } else {
             showToast(selectTypeOfLogin);
         }
     }
@@ -170,6 +184,7 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(new Intent(this, MainActivity_User.class));
         finish();
     }
+
     private void goToMainDriver() {
         startActivity(new Intent(this, Main2Activity_Driver.class));
         finish();

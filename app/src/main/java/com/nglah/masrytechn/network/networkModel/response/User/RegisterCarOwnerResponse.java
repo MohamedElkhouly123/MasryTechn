@@ -56,6 +56,28 @@ public class RegisterCarOwnerResponse {
     @SerializedName("Token")
     @Expose
     private String token;
+    @SerializedName("UserPhoto")
+    @Expose
+    private String UserPhoto;
+    @SerializedName("LicenseNum")
+    @Expose
+    private String LicenseNum;
+
+    public String getUserPhoto() {
+        return UserPhoto;
+    }
+
+    public void setUserPhoto(String userPhoto) {
+        UserPhoto = userPhoto;
+    }
+
+    public String getLicenseNum() {
+        return LicenseNum;
+    }
+
+    public void setLicenseNum(String licenseNum) {
+        LicenseNum = licenseNum;
+    }
 
     public Boolean getStatus() {
         return status;

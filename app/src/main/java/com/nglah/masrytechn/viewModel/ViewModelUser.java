@@ -64,7 +64,7 @@ public class ViewModelUser extends ViewModel {
                                     value.getMobileNumber(), value.getUserName(), value.getLname()
                                     , value.getToken(),
                                     1, value.getId(), "", "", "", "",
-                                    "", "");
+                                    "", "","","","");
                         }
                         registerResponse.postValue(value);
 
@@ -104,7 +104,8 @@ public class ViewModelUser extends ViewModel {
                                     value.getMobileNumber(), value.getUserName(), value.getLname()
                                     , value.getToken(), 2, value.getId(), value.getCarType(),
                                     value.getPlateNumber(), value.getMaxWeight(), value.getCurrentCity()
-                                    , value.getCity(), value.getCarIcon());
+                                    , value.getCity(), value.getCarIcon(),value.getNationality(),
+                                    value.getUserPhoto(),value.getLicenseNum());
                         }
                         registerCarOwnerResponse.postValue(value);
 
@@ -149,7 +150,7 @@ public class ViewModelUser extends ViewModel {
                                 value.getMobileNumber(), value.getUserName(), value.getLname()
                                 , value.getToken(),
                                 1, value.getId(), "", "", "", "",
-                                "", "");
+                                "", "","","","");
                     }
                 }
                 loginResponse.postValue(value);
@@ -197,7 +198,8 @@ public class ViewModelUser extends ViewModel {
                                             value.getMobileNumber(), value.getUserName(), value.getLname()
                                             , value.getToken(), 2, value.getId(), value.getCarType(),
                                             value.getPlateNumber(), value.getMaxWeight(), value.getCurrentCity()
-                                            , value.getCity(), value.getCarIcon());
+                                            , value.getCity(), value.getCarIcon(),value.getNationality(),
+                                            value.getUserPhoto(),value.getLicenseNum());
                                 }
                             }
                         }
@@ -352,7 +354,8 @@ public class ViewModelUser extends ViewModel {
         request.setUserName(userName);
         request.setUserType(userType);
 
-        UserRepository.getInstance().forgetPasswordRepository(request).subscribe(new Observer<ForgetPasswordResponse>() {
+        UserRepository.getInstance().forgetPasswordRepository(request)
+                .subscribe(new Observer<ForgetPasswordResponse>() {
             @Override
             public void onSubscribe(Disposable d) {
             }
@@ -405,7 +408,8 @@ public class ViewModelUser extends ViewModel {
     private void saveDataInDataBase(Context context, String email, String firstName, String phone,
                                     String userName, String lastName, String accessToken, int type,
                                     String id, String carType, String paletNumber, String maxWeight,
-                                    String currentCity, String city, String carIcon) {
+                                    String currentCity, String city, String carIcon,String nationality,
+                                    String userImage,String licences) {
 
 
         UserModel userData = new UserModel();
@@ -424,6 +428,9 @@ public class ViewModelUser extends ViewModel {
         userData.setMaxWeight(maxWeight);
         userData.setCarIcon(carIcon);
         userData.setAccessToken(accessToken);
+        userData.setNationality(nationality);
+        userData.setImageUrl(userImage);
+        userData.setLicenseNum(licences);
         loggedInUser = userData;
         DataBase.getInstance(context).userProfileDao().insert(loggedInUser);
 
@@ -433,7 +440,8 @@ public class ViewModelUser extends ViewModel {
     private void update(Context context, String email, String firstName, String phone,
                         String userName, String lastName, String accessToken, int type,
                         String id, String carType, String paletNumber, String maxWeight,
-                        String currentCity, String city, String carIcon) {
+                        String currentCity, String city, String carIcon,String nationality,
+                        String userImage,String licences) {
 
 
         loggedInUser.setEmail(email);
@@ -451,6 +459,9 @@ public class ViewModelUser extends ViewModel {
         loggedInUser.setMaxWeight(maxWeight);
         loggedInUser.setCarIcon(carIcon);
         loggedInUser.setAccessToken(accessToken);
+        loggedInUser.setImageUrl(userImage);
+        loggedInUser.setLicenseNum(licences);
+        loggedInUser.setNationality(nationality);
 
         DataBase.getInstance(context).userProfileDao().update(loggedInUser);
 

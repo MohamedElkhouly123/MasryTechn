@@ -47,7 +47,6 @@ public class DriverDataModel extends AppCompatActivity {
     EditText et_firstName;
     @BindView(R.id.et_driverLastName)
     EditText et_lastName;
-
     @BindView(R.id.et_driverIdNumber)
     EditText et_idNumber;
     @BindView(R.id.et_driverPhone)
@@ -70,15 +69,18 @@ public class DriverDataModel extends AppCompatActivity {
     String poorConection;
     @BindString(R.string.uploadImage)
     String uploadImage;
+    @BindString(R.string.networkException)
+    String newtworkException;
+    @BindString(R.string.serverError)
+    String serverError;
+
     String type;
     ViewModelUser viewModel;
     ConvertImageToBase64 convertImageToBase64;
     Bitmap imageBitmap;
     String base64Image = "";
     Views.LoadingView dialog;
-
     RegisterCarOwnerRequest request;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +88,7 @@ public class DriverDataModel extends AppCompatActivity {
         setContentView(R.layout.activity_driver_data_edit);
         ButterKnife.bind(this);
 
+        convertImageToBase64=new ConvertImageToBase64();
         type = getIntent().getStringExtra("type");
         request = (RegisterCarOwnerRequest) getIntent().getSerializableExtra("request");
 
@@ -140,9 +143,7 @@ public class DriverDataModel extends AppCompatActivity {
             showToast(shortPassword);
             return false;
         }
-        if (base64Image != null && !base64Image.equals("")) {
-            showToast(uploadImage);
-        }
+
         return true;
     }
 
@@ -159,9 +160,12 @@ public class DriverDataModel extends AppCompatActivity {
                 request.setUserName(et_userName.getText().toString());
                 request.setToken(new FireBaseToken().getToken());
                 request.setPassword(et_password.getText().toString());
+                request.setLicenseNum(et_licences.getText().toString());
+                request.setUserPhoto(base64Image);
+
                 viewModel.registerCarOwnerToServer(this, request);
             }
-        }else if (type.equals("edit")){
+        } else if (type.equals("edit")) {
             if (validate()) {
                 dialog.show();
                 request.setNationality(et_nationality.getText().toString());
@@ -194,7 +198,6 @@ public class DriverDataModel extends AppCompatActivity {
         }
     }
 
-
     private void openGallery() {
         new ImagePicker.Builder(DriverDataModel.this)
                 .mode(ImagePicker.Mode.CAMERA_AND_GALLERY)
@@ -212,13 +215,19 @@ public class DriverDataModel extends AppCompatActivity {
 
         viewModel.makeRegisterCarOwner().observe(this, new Observer<RegisterCarOwnerResponse>() {
             @Override
-            public void onChanged(RegisterCarOwnerResponse registerResponse) {
+            public void onChanged(RegisterCarOwnerResponse response) {
 
                 dialog.dismiss();
-                if (registerResponse.getId() != null) {
-                    goToMain();
-                } else {
-                    showToast("error happen tray again later");
+                if (response != null) {
+                    if (response.getId()!= null) {
+                        goToMain();
+                    } else if (response.getMessage()!=null&&response.getMessage().equals(newtworkException)){
+                        showToast(poorConection);
+                    }else if (response.getMessage()!=null){
+                        showToast(response.getMessage());
+                    }else {
+                        showToast(serverError);
+                    }
                 }
             }
         });

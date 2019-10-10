@@ -3,7 +3,6 @@ package com.nglah.masrytechn.view.forgetPassword;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
@@ -55,33 +54,37 @@ public class ForgetActivity extends AppCompatActivity {
         setContentView(R.layout.activity_forget);
         ButterKnife.bind(this);
 
-        loadingView=new Views.LoadingView(this);
+        loadingView = new Views.LoadingView(this);
         initListener();
     }
 
 
-
     @OnClick(R.id.btn_forgetPassword_send)
     void sendData() {
-        if (rb_normalUser.isSelected()||rb_normalUser.isChecked()) {
+        if (rb_normalUser.isSelected() || rb_normalUser.isChecked()) {
             if (checkData()) {
                 if (new CheckNetwork(this).getConnected()) {
                     loadingView.show();
-                    typeOfUSer="NaqlaOwner";
+                    typeOfUSer = "NaqlaOwner";
+
                     viewModel.forgetPasswordToServer(et_email.getText().toString(),
-                            et_userName.getText().toString(),typeOfUSer);
+                            et_userName.getText().toString(), typeOfUSer);
+                } else {
+                    showToast(poorConnection);
                 }
             }
-        } else if (rb_carOwner.isSelected()||rb_carOwner.isChecked()) {
+        } else if (rb_carOwner.isSelected() || rb_carOwner.isChecked()) {
             if (checkData()) {
                 if (new CheckNetwork(this).getConnected()) {
                     loadingView.show();
-                    typeOfUSer="CarOwner";
+                    typeOfUSer = "CarOwner";
                     viewModel.forgetPasswordToServer(et_email.getText().toString(),
-                            et_userName.getText().toString(),typeOfUSer);
+                            et_userName.getText().toString(), typeOfUSer);
+                } else {
+                    showToast(poorConnection);
                 }
             }
-        }else {
+        } else {
             showToast(selectTypeOfLogin);
         }
 
@@ -93,9 +96,9 @@ public class ForgetActivity extends AppCompatActivity {
 
     private Boolean checkData() {
 
-        if (TextUtils.isEmpty(et_email.getText().toString())){
+        if (TextUtils.isEmpty(et_email.getText().toString())) {
             return false;
-        }else if (TextUtils.isEmpty(et_userName.getText().toString())){
+        } else if (TextUtils.isEmpty(et_userName.getText().toString())) {
             return false;
         }
         return true;
@@ -108,14 +111,22 @@ public class ForgetActivity extends AppCompatActivity {
         viewModel.makeForgetPassword().observe(this, new Observer<ForgetPasswordResponse>() {
             @Override
             public void onChanged(ForgetPasswordResponse response) {
-                loadingView.dismiss();
-                if (response.getStatus()){
-                    showToast("Send Successful ");
-                    finish();
-                }else {
-                    showToast(response.getMessage());
-                }
 
+                loadingView.dismiss();
+                if (response != null) {
+                    if (response.getStatus()) {
+                        showToast("Send Successful ");
+                        finish();
+                    } else if (response.getMessage() != null &&
+                            response.getMessage().equals(newtworkException)) {
+                        showToast(poorConnection);
+                    } else {
+                        showToast(response.getMessage());
+                    }
+
+                } else {
+                    showToast(serverError);
+                }
 
             }
         });
