@@ -77,8 +77,8 @@ public class MainActivity_User extends AppCompatActivity {
     private void goToLogin() {
         startActivity(new Intent(this, LoginActivity.class));
     }
-
-    private void goToUserProfile() {
+    @OnClick(R.id.my_info)
+     void goToUserProfile() {
         startActivity(new Intent(this, UserProfile.class));
 
     }
