@@ -8,35 +8,12 @@ import java.util.List;
 public class ForgetPasswordResponse {
 
 
-    public class Data {
-
-        @SerializedName("response")
-        @Expose
-        private String response;
-
-        public String getResponse() {
-            return response;
-        }
-
-        public void setResponse(String response) {
-            this.response = response;
-        }
-
-    }
-
-
     @SerializedName("status")
     @Expose
     private Boolean status;
-    @SerializedName("msg")
+    @SerializedName("message")
     @Expose
-    private String msg;
-    @SerializedName("data")
-    @Expose
-    private Data data;
-    @SerializedName("errors")
-    @Expose
-    private List<Object> errors = null;
+    private String message;
 
     public Boolean getStatus() {
         return status;
@@ -46,29 +23,11 @@ public class ForgetPasswordResponse {
         this.status = status;
     }
 
-    public String getMsg() {
-        return msg;
+    public String getMessage() {
+        return message;
     }
 
-    public void setMsg(String msg) {
-        this.msg = msg;
+    public void setMessage(String message) {
+        this.message = message;
     }
-
-    public Data getData() {
-        return data;
-    }
-
-    public void setData(Data data) {
-        this.data = data;
-    }
-
-    public List<Object> getErrors() {
-        return errors;
-    }
-
-    public void setErrors(List<Object> errors) {
-        this.errors = errors;
-    }
-
-
 }

@@ -62,4 +62,7 @@
     <string name="order_page">Order Page</string>
     <string name="errorCode">Code is error</string>
     <string name="complteData">Complete Data</string>
+    <string name="no_data_found">No data Found</string>
+    <string name="userName">UserName</string>
+    <string name="send">send</string>
 </resources>

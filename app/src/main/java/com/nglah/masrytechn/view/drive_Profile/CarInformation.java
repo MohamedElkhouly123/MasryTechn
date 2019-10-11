@@ -83,6 +83,7 @@ public class CarInformation extends AppCompatActivity {
             request.setCarIcon(carImage);
             request.setCurrentCity(et_city.getText().toString());
             request.setCity(et_city.getText().toString());
+
             goToCompleteRegister();
         }
     }

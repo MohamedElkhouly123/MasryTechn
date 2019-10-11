@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.nglah.masrytechn.R;
-import com.nglah.masrytechn.view.AllDeriver.DriverNotificationAdapter;
+import com.nglah.masrytechn.view.adapter.DriverNotificationAdapter;
 import com.nglah.masrytechn.model.NAGLA;
 
 import java.util.List;

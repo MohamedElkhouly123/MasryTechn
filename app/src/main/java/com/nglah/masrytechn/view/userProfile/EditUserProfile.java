@@ -17,6 +17,7 @@ import com.nglah.masrytechn.R;
 import com.nglah.masrytechn.network.networkModel.request.User.RegisterRequest;
 import com.nglah.masrytechn.network.networkModel.response.User.RegisterResponse;
 import com.nglah.masrytechn.view.Utils.CheckNetwork;
+import com.nglah.masrytechn.view.Utils.Dialog.Views;
 import com.nglah.masrytechn.view.main.MainActivity_User;
 import com.nglah.masrytechn.viewModel.ViewModelUser;
 
@@ -51,6 +52,7 @@ public class EditUserProfile extends AppCompatActivity {
     String poorConection;
     String type;
     ViewModelUser viewModel;
+    Views.LoadingView loadingView;
 
 
     @Override
@@ -58,6 +60,7 @@ public class EditUserProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_user_profile);
         ButterKnife.bind(this);
+        loadingView=new Views.LoadingView(this);
         initListener();
 
         type = getIntent().getStringExtra("type");
@@ -111,6 +114,7 @@ public class EditUserProfile extends AppCompatActivity {
             if (new CheckNetwork(this).getConnected()) {
 
                 if (validate()) {
+                    loadingView.show();
 
                     RegisterRequest request = new RegisterRequest();
                     request.setFname(et_firstName.getText().toString());
@@ -120,6 +124,7 @@ public class EditUserProfile extends AppCompatActivity {
                     request.setUserName(et_useName.getText().toString());
                     request.setToken(new FireBaseToken().getToken());
                     request.setPassword(et_password.getText().toString());
+
                     viewModel.registerToServer(this, request);
 
 
@@ -158,7 +163,8 @@ public class EditUserProfile extends AppCompatActivity {
         viewModel.makeRegister().observe(this, new Observer<RegisterResponse>() {
             @Override
             public void onChanged(RegisterResponse registerResponse) {
-                if (registerResponse.getStatus()) {
+                loadingView.dismiss();
+                if (registerResponse.getId()!=null) {
                     goToMain();
                 } else {
                     showToast("error happen tray again later");

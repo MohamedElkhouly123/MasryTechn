@@ -309,7 +309,7 @@ public class UserRepository {
                     public void onError(Throwable e) {
                         ForgetPasswordResponse response = new ForgetPasswordResponse();
                         response.setStatus(false);
-                        response.setMsg(e.toString());
+                        response.setMessage(e.toString());
                         emitter.onNext(response);
                     }
 
