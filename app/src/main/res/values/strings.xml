@@ -32,7 +32,7 @@
     <string name="poorConnection">Poor Internet Connection</string>
     <string name="serverError">Error Server</string>
     <string name="uploadImage">Upload Image</string>
-    <string name="networkException">failed to connect to tr.cict-sa.net/109.203.118.19 (port 80) after 10000ms</string>
+    <string name="networkException">java.net.SocketTimeoutException: timeout</string>
 
 
     <string name="date_and_time_order">Choose Trip Time</string>
@@ -65,4 +65,12 @@
     <string name="no_data_found">No data Found</string>
     <string name="userName">UserName</string>
     <string name="send">send</string>
+    <string name="updateSuccessful">update successful</string>
+    <string name="recharge_card">recharge card</string>
+    <string name="card_number">Card Number</string>
+    <string name="card_holder">Card Holder</string>
+    <string name="month">Month</string>
+    <string name="year">Year</string>
+    <string name="cvv">Cvv</string>
+    <string name="pay">pay</string>
 </resources>

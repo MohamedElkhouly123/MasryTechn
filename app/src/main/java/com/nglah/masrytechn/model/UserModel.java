@@ -92,10 +92,21 @@ public class UserModel implements Serializable {
     @SerializedName("nationality")
     @Expose
     private String nationality;
+    @SerializedName("password")
+    @Expose
+    private String password;
 
 
     @Ignore
     public static UserModel loggedInUser = null;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     @NonNull
     public String getAccessToken() {

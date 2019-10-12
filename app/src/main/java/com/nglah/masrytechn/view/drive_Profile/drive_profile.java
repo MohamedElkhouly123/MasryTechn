@@ -60,9 +60,15 @@ public class drive_profile extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateUi();
+    }
+
     private void updateUi() {
-        tv_nationality.setText("///////////////");
-        tv_licences.setText("************");
+        tv_nationality.setText(loggedInUser.getNationality());
+        tv_licences.setText(loggedInUser.getLicenseNum());
         tv_fName.setText(loggedInUser.getFirstName());
         tv_lName.setText(loggedInUser.getLastName());
         tv_fullName.setText(loggedInUser.getFirstName() + " "

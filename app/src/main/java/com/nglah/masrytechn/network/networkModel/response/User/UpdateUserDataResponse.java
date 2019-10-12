@@ -7,36 +7,36 @@ import java.util.List;
 
 public class UpdateUserDataResponse {
 
-
-    public class Data {
-
-        @SerializedName("updated")
-        @Expose
-        private Integer updated;
-
-        public Integer getUpdated() {
-            return updated;
-        }
-
-        public void setUpdated(Integer updated) {
-            this.updated = updated;
-        }
-
-    }
-
-
     @SerializedName("status")
     @Expose
     private Boolean status;
-    @SerializedName("msg")
+    @SerializedName("message")
     @Expose
-    private String msg;
-    @SerializedName("data")
+    private String message;
+    @SerializedName("id")
     @Expose
-    private Data data;
-    @SerializedName("errors")
+    private String id;
+    @SerializedName("fname")
     @Expose
-    private List<Object> errors = null;
+    private String fname;
+    @SerializedName("lname")
+    @Expose
+    private String lname;
+    @SerializedName("mobileNumber")
+    @Expose
+    private String mobileNumber;
+    @SerializedName("Email")
+    @Expose
+    private String email;
+    @SerializedName("userName")
+    @Expose
+    private String userName;
+    @SerializedName("Password")
+    @Expose
+    private String password;
+    @SerializedName("Token")
+    @Expose
+    private String token;
 
     public Boolean getStatus() {
         return status;
@@ -46,28 +46,76 @@ public class UpdateUserDataResponse {
         this.status = status;
     }
 
-    public String getMsg() {
-        return msg;
+    public String getMessage() {
+        return message;
     }
 
-    public void setMsg(String msg) {
-        this.msg = msg;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
-    public Data getData() {
-        return data;
+    public String getId() {
+        return id;
     }
 
-    public void setData(Data data) {
-        this.data = data;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public List<Object> getErrors() {
-        return errors;
+    public String getFname() {
+        return fname;
     }
 
-    public void setErrors(List<Object> errors) {
-        this.errors = errors;
+    public void setFname(String fname) {
+        this.fname = fname;
+    }
+
+    public String getLname() {
+        return lname;
+    }
+
+    public void setLname(String lname) {
+        this.lname = lname;
+    }
+
+    public String getMobileNumber() {
+        return mobileNumber;
+    }
+
+    public void setMobileNumber(String mobileNumber) {
+        this.mobileNumber = mobileNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
 }

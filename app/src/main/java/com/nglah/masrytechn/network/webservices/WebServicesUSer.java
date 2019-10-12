@@ -53,11 +53,11 @@ public interface WebServicesUSer {
     Observable<RegisterCarOwnerResponse> carOwnerLogin(@Body LoginRequest request);
 
 
-    @POST("CarOwnerLogin.php")
+    @POST("EditNaqlaUser.php")
     @Headers({"Content-Type: application/json"})
     Observable<UpdateUserDataResponse> updateUserData(@Body UpdateUserDataRequest request);
 
-    @POST("CarOwnerLogin.php")
+    @POST("EditCarUser.php")
     @Headers({"Content-Type: application/json"})
     Observable<UpdateDriverDataResponse> updateDriverData(@Body UpdateDriverDataRequest request);
 

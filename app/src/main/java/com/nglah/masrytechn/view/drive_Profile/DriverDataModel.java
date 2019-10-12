@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,8 +17,10 @@ import androidx.lifecycle.ViewModelProviders;
 import com.nglah.masrytechn.Firebase.FireBaseToken;
 import com.nglah.masrytechn.R;
 import com.nglah.masrytechn.network.networkModel.request.User.RegisterCarOwnerRequest;
+import com.nglah.masrytechn.network.networkModel.request.User.UpdateDriverDataRequest;
 import com.nglah.masrytechn.network.networkModel.response.User.RegisterCarOwnerResponse;
 import com.nglah.masrytechn.network.networkModel.response.User.UpdateDriverDataResponse;
+import com.nglah.masrytechn.view.Utils.CheckNetwork;
 import com.nglah.masrytechn.view.Utils.ConvertImageToBase64;
 import com.nglah.masrytechn.view.Utils.Dialog.Views;
 import com.nglah.masrytechn.view.main.Main2Activity_Driver;
@@ -47,8 +48,7 @@ public class DriverDataModel extends AppCompatActivity {
     EditText et_firstName;
     @BindView(R.id.et_driverLastName)
     EditText et_lastName;
-    @BindView(R.id.et_driverIdNumber)
-    EditText et_idNumber;
+
     @BindView(R.id.et_driverPhone)
     EditText et_phone;
     @BindView(R.id.et_driverEmail)
@@ -88,7 +88,7 @@ public class DriverDataModel extends AppCompatActivity {
         setContentView(R.layout.activity_driver_data_edit);
         ButterKnife.bind(this);
 
-        convertImageToBase64=new ConvertImageToBase64();
+        convertImageToBase64 = new ConvertImageToBase64();
         type = getIntent().getStringExtra("type");
         request = (RegisterCarOwnerRequest) getIntent().getSerializableExtra("request");
 
@@ -96,19 +96,22 @@ public class DriverDataModel extends AppCompatActivity {
         initListener();
         if (type.equals("edit")) {
             updateUi();
+            et_userName.setEnabled(false);
         }
 
     }
 
+
     void updateUi() {
-        et_nationality.setText("------------");
+        et_nationality.setText(loggedInUser.getNationality());
         et_firstName.setText(loggedInUser.getFirstName());
         et_lastName.setText(loggedInUser.getLastName());
         et_email.setText(loggedInUser.getEmail());
         et_userName.setText(loggedInUser.getUserName());
         et_phone.setText(loggedInUser.getPhone());
-        et_password.setVisibility(View.GONE);
-        tv_password.setVisibility(View.GONE);
+        et_password.setText(loggedInUser.getPassword());
+        et_licences.setText(loggedInUser.getLicenseNum());
+
     }
 
     private boolean validate() {
@@ -118,9 +121,7 @@ public class DriverDataModel extends AppCompatActivity {
         if (TextUtils.isEmpty(et_lastName.getText().toString())) {
             return false;
         }
-        if (TextUtils.isEmpty(et_idNumber.getText().toString())) {
-            return false;
-        }
+
         if (TextUtils.isEmpty(et_nationality.getText().toString())) {
             return false;
         }
@@ -151,7 +152,7 @@ public class DriverDataModel extends AppCompatActivity {
     void registerDriver() {
         if (type.equals("register")) {
             if (validate()) {
-                dialog.show();
+
                 request.setNationality(et_nationality.getText().toString());
                 request.setFname(et_firstName.getText().toString());
                 request.setLname(et_lastName.getText().toString());
@@ -163,18 +164,54 @@ public class DriverDataModel extends AppCompatActivity {
                 request.setLicenseNum(et_licences.getText().toString());
                 request.setUserPhoto(base64Image);
 
-                viewModel.registerCarOwnerToServer(this, request);
+                if (new CheckNetwork(this).getConnected()) {
+                    dialog.show();
+                    viewModel.registerCarOwnerToServer(this, request);
+                } else
+                    showToast(poorConection);
             }
         } else if (type.equals("edit")) {
-            if (validate()) {
-                dialog.show();
-                request.setNationality(et_nationality.getText().toString());
-                request.setFname(et_firstName.getText().toString());
-                request.setLname(et_lastName.getText().toString());
-                request.setEmail(et_email.getText().toString());
-                request.setMobileNumber(et_phone.getText().toString());
-                request.setUserName(et_userName.getText().toString());
-//                viewModel.registerCarOwnerToServer(this, request);
+            if (new CheckNetwork(this).getConnected()) {
+
+                if (validate()) {
+                    dialog.show();
+                    {
+
+
+                    }
+                    UpdateDriverDataRequest request = new UpdateDriverDataRequest();
+                    request.setUserName(loggedInUser.getUserName());
+                    request.setOldEmail(loggedInUser.getEmail());
+                    request.setPassword(et_password.getText().toString());
+                    request.setMaxWeight(loggedInUser.getMaxWeight());
+                    request.setCarType(loggedInUser.getCarType());
+                    request.setPlateNumber(loggedInUser.getPlateNumber());
+                    request.setCity(loggedInUser.getCity());
+                    request.setCurrentCity(loggedInUser.getCurrentCity());
+                    request.setToken(loggedInUser.getAccessToken());
+                    request.setCarIcon(loggedInUser.getCarIcon());
+                    if (base64Image.equals("")) {
+                        request.setUserPhoto(loggedInUser.getImageUrl());
+                    } else {
+                        request.setUserPhoto(base64Image);
+                    }
+
+                    request.setNationality(et_nationality.getText().toString());
+                    request.setFname(et_firstName.getText().toString());
+                    request.setLname(et_lastName.getText().toString());
+                    request.setEmail(et_email.getText().toString());
+                    request.setMobileNumber(et_phone.getText().toString());
+                    request.setUserName(et_userName.getText().toString());
+                    request.setLicenseNum(et_licences.getText().toString());
+
+
+
+                    viewModel.updateDriverDataToServer(this, request);
+
+
+                } else {
+                    showToast(poorConection);
+                }
             }
         }
 
@@ -219,13 +256,13 @@ public class DriverDataModel extends AppCompatActivity {
 
                 dialog.dismiss();
                 if (response != null) {
-                    if (response.getId()!= null) {
+                    if (response.getId() != null) {
                         goToMain();
-                    } else if (response.getMessage()!=null&&response.getMessage().equals(newtworkException)){
+                    } else if (response.getMessage() != null && response.getMessage().equals(newtworkException)) {
                         showToast(poorConection);
-                    }else if (response.getMessage()!=null){
+                    } else if (response.getMessage() != null) {
                         showToast(response.getMessage());
-                    }else {
+                    } else {
                         showToast(serverError);
                     }
                 }
@@ -234,8 +271,24 @@ public class DriverDataModel extends AppCompatActivity {
 
         viewModel.makeEditDriverProfile().observe(this, new Observer<UpdateDriverDataResponse>() {
             @Override
-            public void onChanged(UpdateDriverDataResponse updateDriverDataResponse) {
+            public void onChanged(UpdateDriverDataResponse response) {
                 dialog.dismiss();
+
+
+                dialog.dismiss();
+                if (response .getStatus()) {
+                    if (response.getId() != null) {
+                        showToast(getString(R.string.updateSuccessful));
+                        finish();
+
+                    } else if (response.getMessage() != null && response.getMessage().equals(newtworkException)) {
+                        showToast(poorConection);
+                    } else if (response.getMessage() != null) {
+                        showToast(response.getMessage());
+                    } else {
+                        showToast(serverError);
+                    }
+                }
 
             }
         });

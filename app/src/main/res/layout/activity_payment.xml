@@ -155,6 +155,7 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/btn_charge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="top|center"
@@ -165,7 +166,7 @@
             android:textSize="@dimen/_15ssp"
             android:fontFamily="@font/janna"
             android:background="@drawable/bottonshape"
-            android:text="recharge card"
+            android:text="@string/recharge_card"
             android:textColor="@color/black"
             />
 

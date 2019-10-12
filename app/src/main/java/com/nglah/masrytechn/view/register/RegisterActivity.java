@@ -196,16 +196,18 @@ public class RegisterActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_next_register)
     void register() {
-        if (checkData()) {
-            dialog.show();
-            model = new UserModel();
-            model.setEmail(et_email.getText().toString());
-            model.setPhone(et_phone.getText().toString());
-            model.setUserName(et_userName.getText().toString());
-            viewModel.sendEmailToServer(et_email.getText().toString());
-        } else {
-            showToast(getString(R.string.complteData));
-        }
+//        if (checkData()) {
+//            dialog.show();
+//            model = new UserModel();
+//            model.setEmail(et_email.getText().toString());
+//            model.setPhone(et_phone.getText().toString());
+//            model.setUserName(et_userName.getText().toString());
+//            viewModel.sendEmailToServer(et_email.getText().toString());
+//        } else {
+//            showToast(getString(R.string.complteData));
+//        }
+//
+        goToMain();
     }
 
 }

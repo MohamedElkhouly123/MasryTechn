@@ -59,12 +59,12 @@ public class ViewModelUser extends ViewModel {
 
                     @Override
                     public void onNext(RegisterResponse value) {
-                        if (value.getId()!=null) {
+                        if (value.getId() != null) {
                             saveDataInDataBase(context, value.getEmail(), value.getFname(),
                                     value.getMobileNumber(), value.getUserName(), value.getLname()
                                     , value.getToken(),
                                     1, value.getId(), "", "", "", "",
-                                    "", "","","","");
+                                    "", "", "", "", "", value.getPassword());
                         }
                         registerResponse.postValue(value);
 
@@ -104,8 +104,8 @@ public class ViewModelUser extends ViewModel {
                                     value.getMobileNumber(), value.getUserName(), value.getLname()
                                     , value.getToken(), 2, value.getId(), value.getCarType(),
                                     value.getPlateNumber(), value.getMaxWeight(), value.getCurrentCity()
-                                    , value.getCity(), value.getCarIcon(),value.getNationality(),
-                                    value.getUserPhoto(),value.getLicenseNum());
+                                    , value.getCity(), value.getCarIcon(), value.getNationality(),
+                                    value.getUserPhoto(), value.getLicenseNum(), value.getPassword());
                         }
                         registerCarOwnerResponse.postValue(value);
 
@@ -131,7 +131,7 @@ public class ViewModelUser extends ViewModel {
 
     public void loginToServer(final Context context, String email, String password) {
         LoginRequest request = new LoginRequest();
-        request.setUserName(email);
+        request.setEmail(email);
         request.setPassword(password);
         request.setToken(new FireBaseToken().getToken());
         UserRepository.getInstance().loginRepository(request).subscribe(new Observer<LoginResponse>() {
@@ -150,7 +150,7 @@ public class ViewModelUser extends ViewModel {
                                 value.getMobileNumber(), value.getUserName(), value.getLname()
                                 , value.getToken(),
                                 1, value.getId(), "", "", "", "",
-                                "", "","","","");
+                                "", "", "", "", "", value.getPassword());
                     }
                 }
                 loginResponse.postValue(value);
@@ -177,7 +177,7 @@ public class ViewModelUser extends ViewModel {
 
     public void loginCarOwnerToServer(final Context context, String email, String password) {
         LoginRequest request = new LoginRequest();
-        request.setUserName(email);
+        request.setEmail(email);
         request.setPassword(password);
         request.setToken(new FireBaseToken().getToken());
         UserRepository.getInstance().loginCarOWnerRepository(request).
@@ -198,8 +198,8 @@ public class ViewModelUser extends ViewModel {
                                             value.getMobileNumber(), value.getUserName(), value.getLname()
                                             , value.getToken(), 2, value.getId(), value.getCarType(),
                                             value.getPlateNumber(), value.getMaxWeight(), value.getCurrentCity()
-                                            , value.getCity(), value.getCarIcon(),value.getNationality(),
-                                            value.getUserPhoto(),value.getLicenseNum());
+                                            , value.getCity(), value.getCarIcon(), value.getNationality(),
+                                            value.getUserPhoto(), value.getLicenseNum(), value.getPassword());
                                 }
                             }
                         }
@@ -292,8 +292,17 @@ public class ViewModelUser extends ViewModel {
                     }
 
                     @Override
-                    public void onNext(UpdateUserDataResponse response) {
-                        editUserProfile.postValue(response);
+                    public void onNext(UpdateUserDataResponse value) {
+
+                        if (value.getStatus()) {
+                            update(context, value.getEmail(), value.getFname(),
+                                    value.getMobileNumber(), value.getUserName(), value.getLname()
+                                    , value.getToken(),
+                                    1, value.getId(), "", "", "", "",
+                                    "", "", "", "", "", value.getPassword());
+                        }
+                        editUserProfile.postValue(value);
+
                     }
 
                     @Override
@@ -325,8 +334,20 @@ public class ViewModelUser extends ViewModel {
                     }
 
                     @Override
-                    public void onNext(UpdateDriverDataResponse response) {
-                        editDriverProfile.postValue(response);
+                    public void onNext(UpdateDriverDataResponse value) {
+                        if (value.getStatus()) {
+
+                            update(context, value.getEmail(), value.getFname(),
+                                    value.getMobileNumber(), value.getUserName(), value.getLname()
+                                    , value.getToken(), 2, value.getId(), value.getCarType(),
+                                    value.getPlateNumber(), value.getMaxWeight(), value.getCurrentCity()
+                                    , value.getCity(), value.getCarIcon(), value.getNationality(),
+                                    value.getUserPhoto(), value.getLicenseNum(), value.getPassword());
+
+
+                        }
+                        editDriverProfile.postValue(value);
+
                     }
 
                     @Override
@@ -348,7 +369,7 @@ public class ViewModelUser extends ViewModel {
         return forgetPassword;
     }
 
-    public void forgetPasswordToServer(String email,String userName,String userType) {
+    public void forgetPasswordToServer(String email, String userName, String userType) {
         ForgetPasswordRequest request = new ForgetPasswordRequest();
         request.setTO(email);
         request.setUserName(userName);
@@ -356,27 +377,27 @@ public class ViewModelUser extends ViewModel {
 
         UserRepository.getInstance().forgetPasswordRepository(request)
                 .subscribe(new Observer<ForgetPasswordResponse>() {
-            @Override
-            public void onSubscribe(Disposable d) {
-            }
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                    }
 
-            @Override
-            public void onNext(ForgetPasswordResponse response) {
-                forgetPassword.postValue(response);
-            }
+                    @Override
+                    public void onNext(ForgetPasswordResponse response) {
+                        forgetPassword.postValue(response);
+                    }
 
-            @Override
-            public void onError(Throwable e) {
+                    @Override
+                    public void onError(Throwable e) {
 
-                forgetPassword.postValue(null);
+                        forgetPassword.postValue(null);
 
-            }
+                    }
 
-            @Override
-            public void onComplete() {
+                    @Override
+                    public void onComplete() {
 
-            }
-        });
+                    }
+                });
     }
 
     public MutableLiveData<Boolean> makeLogout() {
@@ -405,11 +426,12 @@ public class ViewModelUser extends ViewModel {
 
     }
 
-    private void saveDataInDataBase(Context context, String email, String firstName, String phone,
+    private void saveDataInDataBase(Context context, String email, String firstName, String
+            phone,
                                     String userName, String lastName, String accessToken, int type,
                                     String id, String carType, String paletNumber, String maxWeight,
-                                    String currentCity, String city, String carIcon,String nationality,
-                                    String userImage,String licences) {
+                                    String currentCity, String city, String carIcon, String nationality,
+                                    String userImage, String licences, String password) {
 
 
         UserModel userData = new UserModel();
@@ -431,6 +453,7 @@ public class ViewModelUser extends ViewModel {
         userData.setNationality(nationality);
         userData.setImageUrl(userImage);
         userData.setLicenseNum(licences);
+        userData.setPassword(password);
         loggedInUser = userData;
         DataBase.getInstance(context).userProfileDao().insert(loggedInUser);
 
@@ -440,8 +463,8 @@ public class ViewModelUser extends ViewModel {
     private void update(Context context, String email, String firstName, String phone,
                         String userName, String lastName, String accessToken, int type,
                         String id, String carType, String paletNumber, String maxWeight,
-                        String currentCity, String city, String carIcon,String nationality,
-                        String userImage,String licences) {
+                        String currentCity, String city, String carIcon, String nationality,
+                        String userImage, String licences, String password) {
 
 
         loggedInUser.setEmail(email);
@@ -462,6 +485,7 @@ public class ViewModelUser extends ViewModel {
         loggedInUser.setImageUrl(userImage);
         loggedInUser.setLicenseNum(licences);
         loggedInUser.setNationality(nationality);
+        loggedInUser.setPassword(password);
 
         DataBase.getInstance(context).userProfileDao().update(loggedInUser);
 

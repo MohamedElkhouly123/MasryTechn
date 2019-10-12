@@ -4,7 +4,6 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class RegisterCarOwnerResponse {
-
     @SerializedName("status")
     @Expose
     private Boolean status;
@@ -53,31 +52,15 @@ public class RegisterCarOwnerResponse {
     @SerializedName("CarIcon")
     @Expose
     private String carIcon;
+    @SerializedName("UserPhoto")
+    @Expose
+    private String userPhoto;
+    @SerializedName("LicenseNum")
+    @Expose
+    private String licenseNum;
     @SerializedName("Token")
     @Expose
     private String token;
-    @SerializedName("UserPhoto")
-    @Expose
-    private String UserPhoto;
-    @SerializedName("LicenseNum")
-    @Expose
-    private String LicenseNum;
-
-    public String getUserPhoto() {
-        return UserPhoto;
-    }
-
-    public void setUserPhoto(String userPhoto) {
-        UserPhoto = userPhoto;
-    }
-
-    public String getLicenseNum() {
-        return LicenseNum;
-    }
-
-    public void setLicenseNum(String licenseNum) {
-        LicenseNum = licenseNum;
-    }
 
     public Boolean getStatus() {
         return status;
@@ -207,6 +190,22 @@ public class RegisterCarOwnerResponse {
         this.carIcon = carIcon;
     }
 
+    public String getUserPhoto() {
+        return userPhoto;
+    }
+
+    public void setUserPhoto(String userPhoto) {
+        this.userPhoto = userPhoto;
+    }
+
+    public String getLicenseNum() {
+        return licenseNum;
+    }
+
+    public void setLicenseNum(String licenseNum) {
+        this.licenseNum = licenseNum;
+    }
+
     public String getToken() {
         return token;
     }
@@ -214,7 +213,5 @@ public class RegisterCarOwnerResponse {
     public void setToken(String token) {
         this.token = token;
     }
-
-
 
 }

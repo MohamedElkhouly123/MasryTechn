@@ -38,7 +38,9 @@ public class UserRepository {
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
         String BASE_URL = "https://pwalgs.com/nglah2/Users/";
-        Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL).client(client).addConverterFactory(GsonConverterFactory.create()).addCallAdapterFactory(RxJava2CallAdapterFactory.create()).build();
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
+                .client(client).addConverterFactory(GsonConverterFactory.create()).
+                        addCallAdapterFactory(RxJava2CallAdapterFactory.create()).build();
         webServicesUSer = retrofit.create(WebServicesUSer.class);
     }
 
@@ -90,6 +92,7 @@ public class UserRepository {
         return Observable.create(new ObservableOnSubscribe<RegisterCarOwnerResponse>() {
             @Override
             public void subscribe(final ObservableEmitter<RegisterCarOwnerResponse> emitter) {
+
 
                 webServicesUSer.RegistrationCarOwner(request).subscribeOn(Schedulers.io()).
                         observeOn(Schedulers.io()).subscribe(new Observer<RegisterCarOwnerResponse>() {
@@ -243,7 +246,7 @@ public class UserRepository {
                     public void onError(Throwable e) {
                         UpdateUserDataResponse response = new UpdateUserDataResponse();
                         response.setStatus(false);
-                        response.setMsg(e.toString());
+                        response.setMessage(e.toString());
                         emitter.onNext(response);
                     }
 
@@ -271,13 +274,14 @@ public class UserRepository {
                     @Override
                     public void onNext(UpdateDriverDataResponse response) {
                         emitter.onNext(response);
+
                     }
 
                     @Override
                     public void onError(Throwable e) {
                         UpdateDriverDataResponse response = new UpdateDriverDataResponse();
-//                        response.setStatus(false);
-//                        response.setMsg(e.toString());
+                        response.setStatus(false);
+                        response.setMessage(e.toString());
                         emitter.onNext(response);
                     }
 

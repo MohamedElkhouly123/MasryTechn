@@ -30,6 +30,8 @@ public class UserProfile extends AppCompatActivity {
 
     @BindView(R.id.tv_phone)
     TextView tv_phone;
+    @BindView(R.id.driver_name)
+    TextView tv__fullName;
 
 
     @Override
@@ -40,6 +42,12 @@ public class UserProfile extends AppCompatActivity {
         ButterKnife.bind(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        updateUi();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         updateUi();
     }
 
@@ -56,8 +64,8 @@ public class UserProfile extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.Setting) {
-            Intent intent=new Intent(this, EditUserProfile.class);
-            intent.putExtra("type","edit");
+            Intent intent = new Intent(this, EditUserProfile.class);
+            intent.putExtra("type", "edit");
             startActivity(intent);
         }
         return true;
@@ -68,8 +76,10 @@ public class UserProfile extends AppCompatActivity {
         tv_name.setText(loggedInUser.getFirstName() + " " + loggedInUser.getLastName());
         tv_phone.setText(loggedInUser.getPhone());
         tv_userName.setText(loggedInUser.getUserName());
-    }
+        tv__fullName.setText(loggedInUser.getFirstName() + " " + loggedInUser.getLastName());
 
+
+    }
 
 
 }
