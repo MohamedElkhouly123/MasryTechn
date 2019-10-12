@@ -81,6 +81,9 @@ public class EditUserProfile extends AppCompatActivity {
 
 
     }
+    @OnClick(R.id.list)void  back(){
+        finish();
+    }
 
     void updateUi() {
         et_email.setText(loggedInUser.getEmail());

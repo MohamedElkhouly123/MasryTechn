@@ -72,7 +72,9 @@ public class CarInformation extends AppCompatActivity {
         });
 
     }
-
+    @OnClick(R.id.list)void  back(){
+        finish();
+    }
     @OnClick(R.id.btn_ok)
     void ok() {
 

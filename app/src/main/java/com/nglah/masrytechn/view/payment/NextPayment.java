@@ -9,6 +9,7 @@ import com.nglah.masrytechn.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class NextPayment extends AppCompatActivity {
 
@@ -33,5 +34,8 @@ public class NextPayment extends AppCompatActivity {
 
 
 
+    }
+    @OnClick(R.id.list)void  back(){
+        finish();
     }
 }

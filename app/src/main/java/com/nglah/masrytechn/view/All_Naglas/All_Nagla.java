@@ -15,6 +15,8 @@ import com.nglah.masrytechn.model.NAGLA;
 
 import java.util.List;
 
+import butterknife.OnClick;
+
 public class All_Nagla extends AppCompatActivity {
     private DriverNotificationAdapter mAdapter;
     private RecyclerView mRecyclerView;
@@ -28,6 +30,9 @@ public class All_Nagla extends AppCompatActivity {
         setContentView(R.layout.activity_all__nagla);
         initWidgets();
 
+    }
+    @OnClick(R.id.list)void  back(){
+        finish();
     }
     private void initWidgets(){
         mRecyclerView = findViewById(R.id.recyclerView);

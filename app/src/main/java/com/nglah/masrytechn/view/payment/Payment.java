@@ -24,4 +24,7 @@ public class Payment extends AppCompatActivity {
         startActivity(new Intent(this,NextPayment.class));
 
     }
+    @OnClick(R.id.list)void  back(){
+        finish();
+    }
 }

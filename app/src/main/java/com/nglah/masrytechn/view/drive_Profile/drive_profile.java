@@ -14,6 +14,7 @@ import com.nglah.masrytechn.view.userProfile.EditUserProfile;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 import static com.nglah.masrytechn.model.UserModel.loggedInUser;
 
@@ -59,7 +60,9 @@ public class drive_profile extends AppCompatActivity {
         updateUi();
 
     }
-
+    @OnClick(R.id.list)void  back(){
+        finish();
+    }
     @Override
     protected void onResume() {
         super.onResume();

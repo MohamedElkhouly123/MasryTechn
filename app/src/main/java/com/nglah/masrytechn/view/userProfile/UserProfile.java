@@ -13,6 +13,7 @@ import com.nglah.masrytechn.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 import static com.nglah.masrytechn.model.UserModel.loggedInUser;
 
@@ -44,7 +45,9 @@ public class UserProfile extends AppCompatActivity {
         setSupportActionBar(toolbar);
         updateUi();
     }
-
+    @OnClick(R.id.list)void  back(){
+        finish();
+    }
     @Override
     protected void onResume() {
         super.onResume();

@@ -65,6 +65,7 @@ public class AllDriver extends AppCompatActivity implements Listener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_all_driver);
 
         ButterKnife.bind(this);
 
@@ -73,7 +74,9 @@ public class AllDriver extends AppCompatActivity implements Listener {
         getDataFromServer();
     }
 
-
+    @OnClick(R.id.list)void  back(){
+        finish();
+    }
     private void getDataFromServer() {
         if (new CheckNetwork(this).getConnected()) {
             showLoading();
