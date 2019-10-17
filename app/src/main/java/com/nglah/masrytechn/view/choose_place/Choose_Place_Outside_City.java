@@ -51,6 +51,11 @@ public class Choose_Place_Outside_City extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     boolean flag=false;
+    String country="";
+    String region="";
+    String fromCity="";
+    String toCity="";
+    AddNaglaModel request = new AddNaglaModel();
 
 
     @Override
@@ -407,6 +412,10 @@ public class Choose_Place_Outside_City extends AppCompatActivity {
         chooseCitylist.add("بدر الجنوب");
         chooseCitylist.add("خباش");
         chooseCitylist.add("الخرخير");
+        request.setCountry(country);
+        request.setRegion(region);
+        request.setFromCity(fromCity);
+        request.setToCity(toCity);
 
         initView();
         action();
@@ -535,6 +544,8 @@ public class Choose_Place_Outside_City extends AppCompatActivity {
                     spinnerCity.setVisibility(View.VISIBLE);
                     flag=true;
                     editor.commit();
+                    region = spinnerRegion.getItemAtPosition(i).toString();
+
 
                 }else if(i==2){
                     addCity(citylistHodod2);
@@ -542,6 +553,8 @@ public class Choose_Place_Outside_City extends AppCompatActivity {
                     spinnerCity.setVisibility(View.VISIBLE);
                     flag=true;
                     editor.commit();
+                    region = spinnerRegion.getItemAtPosition(i).toString();
+
 
                 }else if(i==3){
                     addCity(citylistTabok3);
@@ -549,6 +562,8 @@ public class Choose_Place_Outside_City extends AppCompatActivity {
                     spinnerCity.setVisibility(View.VISIBLE);
                     flag=true;
                     editor.commit();
+                    region = spinnerRegion.getItemAtPosition(i).toString();
+
 
                 }else if(i==4){
                     addCity(citylistHaal4);
@@ -556,6 +571,8 @@ public class Choose_Place_Outside_City extends AppCompatActivity {
                     spinnerCity.setVisibility(View.VISIBLE);
                     flag=true;
                     editor.commit();
+                    region = spinnerRegion.getItemAtPosition(i).toString();
+
 
                 }else if(i==5){
                     addCity(citylistMonawara5);
@@ -563,6 +580,8 @@ public class Choose_Place_Outside_City extends AppCompatActivity {
                     spinnerCity.setVisibility(View.VISIBLE);
                     flag=true;
                     editor.commit();
+                    region = spinnerRegion.getItemAtPosition(i).toString();
+
 
                 }else if(i==6){
                     addCity(citylistKaseem6);
@@ -570,6 +589,8 @@ public class Choose_Place_Outside_City extends AppCompatActivity {
                     spinnerCity.setVisibility(View.VISIBLE);
                     flag=true;
                     editor.commit();
+                    region = spinnerRegion.getItemAtPosition(i).toString();
+
 
                 }else if(i==7){
                     addCity(citylistMaka7);
@@ -577,6 +598,8 @@ public class Choose_Place_Outside_City extends AppCompatActivity {
                     spinnerCity.setVisibility(View.VISIBLE);
                     flag=true;
                     editor.commit();
+                    region = spinnerRegion.getItemAtPosition(i).toString();
+
 
                 }else if(i==8){
                     addCity(citylistRead8);
@@ -584,6 +607,8 @@ public class Choose_Place_Outside_City extends AppCompatActivity {
                     spinnerCity.setVisibility(View.VISIBLE);
                     flag=true;
                     editor.commit();
+                    region = spinnerRegion.getItemAtPosition(i).toString();
+
 
                 }else if(i==9){
                     addCity(citylistSharkia9);
@@ -591,6 +616,8 @@ public class Choose_Place_Outside_City extends AppCompatActivity {
                     spinnerCity.setVisibility(View.VISIBLE);
                     flag=true;
                     editor.commit();
+                    region = spinnerRegion.getItemAtPosition(i).toString();
+
 
                 }else if(i==10){
                     addCity(citylistBaha10);
@@ -598,6 +625,8 @@ public class Choose_Place_Outside_City extends AppCompatActivity {
                     spinnerCity.setVisibility(View.VISIBLE);
                     flag=true;
                     editor.commit();
+                    region = spinnerRegion.getItemAtPosition(i).toString();
+
 
                 }else if(i==11){
                     addCity(citylistAaser11);
@@ -605,6 +634,8 @@ public class Choose_Place_Outside_City extends AppCompatActivity {
                     spinnerCity.setVisibility(View.VISIBLE);
                     flag=true;
                     editor.commit();
+                    region = spinnerRegion.getItemAtPosition(i).toString();
+
 
                 }else if(i==12){
                     addCity(citylistgasan12);
@@ -612,6 +643,8 @@ public class Choose_Place_Outside_City extends AppCompatActivity {
                     spinnerCity.setVisibility(View.VISIBLE);
                     flag=true;
                     editor.commit();
+                    region = spinnerRegion.getItemAtPosition(i).toString();
+
 
                 }else if(i==13){
                     addCity(citylistNagran13);
@@ -619,6 +652,8 @@ public class Choose_Place_Outside_City extends AppCompatActivity {
                     spinnerCity.setVisibility(View.VISIBLE);
                     flag=true;
                     editor.commit();
+                    region = spinnerRegion.getItemAtPosition(i).toString();
+
 
                 }
             }
@@ -661,9 +696,13 @@ public class Choose_Place_Outside_City extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-                if (i == 1) {
+                if (i == 0) {
 
 //                    showAlertDialog();
+                }
+                else {
+                    toCity = choose_City.getItemAtPosition(i).toString();
+
                 }
             }
 
@@ -715,6 +754,7 @@ public class Choose_Place_Outside_City extends AppCompatActivity {
                 }else {
                     editor.putString("thing_type_elment"," مواد بناء "+spinnerCity.getSelectedItem().toString());
                     choose_City.setVisibility(View.VISIBLE);
+                    fromCity = spinnerCity.getItemAtPosition(i).toString();
 
                     flag=true;
                     editor.commit();

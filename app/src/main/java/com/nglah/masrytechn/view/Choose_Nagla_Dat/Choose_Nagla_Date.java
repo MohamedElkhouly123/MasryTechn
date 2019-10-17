@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -14,6 +15,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.nglah.masrytechn.R;
 import com.nglah.masrytechn.network.networkModel.response.Naglaha.UserRequestNaqlahResponse;
+import com.nglah.masrytechn.view.choose_place.AddNaglaModel;
 import com.nglah.masrytechn.view.main.MainActivity_User;
 import com.nglah.masrytechn.viewModel.ViewModelNaglaha;
 
@@ -25,11 +27,14 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class Choose_Nagla_Date extends AppCompatActivity {
-
+    EditText moreDetails;
     TextView date, time;
     ViewModelNaglaha viewModelNaglaha;
-
-
+    AddNaglaModel request = new AddNaglaModel();
+    String dateStr="";
+    String timeStr="";
+    String timetypeStr="";  //now or later
+    String details="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +44,7 @@ public class Choose_Nagla_Date extends AppCompatActivity {
 
         date = (TextView) findViewById(R.id.dateTxt);
         time = (TextView) findViewById(R.id.time_txt);
-
+        moreDetails=(EditText)findViewById(R.id.details);
 
     }
 
@@ -67,13 +72,15 @@ public class Choose_Nagla_Date extends AppCompatActivity {
                 String formattedTime = tf.format(calendar.getTime());
                 time.setText(formattedTime);
                 date.setText(formattedDate);
+
+
                 alertDialog.dismiss();
             }
         });
         alertDialog.setView(dialogView);
         alertDialog.show();
-//        Type=getString(R.string.later);
 
+        timetypeStr="later";
 
     }
 
@@ -88,14 +95,20 @@ public class Choose_Nagla_Date extends AppCompatActivity {
         String formattedTime = tf.format(c.getTime());
         time.setText(formattedTime);
         date.setText(formattedDate);
-//        Type=getString(R.string.now);
-
+        timeStr=time.getText().toString();
+        dateStr=date.getText().toString();
+        timetypeStr="now";
 
     }
 
     @OnClick(R.id.submitNaglaha)
     void submit() {
 
+        details=moreDetails.getText().toString();
+        request.setTime(timeStr);
+        request.setDate(dateStr);
+        request.setNglahTimeType(timetypeStr);
+        request.setDetails(details);
 
     }
 

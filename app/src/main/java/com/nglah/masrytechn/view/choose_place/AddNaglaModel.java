@@ -52,9 +52,9 @@ public class AddNaglaModel {
     @Expose
     private String nglahType;
 
-    @SerializedName("thing_type")
+    @SerializedName("element_type")
     @Expose
-    private String thingType;
+    private String elementType;
 
 //    @SerializedName("sector")
 //    @Expose
@@ -81,6 +81,10 @@ public class AddNaglaModel {
 //        this.firstName = firstName;
 //        this.lastName = lastName;
         this.email = email;
+    }
+
+    public AddNaglaModel() {
+
     }
 
 
@@ -164,12 +168,12 @@ public class AddNaglaModel {
         this.nglahType = nglahType;
     }
 
-    public String getThingType() {
-        return thingType;
+    public String getElementType() {
+        return elementType;
     }
 
-    public void setThingType(String thingType) {
-        this.thingType = thingType;
+    public void setElementType(String thingType) {
+        this.elementType = thingType;
     }
 
     public String getNglahTimeType() {

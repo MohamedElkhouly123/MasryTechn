@@ -6,6 +6,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -42,6 +43,10 @@ public class Choose_Element extends AppCompatActivity {
     ArrayList<String>asaslist=new ArrayList<>();
     ArrayList<String>buldinglist=new ArrayList<>();
     ArrayList<String>otherlist=new ArrayList<>();
+    AddNaglaModel request = new AddNaglaModel();
+    String elementStr="";
+
+
 
     boolean flag=false;
 
@@ -87,6 +92,7 @@ public class Choose_Element extends AppCompatActivity {
 
 //            Toast.makeText(this, getString(R.string.enter_item), Toast.LENGTH_SHORT).show();
         }else {
+            request.setElementType(elementStr);
             startActivity(new Intent(this,Choose_Nagla_Date.class));
         }
 
@@ -159,12 +165,15 @@ public class Choose_Element extends AppCompatActivity {
                     building.setVisibility(View.VISIBLE);
                     other.setVisibility(View.VISIBLE);
                     flag=false;
+                    elementStr="";
 
                 }else if(i==carlist.size()-1){
                     showAlertDialog();
                 } else {
                     editor.putString("thing_type_elment"," سيارات "+car.getSelectedItem().toString());
                     editor.commit();
+                    elementStr = car.getItemAtPosition(i).toString();
+
                     asas.setVisibility(View.GONE);
                     building.setVisibility(View.GONE);
                     other.setVisibility(View.GONE);
@@ -212,6 +221,8 @@ public class Choose_Element extends AppCompatActivity {
                     building.setVisibility(View.VISIBLE);
                     other.setVisibility(View.VISIBLE);
                     flag=false;
+                    elementStr="";
+
 
                 }else if(i==asaslist.size()-1){
                     showAlertDialog();
@@ -222,6 +233,8 @@ public class Choose_Element extends AppCompatActivity {
                     other.setVisibility(View.GONE);
                     flag=true;
                     editor.commit();
+                    elementStr = asas.getItemAtPosition(i).toString();
+
                 }
             }
 
@@ -266,6 +279,8 @@ public class Choose_Element extends AppCompatActivity {
                     asas.setVisibility(View.VISIBLE);
                     other.setVisibility(View.VISIBLE);
                     flag=false;
+                    elementStr="";
+
 
                 }else if(i==buldinglist.size()-1){
                     showAlertDialog();
@@ -276,6 +291,8 @@ public class Choose_Element extends AppCompatActivity {
                     other.setVisibility(View.GONE);
                     flag=true;
                     editor.commit();
+                    elementStr = building.getItemAtPosition(i).toString();
+
                 }
             }
 
@@ -336,17 +353,18 @@ public class Choose_Element extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(Choose_Element.this);
         final EditText editText = new EditText(Choose_Element.this);
         builder.setView(editText);
-//        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialogInterface, int i) {
-//
-//                editor.putString("thing_type_elment", editText.getText().toString());
-//                editor.commit();
-//                flag = true;
-//                dialogInterface.dismiss();
-//            }
-//        });
-//
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+                editor.putString("thing_type_elment", editText.getText().toString());
+                editor.commit();
+                flag = true;
+                elementStr= editText.getText().toString(); //notice
+                dialogInterface.dismiss();
+            }
+        });
+
 //        builder.setNegativeButton(R.string.cancle, new DialogInterface.OnClickListener() {
 //            @Override
 //            public void onClick(DialogInterface dialogInterface, int i) {
@@ -354,8 +372,8 @@ public class Choose_Element extends AppCompatActivity {
 //                dialogInterface.dismiss();
 //            }
 //        });
-
         builder.show();
+
         if (editText.getText().toString().isEmpty()){
             flag=false;
         }

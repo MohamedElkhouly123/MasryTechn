@@ -45,6 +45,10 @@ public class Choose_Place_Inside_City extends AppCompatActivity {
     ArrayList<String>citylistAaser11=new ArrayList<>();
     ArrayList<String>citylistgasan12=new ArrayList<>();
     ArrayList<String>citylistNagran13=new ArrayList<>();
+    String country="";
+    String region="";
+    String city="";
+    AddNaglaModel request = new AddNaglaModel();
 
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
@@ -245,6 +249,11 @@ public class Choose_Place_Inside_City extends AppCompatActivity {
         citylistNagran13.add("خباش");
         citylistNagran13.add("الخرخير");
 
+        request.setCountry(country);
+        request.setRegion(region);
+        request.setFromCity(city);
+
+
         initView();
         action();
 
@@ -318,7 +327,7 @@ public class Choose_Place_Inside_City extends AppCompatActivity {
                     editor.putString("thing_type_elment"," اختر الدوله "+spinnerCountry.getSelectedItem().toString());
                     editor.commit();
                     spinnerRegion.setVisibility(View.VISIBLE);
-
+                    country = spinnerCountry.getItemAtPosition(i).toString();
                     flag=true;
                 }
             }
@@ -368,92 +377,119 @@ public class Choose_Place_Inside_City extends AppCompatActivity {
                 spinnerCity.setVisibility(View.VISIBLE);
                 flag=true;
                 editor.commit();
+                    region = spinnerRegion.getItemAtPosition(i).toString();
 
-            }else if(i==2){
+
+                }else if(i==2){
                 addCity(citylistHodod2);
                 editor.putString("thing_type_elment"," أثاث "+spinnerRegion.getSelectedItem().toString());
                 spinnerCity.setVisibility(View.VISIBLE);
                 flag=true;
                 editor.commit();
+                    region = spinnerRegion.getItemAtPosition(i).toString();
 
-            }else if(i==3){
+
+                }else if(i==3){
                 addCity(citylistTabok3);
                 editor.putString("thing_type_elment"," أثاث "+spinnerRegion.getSelectedItem().toString());
                 spinnerCity.setVisibility(View.VISIBLE);
                 flag=true;
                 editor.commit();
+                    region = spinnerRegion.getItemAtPosition(i).toString();
 
-            }else if(i==4){
+
+                }else if(i==4){
                 addCity(citylistHaal4);
                 editor.putString("thing_type_elment"," أثاث "+spinnerRegion.getSelectedItem().toString());
                 spinnerCity.setVisibility(View.VISIBLE);
                 flag=true;
                 editor.commit();
+                    region = spinnerRegion.getItemAtPosition(i).toString();
 
-            }else if(i==5){
+
+                }else if(i==5){
                 addCity(citylistMonawara5);
                 editor.putString("thing_type_elment"," أثاث "+spinnerRegion.getSelectedItem().toString());
                 spinnerCity.setVisibility(View.VISIBLE);
                 flag=true;
                 editor.commit();
+                    region = spinnerRegion.getItemAtPosition(i).toString();
 
-            }else if(i==6){
+
+                }else if(i==6){
                 addCity(citylistKaseem6);
                 editor.putString("thing_type_elment"," أثاث "+spinnerRegion.getSelectedItem().toString());
                 spinnerCity.setVisibility(View.VISIBLE);
                 flag=true;
                 editor.commit();
+                    region = spinnerRegion.getItemAtPosition(i).toString();
 
-            }else if(i==7){
+
+                }else if(i==7){
                 addCity(citylistMaka7);
                 editor.putString("thing_type_elment"," أثاث "+spinnerRegion.getSelectedItem().toString());
                 spinnerCity.setVisibility(View.VISIBLE);
                 flag=true;
                 editor.commit();
+                    region = spinnerRegion.getItemAtPosition(i).toString();
 
-            }else if(i==8){
+
+                }else if(i==8){
                 addCity(citylistRead8);
                 editor.putString("thing_type_elment"," أثاث "+spinnerRegion.getSelectedItem().toString());
                 spinnerCity.setVisibility(View.VISIBLE);
                 flag=true;
                 editor.commit();
+                    region = spinnerRegion.getItemAtPosition(i).toString();
 
-            }else if(i==9){
+
+                }else if(i==9){
                 addCity(citylistSharkia9);
                 editor.putString("thing_type_elment"," أثاث "+spinnerRegion.getSelectedItem().toString());
                 spinnerCity.setVisibility(View.VISIBLE);
                 flag=true;
                 editor.commit();
+                    region = spinnerRegion.getItemAtPosition(i).toString();
 
-            }else if(i==10){
+
+                }else if(i==10){
                 addCity(citylistBaha10);
                 editor.putString("thing_type_elment"," أثاث "+spinnerRegion.getSelectedItem().toString());
                 spinnerCity.setVisibility(View.VISIBLE);
                 flag=true;
                 editor.commit();
+                    region = spinnerRegion.getItemAtPosition(i).toString();
 
-            }else if(i==11){
+
+                }else if(i==11){
                 addCity(citylistAaser11);
                 editor.putString("thing_type_elment"," أثاث "+spinnerRegion.getSelectedItem().toString());
                 spinnerCity.setVisibility(View.VISIBLE);
                 flag=true;
                 editor.commit();
+                region = spinnerRegion.getItemAtPosition(i).toString();
 
-            }else if(i==12){
+
+                }else if(i==12){
                 addCity(citylistgasan12);
                 editor.putString("thing_type_elment"," أثاث "+spinnerRegion.getSelectedItem().toString());
                 spinnerCity.setVisibility(View.VISIBLE);
                 flag=true;
                 editor.commit();
+                region = spinnerRegion.getItemAtPosition(i).toString();
 
-            }else if(i==13){
+
+                }else if(i==13){
                 addCity(citylistNagran13);
                 editor.putString("thing_type_elment"," أثاث "+spinnerRegion.getSelectedItem().toString());
                 spinnerCity.setVisibility(View.VISIBLE);
                 flag=true;
                 editor.commit();
+                region = spinnerRegion.getItemAtPosition(i).toString();
 
             }
+
+
             }
 
             @Override
@@ -505,6 +541,7 @@ public class Choose_Place_Inside_City extends AppCompatActivity {
 //                    showAlertDialog();
                 }else {
                     editor.putString("thing_type_elment"," مواد بناء "+spinnerCity.getSelectedItem().toString());
+                    city = spinnerCity.getItemAtPosition(i).toString();
 
                     flag=true;
                     editor.commit();

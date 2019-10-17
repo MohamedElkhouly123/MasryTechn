@@ -12,6 +12,8 @@ import butterknife.OnClick;
 
 public class Nagla_Location extends AppCompatActivity {
 
+    AddNaglaModel request = new AddNaglaModel();
+    String whereNaglah="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,13 +24,16 @@ public class Nagla_Location extends AppCompatActivity {
     @OnClick(R.id.insideCity)
     void inside_City(){
         startActivity(new Intent(this, Choose_Place_Inside_City.class));
-
+        whereNaglah="inside";
+        request.setWhereNagla(whereNaglah);
 
     }
     @OnClick(R.id.outsideCity)
     void outside_City(){
         startActivity(new Intent(this, Choose_Place_Outside_City.class));
 
+        whereNaglah="outside";
+        request.setWhereNagla(whereNaglah);
 
     }
 }
