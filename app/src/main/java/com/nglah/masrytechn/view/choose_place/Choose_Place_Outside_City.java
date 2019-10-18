@@ -1,11 +1,5 @@
 package com.nglah.masrytechn.view.choose_place;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -14,10 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.nglah.masrytechn.R;
 
@@ -27,35 +25,35 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class Choose_Place_Outside_City extends AppCompatActivity {
-    private Spinner spinnerCountry, spinnerRegion, spinnerCity ,choose_City;
+    private Spinner spinnerCountry, spinnerRegion, spinnerCity, choose_City;
     private Toolbar toolbar;
     private ImageView imgBackRecent;
-    private ArrayAdapter<String> adapterCountry,adapterRegion,adapterCity,adapterChooseCity;
-    ArrayList<String> countryList=new ArrayList<>();
-    ArrayList<String>regionList=new ArrayList<>();
-    ArrayList<String>citylistSekaka1=new ArrayList<>();
-    ArrayList<String>citylistHodod2=new ArrayList<>();
-    ArrayList<String>citylistTabok3=new ArrayList<>();
-    ArrayList<String>citylistHaal4=new ArrayList<>();
-    ArrayList<String>citylistMonawara5=new ArrayList<>();
-    ArrayList<String>citylistKaseem6=new ArrayList<>();
-    ArrayList<String>citylistMaka7=new ArrayList<>();
-    ArrayList<String>citylistRead8=new ArrayList<>();
-    ArrayList<String>citylistSharkia9=new ArrayList<>();
-    ArrayList<String>citylistBaha10=new ArrayList<>();
-    ArrayList<String>citylistAaser11=new ArrayList<>();
-    ArrayList<String>citylistgasan12=new ArrayList<>();
-    ArrayList<String>citylistNagran13=new ArrayList<>();
+    private ArrayAdapter<String> adapterCountry, adapterRegion, adapterCity, adapterChooseCity;
+    ArrayList<String> countryList = new ArrayList<>();
+    ArrayList<String> regionList = new ArrayList<>();
+    ArrayList<String> citylistSekaka1 = new ArrayList<>();
+    ArrayList<String> citylistHodod2 = new ArrayList<>();
+    ArrayList<String> citylistTabok3 = new ArrayList<>();
+    ArrayList<String> citylistHaal4 = new ArrayList<>();
+    ArrayList<String> citylistMonawara5 = new ArrayList<>();
+    ArrayList<String> citylistKaseem6 = new ArrayList<>();
+    ArrayList<String> citylistMaka7 = new ArrayList<>();
+    ArrayList<String> citylistRead8 = new ArrayList<>();
+    ArrayList<String> citylistSharkia9 = new ArrayList<>();
+    ArrayList<String> citylistBaha10 = new ArrayList<>();
+    ArrayList<String> citylistAaser11 = new ArrayList<>();
+    ArrayList<String> citylistgasan12 = new ArrayList<>();
+    ArrayList<String> citylistNagran13 = new ArrayList<>();
 
-    ArrayList<String>chooseCitylist=new ArrayList<>();
+    ArrayList<String> chooseCitylist = new ArrayList<>();
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
-    boolean flag=false;
-    String country="";
-    String region="";
-    String fromCity="";
-    String toCity="";
-    AddNaglaModel request = new AddNaglaModel();
+    boolean flag = false;
+    String country = "";
+    String region = "";
+    String fromCity = "";
+    String toCity = "";
+    AddNaglaModel request ;
 
 
     @Override
@@ -63,8 +61,12 @@ public class Choose_Place_Outside_City extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose__place__outside__city);
         ButterKnife.bind(this);
-        sharedPreferences=getSharedPreferences("inside_City_File",MODE_PRIVATE);
-        editor=sharedPreferences.edit();
+
+
+        request= (AddNaglaModel) getIntent().getSerializableExtra("request");
+
+        sharedPreferences = getSharedPreferences("inside_City_File", MODE_PRIVATE);
+        editor = sharedPreferences.edit();
         countryList.add("- اختر الدوله -");
         countryList.add("السعوديه");
         regionList.add("- اختر المنطقه -");
@@ -421,16 +423,14 @@ public class Choose_Place_Outside_City extends AppCompatActivity {
         action();
 
     }
+
     @OnClick(R.id.btn_next)
-    void next(){
-
-        if (flag==false){
-
-//            Toast.makeText(this, getString(R.string.enter_item), Toast.LENGTH_SHORT).show();
-        }else {
-            startActivity(new Intent(this, Choose_Element.class));
-        }
+    void next() {
+        Intent intent = new Intent(this, Choose_Element.class);
+        intent.putExtra("request", request);
+        startActivity(intent);
     }
+
 
     private void initView() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -442,7 +442,7 @@ public class Choose_Place_Outside_City extends AppCompatActivity {
     }
 
 
-    private void action(){
+    private void action() {
 
         imgBackRecent.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -464,6 +464,7 @@ public class Choose_Place_Outside_City extends AppCompatActivity {
 
                 return view;
             }
+
             @Override
             public View getDropDownView(int position, View convertView, ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
@@ -481,20 +482,20 @@ public class Choose_Place_Outside_City extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-                if (i==0){
+                if (i == 0) {
                     spinnerRegion.setVisibility(View.GONE);
                     spinnerCity.setVisibility(View.GONE);
                     choose_City.setVisibility(View.GONE);
-                    flag=false;
+                    flag = false;
 
 //                }else if(i==carlist.size()-1){
 //                    showAlertDialog();
                 } else {
-                    editor.putString("thing_type_elment"," سيارات "+spinnerCountry.getSelectedItem().toString());
+                    editor.putString("thing_type_elment", " سيارات " + spinnerCountry.getSelectedItem().toString());
                     editor.commit();
                     spinnerRegion.setVisibility(View.VISIBLE);
 
-                    flag=true;
+                    flag = true;
                 }
             }
 
@@ -516,6 +517,7 @@ public class Choose_Place_Outside_City extends AppCompatActivity {
                 tv.setTextColor(Color.parseColor("#037D8D"));
                 return view;
             }
+
             @Override
             public View getDropDownView(int position, View convertView, ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
@@ -533,124 +535,124 @@ public class Choose_Place_Outside_City extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-                if (i==0){
+                if (i == 0) {
                     spinnerCity.setVisibility(View.GONE);
                     choose_City.setVisibility(View.GONE);
-                    flag=false;
+                    flag = false;
 
-                }else if(i==1){
+                } else if (i == 1) {
                     addCity(citylistSekaka1);
-                    editor.putString("thing_type_elment"," أثاث "+spinnerRegion.getSelectedItem().toString());
+                    editor.putString("thing_type_elment", " أثاث " + spinnerRegion.getSelectedItem().toString());
                     spinnerCity.setVisibility(View.VISIBLE);
-                    flag=true;
+                    flag = true;
                     editor.commit();
                     region = spinnerRegion.getItemAtPosition(i).toString();
 
 
-                }else if(i==2){
+                } else if (i == 2) {
                     addCity(citylistHodod2);
-                    editor.putString("thing_type_elment"," أثاث "+spinnerRegion.getSelectedItem().toString());
+                    editor.putString("thing_type_elment", " أثاث " + spinnerRegion.getSelectedItem().toString());
                     spinnerCity.setVisibility(View.VISIBLE);
-                    flag=true;
+                    flag = true;
                     editor.commit();
                     region = spinnerRegion.getItemAtPosition(i).toString();
 
 
-                }else if(i==3){
+                } else if (i == 3) {
                     addCity(citylistTabok3);
-                    editor.putString("thing_type_elment"," أثاث "+spinnerRegion.getSelectedItem().toString());
+                    editor.putString("thing_type_elment", " أثاث " + spinnerRegion.getSelectedItem().toString());
                     spinnerCity.setVisibility(View.VISIBLE);
-                    flag=true;
+                    flag = true;
                     editor.commit();
                     region = spinnerRegion.getItemAtPosition(i).toString();
 
 
-                }else if(i==4){
+                } else if (i == 4) {
                     addCity(citylistHaal4);
-                    editor.putString("thing_type_elment"," أثاث "+spinnerRegion.getSelectedItem().toString());
+                    editor.putString("thing_type_elment", " أثاث " + spinnerRegion.getSelectedItem().toString());
                     spinnerCity.setVisibility(View.VISIBLE);
-                    flag=true;
+                    flag = true;
                     editor.commit();
                     region = spinnerRegion.getItemAtPosition(i).toString();
 
 
-                }else if(i==5){
+                } else if (i == 5) {
                     addCity(citylistMonawara5);
-                    editor.putString("thing_type_elment"," أثاث "+spinnerRegion.getSelectedItem().toString());
+                    editor.putString("thing_type_elment", " أثاث " + spinnerRegion.getSelectedItem().toString());
                     spinnerCity.setVisibility(View.VISIBLE);
-                    flag=true;
+                    flag = true;
                     editor.commit();
                     region = spinnerRegion.getItemAtPosition(i).toString();
 
 
-                }else if(i==6){
+                } else if (i == 6) {
                     addCity(citylistKaseem6);
-                    editor.putString("thing_type_elment"," أثاث "+spinnerRegion.getSelectedItem().toString());
+                    editor.putString("thing_type_elment", " أثاث " + spinnerRegion.getSelectedItem().toString());
                     spinnerCity.setVisibility(View.VISIBLE);
-                    flag=true;
+                    flag = true;
                     editor.commit();
                     region = spinnerRegion.getItemAtPosition(i).toString();
 
 
-                }else if(i==7){
+                } else if (i == 7) {
                     addCity(citylistMaka7);
-                    editor.putString("thing_type_elment"," أثاث "+spinnerRegion.getSelectedItem().toString());
+                    editor.putString("thing_type_elment", " أثاث " + spinnerRegion.getSelectedItem().toString());
                     spinnerCity.setVisibility(View.VISIBLE);
-                    flag=true;
+                    flag = true;
                     editor.commit();
                     region = spinnerRegion.getItemAtPosition(i).toString();
 
 
-                }else if(i==8){
+                } else if (i == 8) {
                     addCity(citylistRead8);
-                    editor.putString("thing_type_elment"," أثاث "+spinnerRegion.getSelectedItem().toString());
+                    editor.putString("thing_type_elment", " أثاث " + spinnerRegion.getSelectedItem().toString());
                     spinnerCity.setVisibility(View.VISIBLE);
-                    flag=true;
+                    flag = true;
                     editor.commit();
                     region = spinnerRegion.getItemAtPosition(i).toString();
 
 
-                }else if(i==9){
+                } else if (i == 9) {
                     addCity(citylistSharkia9);
-                    editor.putString("thing_type_elment"," أثاث "+spinnerRegion.getSelectedItem().toString());
+                    editor.putString("thing_type_elment", " أثاث " + spinnerRegion.getSelectedItem().toString());
                     spinnerCity.setVisibility(View.VISIBLE);
-                    flag=true;
+                    flag = true;
                     editor.commit();
                     region = spinnerRegion.getItemAtPosition(i).toString();
 
 
-                }else if(i==10){
+                } else if (i == 10) {
                     addCity(citylistBaha10);
-                    editor.putString("thing_type_elment"," أثاث "+spinnerRegion.getSelectedItem().toString());
+                    editor.putString("thing_type_elment", " أثاث " + spinnerRegion.getSelectedItem().toString());
                     spinnerCity.setVisibility(View.VISIBLE);
-                    flag=true;
+                    flag = true;
                     editor.commit();
                     region = spinnerRegion.getItemAtPosition(i).toString();
 
 
-                }else if(i==11){
+                } else if (i == 11) {
                     addCity(citylistAaser11);
-                    editor.putString("thing_type_elment"," أثاث "+spinnerRegion.getSelectedItem().toString());
+                    editor.putString("thing_type_elment", " أثاث " + spinnerRegion.getSelectedItem().toString());
                     spinnerCity.setVisibility(View.VISIBLE);
-                    flag=true;
+                    flag = true;
                     editor.commit();
                     region = spinnerRegion.getItemAtPosition(i).toString();
 
 
-                }else if(i==12){
+                } else if (i == 12) {
                     addCity(citylistgasan12);
-                    editor.putString("thing_type_elment"," أثاث "+spinnerRegion.getSelectedItem().toString());
+                    editor.putString("thing_type_elment", " أثاث " + spinnerRegion.getSelectedItem().toString());
                     spinnerCity.setVisibility(View.VISIBLE);
-                    flag=true;
+                    flag = true;
                     editor.commit();
                     region = spinnerRegion.getItemAtPosition(i).toString();
 
 
-                }else if(i==13){
+                } else if (i == 13) {
                     addCity(citylistNagran13);
-                    editor.putString("thing_type_elment"," أثاث "+spinnerRegion.getSelectedItem().toString());
+                    editor.putString("thing_type_elment", " أثاث " + spinnerRegion.getSelectedItem().toString());
                     spinnerCity.setVisibility(View.VISIBLE);
-                    flag=true;
+                    flag = true;
                     editor.commit();
                     region = spinnerRegion.getItemAtPosition(i).toString();
 
@@ -665,8 +667,6 @@ public class Choose_Place_Outside_City extends AppCompatActivity {
         });
 
 
-
-
         adapterChooseCity = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, chooseCitylist) {
 
@@ -678,6 +678,7 @@ public class Choose_Place_Outside_City extends AppCompatActivity {
                 tv.setTextColor(Color.parseColor("#037D8D"));
                 return view;
             }
+
             @Override
             public View getDropDownView(int position, View convertView, ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
@@ -699,8 +700,7 @@ public class Choose_Place_Outside_City extends AppCompatActivity {
                 if (i == 0) {
 
 //                    showAlertDialog();
-                }
-                else {
+                } else {
                     toCity = choose_City.getItemAtPosition(i).toString();
 
                 }
@@ -715,7 +715,7 @@ public class Choose_Place_Outside_City extends AppCompatActivity {
 
     }
 
-    public void addCity (ArrayList<String> citylist){
+    public void addCity(ArrayList<String> citylist) {
         adapterCity = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, citylist) {
 
@@ -727,6 +727,7 @@ public class Choose_Place_Outside_City extends AppCompatActivity {
                 tv.setTextColor(Color.parseColor("#037D8D"));
                 return view;
             }
+
             @Override
             public View getDropDownView(int position, View convertView, ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
@@ -744,19 +745,19 @@ public class Choose_Place_Outside_City extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-                if (i==0){
+                if (i == 0) {
 
                     choose_City.setVisibility(View.GONE);
-                    flag=false;
+                    flag = false;
 
 //                }else if(i==citylist.size()-1){
 //                    showAlertDialog();
-                }else {
-                    editor.putString("thing_type_elment"," مواد بناء "+spinnerCity.getSelectedItem().toString());
+                } else {
+                    editor.putString("thing_type_elment", " مواد بناء " + spinnerCity.getSelectedItem().toString());
                     choose_City.setVisibility(View.VISIBLE);
                     fromCity = spinnerCity.getItemAtPosition(i).toString();
 
-                    flag=true;
+                    flag = true;
                     editor.commit();
                 }
             }

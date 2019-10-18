@@ -3,73 +3,69 @@ package com.nglah.masrytechn.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Driver{
+public class Driver {
 
-        @SerializedName("driver_national_id")
+    private String driverId;
 
-        @Expose
+    @SerializedName("first_name")
+    @Expose
+    private String firstName;
 
-        private String driverId;
+    @SerializedName("last_name")
+    @Expose
+    private String lastName;
 
-        @SerializedName("first_name")
-        @Expose
-        private String firstName;
+    @SerializedName("phone")
+    @Expose
+    private String phone;
 
-        @SerializedName("last_name")
-        @Expose
-        private String lastName;
+    @SerializedName("email")
+    @Expose
+    private String email;
 
-        @SerializedName("phone")
-        @Expose
-        private String phone;
+    @SerializedName("rate")
+    @Expose
+    private String rate;
 
-        @SerializedName("email")
-        @Expose
-        private String email;
-
-        @SerializedName("rate")
-        @Expose
-        private String rate;
-
-        @SerializedName("nglah_price")
-        @Expose
-        private String price;
+    @SerializedName("nglah_price")
+    @Expose
+    private String price;
 
 
-        public Driver(String driverId, String firstName, String lastName, String email) {
-            this.driverId = driverId;
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.email = email;
-        }
+    public Driver(String driverId, String firstName, String lastName, String email) {
+        this.driverId = driverId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
 
 
-        public String getDriverId() {
-            return driverId;
-        }
+    public String getDriverId() {
+        return driverId;
+    }
 
-        public String getFirstName() {
-            return firstName;
-        }
+    public String getFirstName() {
+        return firstName;
+    }
 
-        public String getLastName() {
-            return lastName;
-        }
+    public String getLastName() {
+        return lastName;
+    }
 
-        public String getPhone() {
-            return phone;
-        }
+    public String getPhone() {
+        return phone;
+    }
 
-        public String getEmail() {
-            return email;
-        }
+    public String getEmail() {
+        return email;
+    }
 
-        public String getRate() {
-            return rate;
-        }
+    public String getRate() {
+        return rate;
+    }
 
-        public String getPrice() {
-            return price;
-        }
+    public String getPrice() {
+        return price;
+    }
 }
 

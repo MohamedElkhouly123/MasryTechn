@@ -1,13 +1,11 @@
 package com.nglah.masrytechn.repository;
 
-import com.nglah.masrytechn.network.networkModel.request.User.RegisterRequest;
-import com.nglah.masrytechn.network.networkModel.request.naglaha.AllDriverRequest;
-import com.nglah.masrytechn.network.networkModel.request.naglaha.UserRequestNaqlahRequest;
+import com.nglah.masrytechn.network.networkModel.request.Payment.PaymentRequest;
+import com.nglah.masrytechn.network.networkModel.request.naglaha.AddNaqlaRequest;
 import com.nglah.masrytechn.network.networkModel.response.Naglaha.AllDriverResponse;
-import com.nglah.masrytechn.network.networkModel.response.Naglaha.UserRequestNaqlahResponse;
-import com.nglah.masrytechn.network.networkModel.response.User.RegisterResponse;
+import com.nglah.masrytechn.network.networkModel.response.Naglaha.AddNaqlahaResponse;
+import com.nglah.masrytechn.network.networkModel.response.Payment.PaymentResponse;
 import com.nglah.masrytechn.network.webservices.NaglahaWebServices;
-import com.nglah.masrytechn.network.webservices.WebServicesUSer;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
@@ -31,7 +29,9 @@ public class NaglahRepository {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
-        String BASE_URL = "https://pwalgs.com/nglah2/Users/";
+//        String BASE_URL = "https://pwalgs.com/nglah2/Users/";
+        String BASE_URL = "http://pym.pwalgs.com/api/";
+
         Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL).client(client).addConverterFactory(GsonConverterFactory.create()).addCallAdapterFactory(RxJava2CallAdapterFactory.create()).build();
         naglahaWebServices = retrofit.create(NaglahaWebServices.class);
     }
@@ -46,25 +46,25 @@ public class NaglahRepository {
         return NaglahRepository.Loader.INSTANCE;
     }
 
-    public Observable<UserRequestNaqlahResponse> addNaglahaRepository(final UserRequestNaqlahRequest request) {
-        return Observable.create(new ObservableOnSubscribe<UserRequestNaqlahResponse>() {
+    public Observable<AddNaqlahaResponse> addNaglahaRepository(final AddNaqlaRequest request) {
+        return Observable.create(new ObservableOnSubscribe<AddNaqlahaResponse>() {
             @Override
-            public void subscribe(final ObservableEmitter<UserRequestNaqlahResponse> emitter) {
+            public void subscribe(final ObservableEmitter<AddNaqlahaResponse> emitter) {
                 naglahaWebServices.addNaglaha(request).subscribeOn(Schedulers.io()).
-                        observeOn(Schedulers.io()).subscribe(new Observer<UserRequestNaqlahRequest>() {
+                        observeOn(Schedulers.io()).subscribe(new Observer<AddNaqlaRequest>() {
                     @Override
                     public void onSubscribe(Disposable d) {
 
                     }
 
                     @Override
-                    public void onNext(UserRequestNaqlahRequest requestNaqlahRequest) {
+                    public void onNext(AddNaqlaRequest requestNaqlahRequest) {
 
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        UserRequestNaqlahResponse response = new UserRequestNaqlahResponse();
+                        AddNaqlahaResponse response = new AddNaqlahaResponse();
 //                        response.setStatus(false);
 //                        response.setMessage(e.toString());
                         emitter.onNext(response);
@@ -80,11 +80,11 @@ public class NaglahRepository {
 
 }
 
-    public Observable<AllDriverResponse> allDriverRepository(final AllDriverRequest request) {
+    public Observable<AllDriverResponse> allDriverRepository() {
         return Observable.create(new ObservableOnSubscribe<AllDriverResponse>() {
             @Override
             public void subscribe(final ObservableEmitter<AllDriverResponse> emitter) {
-                naglahaWebServices.getAllDriver(request).subscribeOn(Schedulers.io()).
+                naglahaWebServices.getAllDriver().subscribeOn(Schedulers.io()).
                         observeOn(Schedulers.io()).subscribe(new Observer<AllDriverResponse>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -92,15 +92,16 @@ public class NaglahRepository {
                     }
 
                     @Override
-                    public void onNext(AllDriverResponse requestNaqlahRequest) {
+                    public void onNext(AllDriverResponse response) {
 
+                        emitter.onNext(response);
                     }
 
                     @Override
                     public void onError(Throwable e) {
                         AllDriverResponse response = new AllDriverResponse();
-//                        response.setStatus(false);
-//                        response.setMessage(e.toString());
+                        response.setStatus(false);
+                        response.setMessage(e.toString());
                         emitter.onNext(response);
                     }
 
@@ -114,4 +115,31 @@ public class NaglahRepository {
 
     }
 
+    public Observable<PaymentResponse> paymentRepository(PaymentRequest request) {
+        return Observable.create(new ObservableOnSubscribe<PaymentResponse>() {
+            @Override
+            public void subscribe(final ObservableEmitter<PaymentResponse> emitter) {
+                naglahaWebServices.pay(request).subscribeOn(Schedulers.io()).
+                        observeOn(Schedulers.io()).subscribe(new Observer<PaymentResponse>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                    }
+                    @Override
+                    public void onNext(PaymentResponse response) {
+                        emitter.onNext(response);
+                    }
+                    @Override
+                    public void onError(Throwable e) {
+                        PaymentResponse response = new PaymentResponse();
+//                        response.setStatus(false);
+//                        response.setMessage(e.toString());
+                        emitter.onNext(response);
+                    }
+                    @Override
+                    public void onComplete() {
+                    }
+                });
+            }
+        });
+    }
 }

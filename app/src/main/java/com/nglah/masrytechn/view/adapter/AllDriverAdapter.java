@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.nglah.masrytechn.Listener;
 import com.nglah.masrytechn.R;
-import com.nglah.masrytechn.model.Driver;
+import com.nglah.masrytechn.network.networkModel.response.Naglaha.AllDriverResponse;
 
 import java.util.List;
 
@@ -20,11 +20,11 @@ import butterknife.ButterKnife;
 
 
 public class AllDriverAdapter extends RecyclerView.Adapter<AllDriverAdapter.ViewHolder> {
-    private List<Driver> listData;
+    private List<AllDriverResponse.Datum> listData;
     private Context context;
     private Listener listener;
 
-    public AllDriverAdapter(List<Driver> listData, Context context, Listener listener) {
+    public AllDriverAdapter(List<AllDriverResponse.Datum> listData, Context context, Listener listener) {
         this.listData = listData;
         this.context = context;
         this.listener = listener;
@@ -34,11 +34,16 @@ public class AllDriverAdapter extends RecyclerView.Adapter<AllDriverAdapter.View
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.noti_nglah_list_item, parent, false));
+        return new ViewHolder(LayoutInflater.from(context).
+                inflate(R.layout.noti_driver_list_item, parent, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
+
+        if (listData.get(position).getFname()!=null&&!listData.get(position).equals("")){
+            holder.name.setText(listData.get(position).getFname()+" "+listData.get(position).getLname());
+        }
 
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -56,14 +61,13 @@ public class AllDriverAdapter extends RecyclerView.Adapter<AllDriverAdapter.View
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.tv_nglah_name)
+        @BindView(R.id.tv_phone)
         TextView name;
-        @BindView(R.id.tv_thing_type)
-        TextView thingType;
-        @BindView(R.id.tv_nglah_type)
-        TextView naglahTtype;
-        @BindView(R.id.tv_details)
-        TextView detail;
+        @BindView(R.id.tv_rate)
+        TextView tv_rate;
+        @BindView(R.id.tv_price)
+        TextView tv_price;
+
 
         public ViewHolder(View itemView) {
             super(itemView);

@@ -95,6 +95,17 @@ public class UserModel implements Serializable {
     @SerializedName("password")
     @Expose
     private String password;
+    @SerializedName("IDnumber")
+    @Expose
+    private String idNumber;
+
+    public String getIdNumber() {
+        return idNumber;
+    }
+
+    public void setIdNumber(String idNumber) {
+        this.idNumber = idNumber;
+    }
 
 
     @Ignore

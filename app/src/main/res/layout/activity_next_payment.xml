@@ -93,6 +93,21 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
+            android:id="@+id/money"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_marginStart="@dimen/_25sdp"
+            android:layout_marginEnd="@dimen/_25sdp"
+            android:layout_marginRight="@dimen/_30sdp"
+            android:hint="@string/money"
+            android:fontFamily="@font/janna"
+            android:inputType="textAutoComplete"
+            android:textColorHint="#000"
+            android:textSize="@dimen/_14ssp"
+            android:textColor="#000"
+            />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
             android:id="@+id/card_number"
             android:layout_height="@dimen/_45sdp"
             android:layout_marginStart="@dimen/_25sdp"
@@ -163,7 +178,7 @@
             android:textColor="#000"
             />
         <Button
-            android:id="@+id/insideCity"
+            android:id="@+id/pay"
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_45sdp"

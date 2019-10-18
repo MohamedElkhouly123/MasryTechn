@@ -132,26 +132,23 @@
             android:orientation="horizontal">
 
             <ImageView
+                android:id="@+id/masterCard"
                 android:layout_width="120dp"
                 android:layout_height="80dp"
                 android:layout_marginLeft="@dimen/_8sdp"
                 android:layout_marginRight="@dimen/_8sdp"
                 android:src="@drawable/mastercard" />
-
-
             <ImageView
+                android:id="@+id/visa"
                 android:layout_width="100dp"
                 android:layout_height="90dp"
                 android:gravity="center"
                 android:src="@drawable/visa" />
-
-
             <ImageView
+                android:id="@+id/mada"
                 android:layout_width="100dp"
                 android:layout_height="80dp"
                 android:src="@drawable/mada" />
-
-
         </LinearLayout>
 
         <Button
@@ -169,11 +166,6 @@
             android:text="@string/recharge_card"
             android:textColor="@color/black"
             />
-
-
-
-
-
     </LinearLayout>
 
 </ScrollView>

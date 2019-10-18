@@ -63,7 +63,8 @@
             android:layout_marginRight="@dimen/_30sdp"
             android:hint="@string/forget_password"
             app:passwordToggleEnabled="true"
-            app:passwordToggleTint="#fff">
+            app:passwordToggleTint="#fff"
+            >
 
             <EditText
                 android:id="@+id/password"
@@ -71,7 +72,9 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPassword"
-                android:textColor="#fff" />
+                android:textColor="#fff"
+
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
         <RadioGroup
@@ -88,7 +91,7 @@
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Normal user"
+                android:text="Naqlah Owner"
                 />
             <RadioButton
                 android:id="@+id/rb_carOWner"

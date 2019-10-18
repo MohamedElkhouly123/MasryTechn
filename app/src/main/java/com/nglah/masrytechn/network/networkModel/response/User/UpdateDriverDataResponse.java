@@ -61,7 +61,17 @@ public class UpdateDriverDataResponse {
     @SerializedName("Token")
     @Expose
     private String token;
+    @SerializedName("IDnumber")
+    @Expose
+    private String idNumber;
 
+    public String getIdNumber() {
+        return idNumber;
+    }
+
+    public void setIdNumber(String idNumber) {
+        this.idNumber = idNumber;
+    }
     public Boolean getStatus() {
         return status;
     }

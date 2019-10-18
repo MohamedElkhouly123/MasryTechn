@@ -1,8 +1,9 @@
 package com.nglah.masrytechn.network.webservices;
 
-import com.nglah.masrytechn.network.networkModel.request.naglaha.AllDriverRequest;
-import com.nglah.masrytechn.network.networkModel.request.naglaha.UserRequestNaqlahRequest;
+import com.nglah.masrytechn.network.networkModel.request.Payment.PaymentRequest;
+import com.nglah.masrytechn.network.networkModel.request.naglaha.AddNaqlaRequest;
 import com.nglah.masrytechn.network.networkModel.response.Naglaha.AllDriverResponse;
+import com.nglah.masrytechn.network.networkModel.response.Payment.PaymentResponse;
 
 import io.reactivex.Observable;
 import retrofit2.http.Body;
@@ -13,10 +14,14 @@ public interface NaglahaWebServices {
 
     @POST("--")
     @Headers({"Content-Type: application/json"})
-    Observable<UserRequestNaqlahRequest> addNaglaha(@Body  UserRequestNaqlahRequest request);
+    Observable<AddNaqlaRequest> addNaglaha(@Body AddNaqlaRequest request);
+
+    @POST("GetDrivers.php")
+    @Headers({"Content-Type: application/json"})
+    Observable<AllDriverResponse> getAllDriver();
 
     @POST("--")
     @Headers({"Content-Type: application/json"})
-    Observable<AllDriverResponse> getAllDriver(@Body AllDriverRequest request);
+    Observable<PaymentResponse> pay(@Body PaymentRequest request);
 
 }

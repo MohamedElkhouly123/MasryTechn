@@ -1,11 +1,5 @@
 package com.nglah.masrytechn.view.choose_place;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -19,6 +13,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.nglah.masrytechn.R;
 import com.nglah.masrytechn.view.Choose_Nagla_Dat.Choose_Nagla_Date;
@@ -39,25 +39,28 @@ public class Choose_Element extends AppCompatActivity {
     private ArrayAdapter<String> adapterasas;
     private ArrayAdapter<String> adapterbulding;
     private ArrayAdapter<String> adapterother;
-    ArrayList<String> carlist=new ArrayList<>();
-    ArrayList<String>asaslist=new ArrayList<>();
-    ArrayList<String>buldinglist=new ArrayList<>();
-    ArrayList<String>otherlist=new ArrayList<>();
-    AddNaglaModel request = new AddNaglaModel();
-    String elementStr="";
+    ArrayList<String> carlist = new ArrayList<>();
+    ArrayList<String> asaslist = new ArrayList<>();
+    ArrayList<String> buldinglist = new ArrayList<>();
+    ArrayList<String> otherlist = new ArrayList<>();
+    AddNaglaModel request ;
+    String elementStr = "";
 
 
-
-    boolean flag=false;
+    boolean flag = false;
 
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose__element);
-        sharedPreferences=getSharedPreferences("nglah_file",MODE_PRIVATE);
-        editor=sharedPreferences.edit();
+
+        request= (AddNaglaModel) getIntent().getSerializableExtra("request");
+
+        sharedPreferences = getSharedPreferences("nglah_file", MODE_PRIVATE);
+        editor = sharedPreferences.edit();
         carlist.add("- اختر سياره -");
         carlist.add("Hatchback");
         carlist.add("Sedan");
@@ -87,30 +90,17 @@ public class Choose_Element extends AppCompatActivity {
     }
 
     @OnClick(R.id.btn_next)
-    void next(){
-        if (flag==false){
+    void next() {
 
-//            Toast.makeText(this, getString(R.string.enter_item), Toast.LENGTH_SHORT).show();
-        }else {
+        if (request!=null) {
             request.setElementType(elementStr);
-            startActivity(new Intent(this,Choose_Nagla_Date.class));
+            Intent intent = new Intent(this, Choose_Nagla_Date.class);
+            intent.putExtra("request", request);
+            startActivity(intent);
         }
-
-       // startActivity(new Intent(this, Choose_Nagla_Date.class));
-
-
     }
 
-//    public void Submit(View view) {
-//
-//        if (flag==false){
-//
-////            Toast.makeText(this, getString(R.string.enter_item), Toast.LENGTH_SHORT).show();
-//        }else {
-//            startActivity(new Intent(this,Choose_Element.class));
-//        }
-//
-//    }
+
 
     private void initView() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -121,7 +111,7 @@ public class Choose_Element extends AppCompatActivity {
         other = (Spinner) findViewById(R.id.other);
     }
 
-    private void action(){
+    private void action() {
 
         imgBackRecent.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,6 +133,7 @@ public class Choose_Element extends AppCompatActivity {
 
                 return view;
             }
+
             @Override
             public View getDropDownView(int position, View convertView, ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
@@ -160,24 +151,24 @@ public class Choose_Element extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-                if (i==0){
+                if (i == 0) {
                     asas.setVisibility(View.VISIBLE);
                     building.setVisibility(View.VISIBLE);
                     other.setVisibility(View.VISIBLE);
-                    flag=false;
-                    elementStr="";
+                    flag = false;
+                    elementStr = "";
 
-                }else if(i==carlist.size()-1){
+                } else if (i == carlist.size() - 1) {
                     showAlertDialog();
                 } else {
-                    editor.putString("thing_type_elment"," سيارات "+car.getSelectedItem().toString());
+                    editor.putString("thing_type_elment", " سيارات " + car.getSelectedItem().toString());
                     editor.commit();
                     elementStr = car.getItemAtPosition(i).toString();
 
                     asas.setVisibility(View.GONE);
                     building.setVisibility(View.GONE);
                     other.setVisibility(View.GONE);
-                    flag=true;
+                    flag = true;
                 }
             }
 
@@ -199,6 +190,7 @@ public class Choose_Element extends AppCompatActivity {
                 tv.setTextColor(Color.parseColor("#037D8D"));
                 return view;
             }
+
             @Override
             public View getDropDownView(int position, View convertView, ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
@@ -216,22 +208,22 @@ public class Choose_Element extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-                if (i==0){
+                if (i == 0) {
                     car.setVisibility(View.VISIBLE);
                     building.setVisibility(View.VISIBLE);
                     other.setVisibility(View.VISIBLE);
-                    flag=false;
-                    elementStr="";
+                    flag = false;
+                    elementStr = "";
 
 
-                }else if(i==asaslist.size()-1){
+                } else if (i == asaslist.size() - 1) {
                     showAlertDialog();
-                }else {
-                    editor.putString("thing_type_elment"," أثاث "+asas.getSelectedItem().toString());
+                } else {
+                    editor.putString("thing_type_elment", " أثاث " + asas.getSelectedItem().toString());
                     car.setVisibility(View.GONE);
                     building.setVisibility(View.GONE);
                     other.setVisibility(View.GONE);
-                    flag=true;
+                    flag = true;
                     editor.commit();
                     elementStr = asas.getItemAtPosition(i).toString();
 
@@ -245,7 +237,6 @@ public class Choose_Element extends AppCompatActivity {
         });
 
 
-
         adapterbulding = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, buldinglist) {
 
@@ -257,6 +248,7 @@ public class Choose_Element extends AppCompatActivity {
                 tv.setTextColor(Color.parseColor("#037D8D"));
                 return view;
             }
+
             @Override
             public View getDropDownView(int position, View convertView, ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
@@ -274,22 +266,22 @@ public class Choose_Element extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-                if (i==0){
+                if (i == 0) {
                     car.setVisibility(View.VISIBLE);
                     asas.setVisibility(View.VISIBLE);
                     other.setVisibility(View.VISIBLE);
-                    flag=false;
-                    elementStr="";
+                    flag = false;
+                    elementStr = "";
 
 
-                }else if(i==buldinglist.size()-1){
+                } else if (i == buldinglist.size() - 1) {
                     showAlertDialog();
-                }else {
-                    editor.putString("thing_type_elment"," مواد بناء "+building.getSelectedItem().toString());
+                } else {
+                    editor.putString("thing_type_elment", " مواد بناء " + building.getSelectedItem().toString());
                     car.setVisibility(View.GONE);
                     asas.setVisibility(View.GONE);
                     other.setVisibility(View.GONE);
-                    flag=true;
+                    flag = true;
                     editor.commit();
                     elementStr = building.getItemAtPosition(i).toString();
 
@@ -314,6 +306,7 @@ public class Choose_Element extends AppCompatActivity {
                 tv.setTextColor(Color.parseColor("#037D8D"));
                 return view;
             }
+
             @Override
             public View getDropDownView(int position, View convertView, ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
@@ -348,7 +341,7 @@ public class Choose_Element extends AppCompatActivity {
     }
 
 
-    private void showAlertDialog(){
+    private void showAlertDialog() {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(Choose_Element.this);
         final EditText editText = new EditText(Choose_Element.this);
@@ -360,7 +353,7 @@ public class Choose_Element extends AppCompatActivity {
                 editor.putString("thing_type_elment", editText.getText().toString());
                 editor.commit();
                 flag = true;
-                elementStr= editText.getText().toString(); //notice
+                elementStr = editText.getText().toString(); //notice
                 dialogInterface.dismiss();
             }
         });
@@ -374,8 +367,8 @@ public class Choose_Element extends AppCompatActivity {
 //        });
         builder.show();
 
-        if (editText.getText().toString().isEmpty()){
-            flag=false;
+        if (editText.getText().toString().isEmpty()) {
+            flag = false;
         }
 
     }

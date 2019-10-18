@@ -55,6 +55,17 @@ public class RegisterCarOwnerRequest implements Serializable {
     @SerializedName("LicenseNum")
     @Expose
     private String licenseNum;
+    @SerializedName("IDnumber")
+    @Expose
+    private String idNumber;
+
+    public String getIdNumber() {
+        return idNumber;
+    }
+
+    public void setIdNumber(String idNumber) {
+        this.idNumber = idNumber;
+    }
 
     public String getCarType() {
         return carType;

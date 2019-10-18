@@ -60,7 +60,7 @@
         android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_allDriver_allBranches"
+            android:id="@+id/rv_allDriver"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -105,7 +105,7 @@
                 android:background="@android:color/white"
                 android:tint="@color/black"
                 android:layout_height="@dimen/_25sdp"
-                android:src="@drawable/ic_refresh_button"
+                android:src="@drawable/ic_refresh"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>

@@ -8,13 +8,17 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.nglah.masrytechn.Firebase.FireBaseToken;
 import com.nglah.masrytechn.R;
-import com.nglah.masrytechn.network.networkModel.response.Naglaha.UserRequestNaqlahResponse;
+import com.nglah.masrytechn.network.networkModel.request.naglaha.AddNaqlaRequest;
+import com.nglah.masrytechn.network.networkModel.response.Naglaha.AddNaqlahaResponse;
+import com.nglah.masrytechn.view.Utils.Dialog.Views;
 import com.nglah.masrytechn.view.choose_place.AddNaglaModel;
 import com.nglah.masrytechn.view.main.MainActivity_User;
 import com.nglah.masrytechn.viewModel.ViewModelNaglaha;
@@ -26,25 +30,33 @@ import java.util.GregorianCalendar;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import static com.nglah.masrytechn.model.UserModel.loggedInUser;
+
 public class Choose_Nagla_Date extends AppCompatActivity {
     EditText moreDetails;
     TextView date, time;
     ViewModelNaglaha viewModelNaglaha;
-    AddNaglaModel request = new AddNaglaModel();
-    String dateStr="";
-    String timeStr="";
-    String timetypeStr="";  //now or later
-    String details="";
+    AddNaglaModel request;
+    String dateStr = "";
+    String timeStr = "";
+    String timetypeStr = "";  //now or later
+    String details = "";
+    Views.LoadingView loadingView;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose__nagla__date);
         ButterKnife.bind(this);
         initListener();
+        request = (AddNaglaModel) getIntent().getSerializableExtra("request");
+        loadingView = new Views.LoadingView(this);
 
         date = (TextView) findViewById(R.id.dateTxt);
         time = (TextView) findViewById(R.id.time_txt);
-        moreDetails=(EditText)findViewById(R.id.details);
+        moreDetails = (EditText) findViewById(R.id.details);
+
 
     }
 
@@ -80,7 +92,7 @@ public class Choose_Nagla_Date extends AppCompatActivity {
         alertDialog.setView(dialogView);
         alertDialog.show();
 
-        timetypeStr="later";
+        timetypeStr = "later";
 
     }
 
@@ -95,20 +107,49 @@ public class Choose_Nagla_Date extends AppCompatActivity {
         String formattedTime = tf.format(c.getTime());
         time.setText(formattedTime);
         date.setText(formattedDate);
-        timeStr=time.getText().toString();
-        dateStr=date.getText().toString();
-        timetypeStr="now";
+        timeStr = time.getText().toString();
+        dateStr = date.getText().toString();
+        timetypeStr = "now";
 
     }
 
     @OnClick(R.id.submitNaglaha)
     void submit() {
+        if (request != null) {
 
-        details=moreDetails.getText().toString();
-        request.setTime(timeStr);
-        request.setDate(dateStr);
-        request.setNglahTimeType(timetypeStr);
-        request.setDetails(details);
+            loadingView.show();
+            request.setTime(timeStr);
+            request.setDate(dateStr);
+            request.setNglahTimeType(timetypeStr);
+            request.setDetails(moreDetails.getText().toString());
+            AddNaqlaRequest data = new AddNaqlaRequest();
+
+
+            data.setToken(new FireBaseToken().getToken());
+            data.setUserID(loggedInUser.getId());
+            data.setDriverID("");
+            data.setEmail(loggedInUser.getEmail());
+            data.setDetails(details);
+            data.setPrice("");
+            data.setNaqlaTime(timeStr);
+            data.setNaqlaDate(dateStr);
+            data.setNaglahType(request.getNglahType());
+            data.setElementType(request.getElementType());
+            data.setCountry(request.getCountry());
+            data.setRegion(request.getRegion());
+            data.setNaglahTimeType(request.getNglahTimeType());
+            data.setToP(request.getToCity());
+            data.setFromP(request.getFromCity());
+            data.setNaglahTimeType(request.getNglahTimeType());
+            data.setRequestedAt("");
+
+
+
+
+
+            viewModelNaglaha.addNaglahToServer(data);
+
+        }
 
     }
 
@@ -117,17 +158,30 @@ public class Choose_Nagla_Date extends AppCompatActivity {
         goToMain();
     }
 
+    private void showToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+
+    }
+
 
     private void initListener() {
         viewModelNaglaha = ViewModelProviders.of(this).get(ViewModelNaglaha.class);
 
         viewModelNaglaha.makeNewNaglaha().
-                observe(this, new Observer<UserRequestNaqlahResponse>() {
-            @Override
-            public void onChanged(UserRequestNaqlahResponse response) {
-                goToMain();
-            }
-        });
+                observe(this, new Observer<AddNaqlahaResponse>() {
+                    @Override
+                    public void onChanged(AddNaqlahaResponse response) {
+                        loadingView.dismiss();
+                        if (response != null && response.getStatus()) {
+                            showToast(getString(R.string.addNaqlahaSuccessful));
+                            goToMain();
+                        } else if (response != null) {
+
+                        } else {
+
+                        }
+                    }
+                });
     }
 
 

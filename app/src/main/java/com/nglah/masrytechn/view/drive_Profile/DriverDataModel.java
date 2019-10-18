@@ -48,6 +48,8 @@ public class DriverDataModel extends AppCompatActivity {
     EditText et_firstName;
     @BindView(R.id.et_driverLastName)
     EditText et_lastName;
+    @BindView(R.id.et_idNumber)
+    EditText et_idNumber;
 
     @BindView(R.id.et_driverPhone)
     EditText et_phone;
@@ -111,6 +113,7 @@ public class DriverDataModel extends AppCompatActivity {
         et_phone.setText(loggedInUser.getPhone());
         et_password.setText(loggedInUser.getPassword());
         et_licences.setText(loggedInUser.getLicenseNum());
+        et_idNumber.setText(loggedInUser.getIdNumber());
 
     }
 
@@ -121,16 +124,12 @@ public class DriverDataModel extends AppCompatActivity {
         if (TextUtils.isEmpty(et_lastName.getText().toString())) {
             return false;
         }
-
         if (TextUtils.isEmpty(et_nationality.getText().toString())) {
             return false;
         }
-
         if (TextUtils.isEmpty(et_firstName.getText().toString())) {
-
             return false;
         }
-
         if (TextUtils.isEmpty(et_phone.getText().toString())) {
             return false;
         }
@@ -138,6 +137,9 @@ public class DriverDataModel extends AppCompatActivity {
             return false;
         }
         if (TextUtils.isEmpty(et_email.getText().toString())) {
+            return false;
+        }
+        if (TextUtils.isEmpty(et_idNumber.getText().toString())) {
             return false;
         }
         if (TextUtils.isEmpty(et_password.getText().toString()) && et_password.getText().toString().length() < 6) {
@@ -162,7 +164,9 @@ public class DriverDataModel extends AppCompatActivity {
                 request.setToken(new FireBaseToken().getToken());
                 request.setPassword(et_password.getText().toString());
                 request.setLicenseNum(et_licences.getText().toString());
+                request.setIdNumber(et_idNumber.getText().toString());
                 request.setUserPhoto(base64Image);
+
 
                 if (new CheckNetwork(this).getConnected()) {
                     dialog.show();
@@ -188,7 +192,6 @@ public class DriverDataModel extends AppCompatActivity {
                     request.setPlateNumber(loggedInUser.getPlateNumber());
                     request.setCity(loggedInUser.getCity());
                     request.setCurrentCity(loggedInUser.getCurrentCity());
-                    request.setToken(loggedInUser.getAccessToken());
                     request.setCarIcon(loggedInUser.getCarIcon());
                     if (base64Image.equals("")) {
                         request.setUserPhoto(loggedInUser.getImageUrl());

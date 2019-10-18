@@ -64,7 +64,8 @@ public class ViewModelUser extends ViewModel {
                                     value.getMobileNumber(), value.getUserName(), value.getLname()
                                     , value.getToken(),
                                     1, value.getId(), "", "", "", "",
-                                    "", "", "", "", "", value.getPassword());
+                                    "", "", "", "", "",
+                                    value.getPassword(),"");
                         }
                         registerResponse.postValue(value);
 
@@ -95,7 +96,6 @@ public class ViewModelUser extends ViewModel {
                     public void onSubscribe(Disposable d) {
 
                     }
-
                     @Override
                     public void onNext(RegisterCarOwnerResponse value) {
 
@@ -105,7 +105,8 @@ public class ViewModelUser extends ViewModel {
                                     , value.getToken(), 2, value.getId(), value.getCarType(),
                                     value.getPlateNumber(), value.getMaxWeight(), value.getCurrentCity()
                                     , value.getCity(), value.getCarIcon(), value.getNationality(),
-                                    value.getUserPhoto(), value.getLicenseNum(), value.getPassword());
+                                    value.getUserPhoto(), value.getLicenseNum(),
+                                    value.getPassword(),value.getIdNumber());
                         }
                         registerCarOwnerResponse.postValue(value);
 
@@ -150,7 +151,8 @@ public class ViewModelUser extends ViewModel {
                                 value.getMobileNumber(), value.getUserName(), value.getLname()
                                 , value.getToken(),
                                 1, value.getId(), "", "", "", "",
-                                "", "", "", "", "", value.getPassword());
+                                "", "", "", "", "",
+                                value.getPassword(),"");
                     }
                 }
                 loginResponse.postValue(value);
@@ -191,7 +193,6 @@ public class ViewModelUser extends ViewModel {
 
                         //Save dataBase
                         if (value.getStatus()) {
-
                             if (value.getId() != null) {
                                 if (value.getStatus() && value.getId() != null) {
                                     saveDataInDataBase(context, value.getEmail(), value.getFname(),
@@ -199,7 +200,8 @@ public class ViewModelUser extends ViewModel {
                                             , value.getToken(), 2, value.getId(), value.getCarType(),
                                             value.getPlateNumber(), value.getMaxWeight(), value.getCurrentCity()
                                             , value.getCity(), value.getCarIcon(), value.getNationality(),
-                                            value.getUserPhoto(), value.getLicenseNum(), value.getPassword());
+                                            value.getUserPhoto(), value.getLicenseNum(),
+                                            value.getPassword(),value.getIdNumber());
                                 }
                             }
                         }
@@ -299,7 +301,8 @@ public class ViewModelUser extends ViewModel {
                                     value.getMobileNumber(), value.getUserName(), value.getLname()
                                     , value.getToken(),
                                     1, value.getId(), "", "", "", "",
-                                    "", "", "", "", "", value.getPassword());
+                                    "", "", "", "", "",
+                                    value.getPassword(),"");
                         }
                         editUserProfile.postValue(value);
 
@@ -342,7 +345,8 @@ public class ViewModelUser extends ViewModel {
                                     , value.getToken(), 2, value.getId(), value.getCarType(),
                                     value.getPlateNumber(), value.getMaxWeight(), value.getCurrentCity()
                                     , value.getCity(), value.getCarIcon(), value.getNationality(),
-                                    value.getUserPhoto(), value.getLicenseNum(), value.getPassword());
+                                    value.getUserPhoto(), value.getLicenseNum(), value.getPassword(),
+                                    value.getIdNumber());
 
 
                         }
@@ -431,7 +435,7 @@ public class ViewModelUser extends ViewModel {
                                     String userName, String lastName, String accessToken, int type,
                                     String id, String carType, String paletNumber, String maxWeight,
                                     String currentCity, String city, String carIcon, String nationality,
-                                    String userImage, String licences, String password) {
+                                    String userImage, String licences, String password,String idNumber) {
 
 
         UserModel userData = new UserModel();
@@ -454,6 +458,7 @@ public class ViewModelUser extends ViewModel {
         userData.setImageUrl(userImage);
         userData.setLicenseNum(licences);
         userData.setPassword(password);
+        userData.setIdNumber(idNumber);
         loggedInUser = userData;
         DataBase.getInstance(context).userProfileDao().insert(loggedInUser);
 
@@ -464,7 +469,7 @@ public class ViewModelUser extends ViewModel {
                         String userName, String lastName, String accessToken, int type,
                         String id, String carType, String paletNumber, String maxWeight,
                         String currentCity, String city, String carIcon, String nationality,
-                        String userImage, String licences, String password) {
+                        String userImage, String licences, String password,String idNumber) {
 
 
         loggedInUser.setEmail(email);
@@ -486,6 +491,7 @@ public class ViewModelUser extends ViewModel {
         loggedInUser.setLicenseNum(licences);
         loggedInUser.setNationality(nationality);
         loggedInUser.setPassword(password);
+        loggedInUser.setIdNumber(idNumber);
 
         DataBase.getInstance(context).userProfileDao().update(loggedInUser);
 

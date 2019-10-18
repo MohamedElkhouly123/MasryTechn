@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.nglah.masrytechn.R;
+import com.nglah.masrytechn.view.AllDeriver.AllDriver;
 import com.nglah.masrytechn.view.choose_place.Nagla_Location;
 import com.nglah.masrytechn.view.login.LoginActivity;
 import com.nglah.masrytechn.view.payment.Payment;
@@ -43,15 +44,14 @@ public class MainActivity_User extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-//        if (id == R.id.All_Drivers) {
-//            return true;
-//        }
+        if (id == R.id.All_Drivers) {
+            startActivity(new Intent(this, AllDriver.class));
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }

@@ -5,192 +5,191 @@ import com.google.gson.annotations.SerializedName;
 
 public class UpdateDriverDataRequest {
 
+    @SerializedName("userName")
+    @Expose
+    private String userName;
+    @SerializedName("fname")
+    @Expose
+    private String fname;
+    @SerializedName("OldEmail")
+    @Expose
+    private String oldEmail;
+    @SerializedName("lname")
+    @Expose
+    private String lname;
+    @SerializedName("Password")
+    @Expose
+    private String password;
+    @SerializedName("mobileNumber")
+    @Expose
+    private String mobileNumber;
+    @SerializedName("Email")
+    @Expose
+    private String email;
+    @SerializedName("PlateNumber")
+    @Expose
+    private String plateNumber;
+    @SerializedName("carType")
+    @Expose
+    private String carType;
+    @SerializedName("MaxWeight")
+    @Expose
+    private String maxWeight;
+    @SerializedName("CurrentCity")
+    @Expose
+    private String currentCity;
+    @SerializedName("CarIcon")
+    @Expose
+    private String carIcon;
+    @SerializedName("city")
+    @Expose
+    private String city;
+    @SerializedName("LicenseNum")
+    @Expose
+    private String licenseNum;
+    @SerializedName("nationality")
+    @Expose
+    private String nationality;
+    @SerializedName("UserPhoto")
+    @Expose
+    private String userPhoto;
 
-        @SerializedName("userName")
-        @Expose
-        private String userName;
-        @SerializedName("fname")
-        @Expose
-        private String fname;
-        @SerializedName("OldEmail")
-        @Expose
-        private String oldEmail;
-        @SerializedName("lname")
-        @Expose
-        private String lname;
-        @SerializedName("Password")
-        @Expose
-        private String password;
-        @SerializedName("nationality")
-        @Expose
-        private String nationality;
-        @SerializedName("carType")
-        @Expose
-        private String carType;
-        @SerializedName("PlateNumber")
-        @Expose
-        private String plateNumber;
-        @SerializedName("MaxWeight")
-        @Expose
-        private String maxWeight;
-        @SerializedName("city")
-        @Expose
-        private String city;
-        @SerializedName("mobileNumber")
-        @Expose
-        private String mobileNumber;
-        @SerializedName("Email")
-        @Expose
-        private String email;
-        @SerializedName("CurrentCity")
-        @Expose
-        private String currentCity;
-        @SerializedName("LicenseNum")
-        @Expose
-        private String licenseNum;
-        @SerializedName("UserPhoto")
-        @Expose
-        private String userPhoto;
-        @SerializedName("Token")
-        @Expose
-        private String token;
-        @SerializedName("CarIcon")
-        @Expose
-        private String carIcon;
+    @SerializedName("IDnumber")
+    @Expose
+    private String idNumber;
 
-        public String getUserName() {
-            return userName;
-        }
+    public String getIdNumber() {
+        return idNumber;
+    }
 
-        public void setUserName(String userName) {
-            this.userName = userName;
-        }
+    public void setIdNumber(String idNumber) {
+        this.idNumber = idNumber;
+    }
+    public String getUserName() {
+        return userName;
+    }
 
-        public String getFname() {
-            return fname;
-        }
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
-        public void setFname(String fname) {
-            this.fname = fname;
-        }
+    public String getFname() {
+        return fname;
+    }
 
-        public String getOldEmail() {
-            return oldEmail;
-        }
+    public void setFname(String fname) {
+        this.fname = fname;
+    }
 
-        public void setOldEmail(String oldEmail) {
-            this.oldEmail = oldEmail;
-        }
+    public String getOldEmail() {
+        return oldEmail;
+    }
 
-        public String getLname() {
-            return lname;
-        }
+    public void setOldEmail(String oldEmail) {
+        this.oldEmail = oldEmail;
+    }
 
-        public void setLname(String lname) {
-            this.lname = lname;
-        }
+    public String getLname() {
+        return lname;
+    }
 
-        public String getPassword() {
-            return password;
-        }
+    public void setLname(String lname) {
+        this.lname = lname;
+    }
 
-        public void setPassword(String password) {
-            this.password = password;
-        }
+    public String getPassword() {
+        return password;
+    }
 
-        public String getNationality() {
-            return nationality;
-        }
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-        public void setNationality(String nationality) {
-            this.nationality = nationality;
-        }
+    public String getMobileNumber() {
+        return mobileNumber;
+    }
 
-        public String getCarType() {
-            return carType;
-        }
+    public void setMobileNumber(String mobileNumber) {
+        this.mobileNumber = mobileNumber;
+    }
 
-        public void setCarType(String carType) {
-            this.carType = carType;
-        }
+    public String getEmail() {
+        return email;
+    }
 
-        public String getPlateNumber() {
-            return plateNumber;
-        }
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-        public void setPlateNumber(String plateNumber) {
-            this.plateNumber = plateNumber;
-        }
+    public String getPlateNumber() {
+        return plateNumber;
+    }
 
-        public String getMaxWeight() {
-            return maxWeight;
-        }
+    public void setPlateNumber(String plateNumber) {
+        this.plateNumber = plateNumber;
+    }
 
-        public void setMaxWeight(String maxWeight) {
-            this.maxWeight = maxWeight;
-        }
+    public String getCarType() {
+        return carType;
+    }
 
-        public String getCity() {
-            return city;
-        }
+    public void setCarType(String carType) {
+        this.carType = carType;
+    }
 
-        public void setCity(String city) {
-            this.city = city;
-        }
+    public String getMaxWeight() {
+        return maxWeight;
+    }
 
-        public String getMobileNumber() {
-            return mobileNumber;
-        }
+    public void setMaxWeight(String maxWeight) {
+        this.maxWeight = maxWeight;
+    }
 
-        public void setMobileNumber(String mobileNumber) {
-            this.mobileNumber = mobileNumber;
-        }
+    public String getCurrentCity() {
+        return currentCity;
+    }
 
-        public String getEmail() {
-            return email;
-        }
+    public void setCurrentCity(String currentCity) {
+        this.currentCity = currentCity;
+    }
 
-        public void setEmail(String email) {
-            this.email = email;
-        }
+    public String getCarIcon() {
+        return carIcon;
+    }
 
-        public String getCurrentCity() {
-            return currentCity;
-        }
+    public void setCarIcon(String carIcon) {
+        this.carIcon = carIcon;
+    }
 
-        public void setCurrentCity(String currentCity) {
-            this.currentCity = currentCity;
-        }
+    public String getCity() {
+        return city;
+    }
 
-        public String getLicenseNum() {
-            return licenseNum;
-        }
+    public void setCity(String city) {
+        this.city = city;
+    }
 
-        public void setLicenseNum(String licenseNum) {
-            this.licenseNum = licenseNum;
-        }
+    public String getLicenseNum() {
+        return licenseNum;
+    }
 
-        public String getUserPhoto() {
-            return userPhoto;
-        }
+    public void setLicenseNum(String licenseNum) {
+        this.licenseNum = licenseNum;
+    }
 
-        public void setUserPhoto(String userPhoto) {
-            this.userPhoto = userPhoto;
-        }
+    public String getNationality() {
+        return nationality;
+    }
 
-        public String getToken() {
-            return token;
-        }
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
+    }
 
-        public void setToken(String token) {
-            this.token = token;
-        }
+    public String getUserPhoto() {
+        return userPhoto;
+    }
 
-        public String getCarIcon() {
-            return carIcon;
-        }
-
-        public void setCarIcon(String carIcon) {
-            this.carIcon = carIcon;
-        }
-}
+    public void setUserPhoto(String userPhoto) {
+        this.userPhoto = userPhoto;
+    }
+    }

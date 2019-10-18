@@ -26,6 +26,7 @@ import com.nglah.masrytechn.view.adapter.AllDriverAdapter;
 import com.nglah.masrytechn.viewModel.ViewModelNaglaha;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindString;
 import butterknife.BindView;
@@ -35,7 +36,7 @@ import butterknife.OnClick;
 public class AllDriver extends AppCompatActivity implements Listener {
 
 
-    @BindView(R.id.rv_allDriver_allBranches)
+    @BindView(R.id.rv_allDriver)
     RecyclerView rv_branches;
     @BindView(R.id.tv_branchFragment_message)
     TextView tv_message;
@@ -57,7 +58,9 @@ public class AllDriver extends AppCompatActivity implements Listener {
     String noDataFound;
 
 
-    ArrayList<Driver> list = new ArrayList<>();
+
+    private List<AllDriverResponse.Datum> list;
+
     RecyclerView.LayoutManager layoutManager;
     AllDriverAdapter adapter;
     ViewModelNaglaha viewModel;
@@ -80,8 +83,7 @@ public class AllDriver extends AppCompatActivity implements Listener {
     private void getDataFromServer() {
         if (new CheckNetwork(this).getConnected()) {
             showLoading();
-            //////////////////request here
-            viewModel.addNaglahToServer(new AllDriverRequest());
+            viewModel.addNaglahToServer();
         } else {
             errorNetwork();
         }
@@ -91,6 +93,7 @@ public class AllDriver extends AppCompatActivity implements Listener {
         layoutManager = new LinearLayoutManager(this);
         rv_branches.setLayoutManager(layoutManager);
         adapter = new AllDriverAdapter(list, this, this::onClick);
+        rv_branches.setAdapter(adapter);
     }
 
     private void showLoading() {
@@ -139,9 +142,10 @@ public class AllDriver extends AppCompatActivity implements Listener {
 
     @Override
     public void onClick(int position) {
-        Intent intent=new Intent(this, Accepted_Info.class);
+
+//        Intent intent=new Intent(this, Accepted_Info.class);
 //        intent.putExtra("branch",list.get(position));
-        startActivity(intent);
+//        startActivity(intent);
     }
 
     private void initListener() {
@@ -149,6 +153,20 @@ public class AllDriver extends AppCompatActivity implements Listener {
         viewModel.getAllDriver().observe(this, new Observer<AllDriverResponse>() {
             @Override
             public void onChanged(AllDriverResponse response) {
+                dismissLoading();
+                if (response!=null&&response.getStatus()){
+                    if (response.getData()!=null&&response.getData().size()>0){
+                        list=response.getData();
+                        initAdapter();
+                    }else {
+                     noData();
+                    }
+                }else if (response!=null&&response.getMessage().equals(newtworkException)){
+                    errorNetwork();
+                }else {
+                    errorServer();
+                }
+
 
 
             }

@@ -18,12 +18,20 @@ public class Payment extends AppCompatActivity {
         setContentView(R.layout.activity_payment);
         ButterKnife.bind(this);
     }
-    @OnClick(R.id.btn_charge)
+    @OnClick(R.id.visa)
     void charge(){
-
-        startActivity(new Intent(this,NextPayment.class));
-
+        goToPayment("VISA");
     }
+    @OnClick(R.id.masterCard)
+    void master(){
+        goToPayment("MASTER");
+    }
+    void goToPayment(String type){
+        Intent intent=new Intent(this,NextPayment.class);
+        intent.putExtra("type",type);
+        startActivity(intent);
+    }
+
     @OnClick(R.id.list)void  back(){
         finish();
     }

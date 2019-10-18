@@ -48,12 +48,15 @@ public class SplashActivity extends AppCompatActivity {
                 if (response) {
                     if (loggedInUser.getUserType()==1){
                     goToMain();
+                    finish();
+
                     }else {
                         goToMainDriver();
+                        finish();
                     }
                 } else {
                     goToLogin();
-                    //Error happen
+                    finish();
                 }
             }
         });

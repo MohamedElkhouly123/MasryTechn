@@ -3,10 +3,11 @@ package com.nglah.masrytechn.viewModel;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.nglah.masrytechn.network.networkModel.request.naglaha.AllDriverRequest;
-import com.nglah.masrytechn.network.networkModel.request.naglaha.UserRequestNaqlahRequest;
+import com.nglah.masrytechn.network.networkModel.request.Payment.PaymentRequest;
+import com.nglah.masrytechn.network.networkModel.request.naglaha.AddNaqlaRequest;
 import com.nglah.masrytechn.network.networkModel.response.Naglaha.AllDriverResponse;
-import com.nglah.masrytechn.network.networkModel.response.Naglaha.UserRequestNaqlahResponse;
+import com.nglah.masrytechn.network.networkModel.response.Naglaha.AddNaqlahaResponse;
+import com.nglah.masrytechn.network.networkModel.response.Payment.PaymentResponse;
 import com.nglah.masrytechn.repository.NaglahRepository;
 
 import io.reactivex.Observer;
@@ -14,25 +15,26 @@ import io.reactivex.disposables.Disposable;
 
 public class ViewModelNaglaha extends ViewModel {
 
-    private MutableLiveData<UserRequestNaqlahResponse> addNaglahaReaponse = new MutableLiveData<>();
+    private MutableLiveData<AddNaqlahaResponse> addNaglahaReaponse = new MutableLiveData<>();
     private MutableLiveData<AllDriverResponse> getAllDriverResponse = new MutableLiveData<>();
+    private MutableLiveData<PaymentResponse> paymentResponse = new MutableLiveData<>();
 
 
-    public MutableLiveData<UserRequestNaqlahResponse> makeNewNaglaha() {
+    public MutableLiveData<AddNaqlahaResponse> makeNewNaglaha() {
         return addNaglahaReaponse;
     }
 
-    public void addNaglahToServer(UserRequestNaqlahRequest request) {
+    public void addNaglahToServer(AddNaqlaRequest request) {
 
         NaglahRepository.getInstance().addNaglahaRepository(request)
-                .subscribe(new Observer<UserRequestNaqlahResponse>() {
+                .subscribe(new Observer<AddNaqlahaResponse>() {
                     @Override
                     public void onSubscribe(Disposable d) {
 
                     }
 
                     @Override
-                    public void onNext(UserRequestNaqlahResponse value) {
+                    public void onNext(AddNaqlahaResponse value) {
 
                         addNaglahaReaponse.postValue(value);
 
@@ -55,9 +57,9 @@ public class ViewModelNaglaha extends ViewModel {
         return getAllDriverResponse;
     }
 
-    public void addNaglahToServer(AllDriverRequest request) {
+    public void addNaglahToServer() {
 
-        NaglahRepository.getInstance().allDriverRepository(request)
+        NaglahRepository.getInstance().allDriverRepository()
                 .subscribe(new Observer<AllDriverResponse>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -83,5 +85,39 @@ public class ViewModelNaglaha extends ViewModel {
                 });
 
     }
+
+    public MutableLiveData<PaymentResponse> makePayment() {
+        return paymentResponse;
+    }
+
+    public void addPaymentToServer(PaymentRequest request) {
+
+        NaglahRepository.getInstance().paymentRepository(request)
+                .subscribe(new Observer<PaymentResponse>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(PaymentResponse value) {
+
+                        paymentResponse.postValue(value);
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        paymentResponse.postValue(null);
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+
+    }
+
 
 }

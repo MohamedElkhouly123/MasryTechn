@@ -1,6 +1,6 @@
 <resources>
     <array name="users">
-        <item>normal user</item>
+        <item>Naqla Owner</item>
         <item>Driver</item>
 
     </array>
@@ -73,4 +73,6 @@
     <string name="year">Year</string>
     <string name="cvv">Cvv</string>
     <string name="pay">pay</string>
+    <string name="money">money</string>
+    <string name="addNaqlahaSuccessful">Add Naqlah Successful</string>
 </resources>
