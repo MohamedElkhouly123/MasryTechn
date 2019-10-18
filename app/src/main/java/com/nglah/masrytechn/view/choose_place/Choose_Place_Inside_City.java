@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -253,9 +254,7 @@ public class Choose_Place_Inside_City extends AppCompatActivity {
         citylistNagran13.add("خباش");
         citylistNagran13.add("الخرخير");
 
-        request.setCountry(country);
-        request.setRegion(region);
-        request.setFromCity(city);
+
 
 
         initView();
@@ -266,6 +265,10 @@ public class Choose_Place_Inside_City extends AppCompatActivity {
 
     @OnClick(R.id.btn_next)
     void next() {
+        request.setCountry(country);
+        request.setRegion(region);
+        request.setFromCity(city);
+        Toast.makeText(this,country, Toast.LENGTH_SHORT).show();
 
         Intent intent=new Intent(this, Choose_Element.class);
         intent.putExtra("request",request);
@@ -325,6 +328,7 @@ public class Choose_Place_Inside_City extends AppCompatActivity {
                     spinnerRegion.setVisibility(View.GONE);
                     spinnerCity.setVisibility(View.GONE);
                     flag = false;
+                    country="";
 
 //                }else if(i==carlist.size()-1){
 //                    showAlertDialog();
@@ -376,6 +380,8 @@ public class Choose_Place_Inside_City extends AppCompatActivity {
                 if (i == 0) {
                     spinnerCity.setVisibility(View.GONE);
                     flag = false;
+                    region="";
+
 
                 } else if (i == 1) {
                     addCity(citylistSekaka1);
@@ -540,6 +546,7 @@ public class Choose_Place_Inside_City extends AppCompatActivity {
                 if (i == 0) {
 
                     flag = false;
+                    city="";
 
 
                 } else {

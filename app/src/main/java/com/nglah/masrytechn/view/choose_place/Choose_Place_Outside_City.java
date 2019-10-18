@@ -414,10 +414,7 @@ public class Choose_Place_Outside_City extends AppCompatActivity {
         chooseCitylist.add("بدر الجنوب");
         chooseCitylist.add("خباش");
         chooseCitylist.add("الخرخير");
-        request.setCountry(country);
-        request.setRegion(region);
-        request.setFromCity(fromCity);
-        request.setToCity(toCity);
+
 
         initView();
         action();
@@ -426,6 +423,10 @@ public class Choose_Place_Outside_City extends AppCompatActivity {
 
     @OnClick(R.id.btn_next)
     void next() {
+        request.setCountry(country);
+        request.setRegion(region);
+        request.setFromCity(fromCity);
+        request.setToCity(toCity);
         Intent intent = new Intent(this, Choose_Element.class);
         intent.putExtra("request", request);
         startActivity(intent);
@@ -487,6 +488,7 @@ public class Choose_Place_Outside_City extends AppCompatActivity {
                     spinnerCity.setVisibility(View.GONE);
                     choose_City.setVisibility(View.GONE);
                     flag = false;
+                    country="";
 
 //                }else if(i==carlist.size()-1){
 //                    showAlertDialog();
@@ -539,6 +541,8 @@ public class Choose_Place_Outside_City extends AppCompatActivity {
                     spinnerCity.setVisibility(View.GONE);
                     choose_City.setVisibility(View.GONE);
                     flag = false;
+                    region="";
+
 
                 } else if (i == 1) {
                     addCity(citylistSekaka1);
@@ -698,6 +702,7 @@ public class Choose_Place_Outside_City extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
                 if (i == 0) {
+                    toCity="";
 
 //                    showAlertDialog();
                 } else {
@@ -749,6 +754,7 @@ public class Choose_Place_Outside_City extends AppCompatActivity {
 
                     choose_City.setVisibility(View.GONE);
                     flag = false;
+                    fromCity="";
 
 //                }else if(i==citylist.size()-1){
 //                    showAlertDialog();
