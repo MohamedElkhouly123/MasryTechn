@@ -10,7 +10,7 @@ import androidx.room.RoomDatabase;
 import com.nglah.masrytechn.model.UserModel;
 
 
-@Database(entities = {UserModel.class,}, version = 1)
+@Database(entities = {UserModel.class,}, version = 1, exportSchema = true)
 public abstract class DataBase extends RoomDatabase {
     private static final String DB_NAME = "database.db";
     private static volatile DataBase instance;

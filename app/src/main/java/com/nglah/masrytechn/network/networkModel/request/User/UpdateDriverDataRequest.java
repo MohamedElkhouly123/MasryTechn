@@ -53,18 +53,10 @@ public class UpdateDriverDataRequest {
     @SerializedName("UserPhoto")
     @Expose
     private String userPhoto;
-
     @SerializedName("IDnumber")
     @Expose
-    private String idNumber;
+    private String iDnumber;
 
-    public String getIdNumber() {
-        return idNumber;
-    }
-
-    public void setIdNumber(String idNumber) {
-        this.idNumber = idNumber;
-    }
     public String getUserName() {
         return userName;
     }
@@ -191,5 +183,13 @@ public class UpdateDriverDataRequest {
 
     public void setUserPhoto(String userPhoto) {
         this.userPhoto = userPhoto;
+    }
+
+    public String getIDnumber() {
+        return iDnumber;
+    }
+
+    public void setIDnumber(String iDnumber) {
+        this.iDnumber = iDnumber;
     }
     }

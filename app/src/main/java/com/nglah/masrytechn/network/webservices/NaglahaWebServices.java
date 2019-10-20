@@ -2,6 +2,7 @@ package com.nglah.masrytechn.network.webservices;
 
 import com.nglah.masrytechn.network.networkModel.request.Payment.PaymentRequest;
 import com.nglah.masrytechn.network.networkModel.request.naglaha.AddNaqlaRequest;
+import com.nglah.masrytechn.network.networkModel.response.Naglaha.AddNaqlahaResponse;
 import com.nglah.masrytechn.network.networkModel.response.Naglaha.AllDriverResponse;
 import com.nglah.masrytechn.network.networkModel.response.Payment.PaymentResponse;
 
@@ -12,15 +13,15 @@ import retrofit2.http.POST;
 
 public interface NaglahaWebServices {
 
-    @POST("--")
+    @POST("AddNaqla.php")
     @Headers({"Content-Type: application/json"})
-    Observable<AddNaqlaRequest> addNaglaha(@Body AddNaqlaRequest request);
+    Observable<AddNaqlahaResponse> addNaglaha(@Body AddNaqlaRequest request);
 
     @POST("GetDrivers.php")
     @Headers({"Content-Type: application/json"})
     Observable<AllDriverResponse> getAllDriver();
 
-    @POST("--")
+    @POST("payment")
     @Headers({"Content-Type: application/json"})
     Observable<PaymentResponse> pay(@Body PaymentRequest request);
 

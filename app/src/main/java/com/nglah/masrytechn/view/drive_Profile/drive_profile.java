@@ -76,7 +76,7 @@ public class drive_profile extends AppCompatActivity {
         tv_lName.setText(loggedInUser.getLastName());
         tv_fullName.setText(loggedInUser.getFirstName() + " "
                 + loggedInUser.getLastName());
-        tv_idNumber.setText("0000");
+        tv_idNumber.setText(loggedInUser.getIdNumber());
         tv_phone.setText(loggedInUser.getPhone());
         tv_email.setText(loggedInUser.getEmail());
         tv_typeOfCar.setText(loggedInUser.getCarType());

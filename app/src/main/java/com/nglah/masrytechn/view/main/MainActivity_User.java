@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.nglah.masrytechn.R;
 import com.nglah.masrytechn.view.AllDeriver.AllDriver;
+import com.nglah.masrytechn.view.All_Naglas.All_Nagla;
 import com.nglah.masrytechn.view.choose_place.Nagla_Location;
 import com.nglah.masrytechn.view.login.LoginActivity;
 import com.nglah.masrytechn.view.payment.Payment;
@@ -85,14 +86,18 @@ public class MainActivity_User extends AppCompatActivity {
 
     @OnClick(R.id.askNagla)
     void askNaglah(){
-        startActivity(new Intent(this, Nagla_Location.class));
+
+        Intent intent=new Intent(this, All_Nagla.class);
+        startActivity(intent);
 
 
     }
 
     @OnClick(R.id.mybag)
      void goToPayment(){
-        startActivity(new Intent(this, Payment.class));
+        Intent intent=new Intent(this, Payment.class);
+        intent.putExtra("type","user");
+        startActivity(intent);
     }
 }
 

@@ -275,7 +275,7 @@
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_marginStart="@dimen/_10sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textView7"
+                app:layout_constraintStart_toEndOf="@+id/textView13"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

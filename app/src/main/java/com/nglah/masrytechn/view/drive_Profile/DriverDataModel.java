@@ -179,10 +179,7 @@ public class DriverDataModel extends AppCompatActivity {
 
                 if (validate()) {
                     dialog.show();
-                    {
 
-
-                    }
                     UpdateDriverDataRequest request = new UpdateDriverDataRequest();
                     request.setUserName(loggedInUser.getUserName());
                     request.setOldEmail(loggedInUser.getEmail());
@@ -206,6 +203,7 @@ public class DriverDataModel extends AppCompatActivity {
                     request.setMobileNumber(et_phone.getText().toString());
                     request.setUserName(et_userName.getText().toString());
                     request.setLicenseNum(et_licences.getText().toString());
+                    request.setIDnumber(et_idNumber.getText().toString());
 
 
 

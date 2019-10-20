@@ -27,6 +27,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import butterknife.BindString;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -42,7 +43,12 @@ public class Choose_Nagla_Date extends AppCompatActivity {
     String timetypeStr = "";  //now or later
     String details = "";
     Views.LoadingView loadingView;
-
+    @BindString(R.string.networkException)
+    String newtworkException;
+    @BindString(R.string.poorConnection)
+    String poorConnection;
+    @BindString(R.string.serverError)
+    String serverError;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,14 +122,13 @@ public class Choose_Nagla_Date extends AppCompatActivity {
     @OnClick(R.id.submitNaglaha)
     void submit() {
         if (request != null) {
-
             loadingView.show();
             request.setTime(timeStr);
             request.setDate(dateStr);
             request.setNglahTimeType(timetypeStr);
             request.setDetails(moreDetails.getText().toString());
-            AddNaqlaRequest data = new AddNaqlaRequest();
 
+            AddNaqlaRequest data = new AddNaqlaRequest();
 
             data.setToken(new FireBaseToken().getToken());
             data.setUserID(loggedInUser.getId());
@@ -142,9 +147,6 @@ public class Choose_Nagla_Date extends AppCompatActivity {
             data.setFromP(request.getFromCity());
             data.setNaglahTimeType(request.getNglahTimeType());
             data.setRequestedAt("");
-
-
-
 
 
             viewModelNaglaha.addNaglahToServer(data);
@@ -172,13 +174,16 @@ public class Choose_Nagla_Date extends AppCompatActivity {
                     @Override
                     public void onChanged(AddNaqlahaResponse response) {
                         loadingView.dismiss();
-                        if (response != null && response.getStatus()) {
-                            showToast(getString(R.string.addNaqlahaSuccessful));
-                            goToMain();
-                        } else if (response != null) {
+                        if (response != null) {
+                            if ( response.getStatus()) {
+                                showToast(getString(R.string.addNaqlahaSuccessful));
+                                goToMain();
+                            } else if (response.getMessage().equals(newtworkException)) {
+                                showToast(poorConnection);
+                            } else {
+                                showToast(serverError);
 
-                        } else {
-
+                            }
                         }
                     }
                 });
@@ -187,5 +192,6 @@ public class Choose_Nagla_Date extends AppCompatActivity {
 
     void goToMain() {
         startActivity(new Intent(this, MainActivity_User.class));
+        finish();
     }
 }

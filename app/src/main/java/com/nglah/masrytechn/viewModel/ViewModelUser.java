@@ -229,7 +229,8 @@ public class ViewModelUser extends ViewModel {
     public void sendEmailToServer(String email) {
         VerifyEmailRequest request = new VerifyEmailRequest();
         request.setTO(email);
-        UserRepository.getInstance().verifyEmailRepository(request).subscribe(new Observer<VerifyEmailResponse>() {
+        UserRepository.getInstance().verifyEmailRepository(request).
+                subscribe(new Observer<VerifyEmailResponse>() {
             @Override
             public void onSubscribe(Disposable d) {
             }
@@ -346,7 +347,7 @@ public class ViewModelUser extends ViewModel {
                                     value.getPlateNumber(), value.getMaxWeight(), value.getCurrentCity()
                                     , value.getCity(), value.getCarIcon(), value.getNationality(),
                                     value.getUserPhoto(), value.getLicenseNum(), value.getPassword(),
-                                    value.getIdNumber());
+                                    value.getIDnumber());
 
 
                         }
