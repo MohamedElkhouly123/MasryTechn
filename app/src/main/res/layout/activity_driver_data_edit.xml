@@ -342,7 +342,7 @@
                 android:fontFamily="@font/lemon"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_16ssp"
-                android:inputType="number"
+                android:inputType="textAutoComplete"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_marginStart="@dimen/_10sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
