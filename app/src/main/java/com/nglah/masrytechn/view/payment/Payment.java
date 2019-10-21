@@ -12,11 +12,13 @@ import butterknife.OnClick;
 
 public class Payment extends AppCompatActivity {
 
+    String typeUser="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
         ButterKnife.bind(this);
+        typeUser=getIntent().getStringExtra("type");
     }
     @OnClick(R.id.visa)
     void charge(){
@@ -29,6 +31,7 @@ public class Payment extends AppCompatActivity {
     void goToPayment(String type){
         Intent intent=new Intent(this,NextPayment.class);
         intent.putExtra("type",type);
+        intent.putExtra("user",typeUser);
         startActivity(intent);
     }
 

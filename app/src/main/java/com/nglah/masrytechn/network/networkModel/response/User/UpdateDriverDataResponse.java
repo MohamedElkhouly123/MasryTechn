@@ -58,20 +58,13 @@ public class UpdateDriverDataResponse {
     @SerializedName("LicenseNum")
     @Expose
     private String licenseNum;
+    @SerializedName("IDnumber")
+    @Expose
+    private String iDnumber;
     @SerializedName("Token")
     @Expose
     private String token;
-    @SerializedName("IDnumber")
-    @Expose
-    private String idNumber;
 
-    public String getIdNumber() {
-        return idNumber;
-    }
-
-    public void setIdNumber(String idNumber) {
-        this.idNumber = idNumber;
-    }
     public Boolean getStatus() {
         return status;
     }
@@ -216,6 +209,14 @@ public class UpdateDriverDataResponse {
         this.licenseNum = licenseNum;
     }
 
+    public String getIDnumber() {
+        return iDnumber;
+    }
+
+    public void setIDnumber(String iDnumber) {
+        this.iDnumber = iDnumber;
+    }
+
     public String getToken() {
         return token;
     }
@@ -223,5 +224,4 @@ public class UpdateDriverDataResponse {
     public void setToken(String token) {
         this.token = token;
     }
-
 }

@@ -3,6 +3,7 @@ package com.nglah.masrytechn.viewModel;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.nglah.masrytechn.repository.PaymentRepository;
 import com.nglah.masrytechn.network.networkModel.request.Payment.PaymentRequest;
 import com.nglah.masrytechn.network.networkModel.request.naglaha.AddNaqlaRequest;
 import com.nglah.masrytechn.network.networkModel.response.Naglaha.AllDriverResponse;
@@ -25,7 +26,9 @@ public class ViewModelNaglaha extends ViewModel {
     }
 
     public void addNaglahToServer(AddNaqlaRequest request) {
-
+//
+//        request.setToP("");
+//        request.setNaglahType("");
         NaglahRepository.getInstance().addNaglahaRepository(request)
                 .subscribe(new Observer<AddNaqlahaResponse>() {
                     @Override
@@ -92,7 +95,7 @@ public class ViewModelNaglaha extends ViewModel {
 
     public void addPaymentToServer(PaymentRequest request) {
 
-        NaglahRepository.getInstance().paymentRepository(request)
+        PaymentRepository.getInstance().paymentRepository(request)
                 .subscribe(new Observer<PaymentResponse>() {
                     @Override
                     public void onSubscribe(Disposable d) {

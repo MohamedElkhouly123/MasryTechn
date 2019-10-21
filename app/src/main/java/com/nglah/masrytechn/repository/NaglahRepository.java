@@ -29,10 +29,11 @@ public class NaglahRepository {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
-//        String BASE_URL = "https://pwalgs.com/nglah2/Users/";
-        String BASE_URL = "http://pym.pwalgs.com/api/";
+        String BASE_URL = "https://pwalgs.com/nglah2/Users/";
 
-        Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL).client(client).addConverterFactory(GsonConverterFactory.create()).addCallAdapterFactory(RxJava2CallAdapterFactory.create()).build();
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL).
+                client(client).addConverterFactory(GsonConverterFactory.create()).
+                addCallAdapterFactory(RxJava2CallAdapterFactory.create()).build();
         naglahaWebServices = retrofit.create(NaglahaWebServices.class);
     }
 
@@ -50,23 +51,26 @@ public class NaglahRepository {
         return Observable.create(new ObservableOnSubscribe<AddNaqlahaResponse>() {
             @Override
             public void subscribe(final ObservableEmitter<AddNaqlahaResponse> emitter) {
+
                 naglahaWebServices.addNaglaha(request).subscribeOn(Schedulers.io()).
-                        observeOn(Schedulers.io()).subscribe(new Observer<AddNaqlaRequest>() {
+                        observeOn(Schedulers.io()).subscribe(new Observer<AddNaqlahaResponse>() {
                     @Override
                     public void onSubscribe(Disposable d) {
 
                     }
 
                     @Override
-                    public void onNext(AddNaqlaRequest requestNaqlahRequest) {
+                    public void onNext(AddNaqlahaResponse response ) {
+                        emitter.onNext(response);
+
 
                     }
 
                     @Override
                     public void onError(Throwable e) {
                         AddNaqlahaResponse response = new AddNaqlahaResponse();
-//                        response.setStatus(false);
-//                        response.setMessage(e.toString());
+                        response.setStatus(false);
+                        response.setMessage(e.toString());
                         emitter.onNext(response);
                     }
 
@@ -115,31 +119,4 @@ public class NaglahRepository {
 
     }
 
-    public Observable<PaymentResponse> paymentRepository(PaymentRequest request) {
-        return Observable.create(new ObservableOnSubscribe<PaymentResponse>() {
-            @Override
-            public void subscribe(final ObservableEmitter<PaymentResponse> emitter) {
-                naglahaWebServices.pay(request).subscribeOn(Schedulers.io()).
-                        observeOn(Schedulers.io()).subscribe(new Observer<PaymentResponse>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                    }
-                    @Override
-                    public void onNext(PaymentResponse response) {
-                        emitter.onNext(response);
-                    }
-                    @Override
-                    public void onError(Throwable e) {
-                        PaymentResponse response = new PaymentResponse();
-//                        response.setStatus(false);
-//                        response.setMessage(e.toString());
-                        emitter.onNext(response);
-                    }
-                    @Override
-                    public void onComplete() {
-                    }
-                });
-            }
-        });
-    }
 }

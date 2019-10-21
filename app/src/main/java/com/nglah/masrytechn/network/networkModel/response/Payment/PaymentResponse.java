@@ -8,66 +8,6 @@ import java.util.List;
 public class PaymentResponse {
 
 
-    public class Billing {
-
-        @SerializedName("street1")
-        @Expose
-        private String street1;
-        @SerializedName("city")
-        @Expose
-        private String city;
-        @SerializedName("state")
-        @Expose
-        private String state;
-        @SerializedName("postcode")
-        @Expose
-        private String postcode;
-        @SerializedName("country")
-        @Expose
-        private String country;
-
-        public String getStreet1() {
-            return street1;
-        }
-
-        public void setStreet1(String street1) {
-            this.street1 = street1;
-        }
-
-        public String getCity() {
-            return city;
-        }
-
-        public void setCity(String city) {
-            this.city = city;
-        }
-
-        public String getState() {
-            return state;
-        }
-
-        public void setState(String state) {
-            this.state = state;
-        }
-
-        public String getPostcode() {
-            return postcode;
-        }
-
-        public void setPostcode(String postcode) {
-            this.postcode = postcode;
-        }
-
-        public String getCountry() {
-            return country;
-        }
-
-        public void setCountry(String country) {
-            this.country = country;
-        }
-
-    }
-
     public class Card {
 
         @SerializedName("bin")
@@ -166,6 +106,7 @@ public class PaymentResponse {
 
     }
 
+
     @SerializedName("id")
     @Expose
     private String id;
@@ -199,9 +140,6 @@ public class PaymentResponse {
     @SerializedName("customer")
     @Expose
     private Customer customer;
-    @SerializedName("billing")
-    @Expose
-    private Billing billing;
     @SerializedName("redirect")
     @Expose
     private Redirect redirect;
@@ -306,14 +244,6 @@ public class PaymentResponse {
         this.customer = customer;
     }
 
-    public Billing getBilling() {
-        return billing;
-    }
-
-    public void setBilling(Billing billing) {
-        this.billing = billing;
-    }
-
     public Redirect getRedirect() {
         return redirect;
     }
@@ -382,6 +312,7 @@ public class PaymentResponse {
 
     }
 
+
     public class Redirect {
 
         @SerializedName("url")
@@ -409,6 +340,7 @@ public class PaymentResponse {
 
     }
 
+    ;
 
     public class Result {
 
@@ -437,6 +369,7 @@ public class PaymentResponse {
 
     }
 
+
     public class ResultDetails {
 
         @SerializedName("ExtendedDescription")
@@ -463,6 +396,7 @@ public class PaymentResponse {
         }
 
     }
+
 
     public class Risk {
 

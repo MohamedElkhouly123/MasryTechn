@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.nglah.masrytechn.R;
+import com.nglah.masrytechn.view.All_Naglas.All_Nagla;
 import com.nglah.masrytechn.view.drive_Profile.drive_profile;
 import com.nglah.masrytechn.view.login.LoginActivity;
 import com.nglah.masrytechn.view.payment.Payment;
@@ -41,6 +42,7 @@ public class Main2Activity_Driver extends AppCompatActivity {
 
     }
 
+
     private void goToLogin() {
         startActivity(new Intent(this, LoginActivity.class));
     }
@@ -58,7 +60,16 @@ public class Main2Activity_Driver extends AppCompatActivity {
 
     @OnClick(R.id.mybag)
     void goToPayment(){
-        startActivity(new Intent(this, Payment.class));
-    }
+        Intent intent=new Intent(this, Payment.class);
+        intent.putExtra("type","driver");
+        startActivity(intent);    }
 
+    @OnClick(R.id.askNagla)
+    void goToNaglaha(){
+
+        Intent intent=new Intent(this,All_Nagla.class);
+
+        startActivity(intent);
+
+    }
 }

@@ -4,8 +4,6 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class AddNaqlahaResponse {
-
-
     @SerializedName("status")
     @Expose
     private Boolean status;
@@ -215,11 +213,4 @@ public class AddNaqlahaResponse {
     public void setToken(String token) {
         this.token = token;
     }
-
-
-
-
-
-
-
 }
