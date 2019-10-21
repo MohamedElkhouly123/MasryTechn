@@ -35,7 +35,7 @@ public class Nagla_Location extends AppCompatActivity {
         whereNaglah="outside";
         request.setWhereNagla(whereNaglah);
 
-        Intent intent = new Intent(this, Choose_Place_Inside_City.class);
+        Intent intent = new Intent(this, Choose_Place_Outside_City.class);
         intent.putExtra("request", request);
         startActivity(intent);
 

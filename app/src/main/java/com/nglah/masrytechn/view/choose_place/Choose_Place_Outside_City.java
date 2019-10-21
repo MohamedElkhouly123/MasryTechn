@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -427,6 +428,8 @@ public class Choose_Place_Outside_City extends AppCompatActivity {
         request.setRegion(region);
         request.setFromCity(fromCity);
         request.setToCity(toCity);
+        Toast.makeText(this,toCity, Toast.LENGTH_SHORT).show();
+
         Intent intent = new Intent(this, Choose_Element.class);
         intent.putExtra("request", request);
         startActivity(intent);
