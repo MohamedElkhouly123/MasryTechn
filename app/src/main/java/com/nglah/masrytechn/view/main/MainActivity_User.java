@@ -87,7 +87,7 @@ public class MainActivity_User extends AppCompatActivity {
     @OnClick(R.id.askNagla)
     void askNaglah(){
 
-        Intent intent=new Intent(this, All_Nagla.class);
+        Intent intent=new Intent(this, Nagla_Location.class);
         startActivity(intent);
 
 
