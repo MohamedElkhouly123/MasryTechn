@@ -128,7 +128,6 @@ public class RegisterActivity extends AppCompatActivity {
                     } else if (response.getMessage().equals(newtworkException)){
                         showToast(poorConnection);
                     }else {
-                        goToMain();
                         showToast(response.getMessage());
                     }
 
