@@ -2,7 +2,6 @@
     <array name="users">
         <item>صاحب نقله</item>
         <item>سائق</item>
-
     </array>
     <array name="carsType">
         <item>تويتا</item>
@@ -10,7 +9,6 @@
         <item>مرسيدس</item>
         <item>شيفروليه</item>
         <item>ماذدا</item>
-
     </array>
 
     <string name="app_name">نقله</string>
