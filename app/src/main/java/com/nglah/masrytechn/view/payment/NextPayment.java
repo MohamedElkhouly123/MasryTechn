@@ -45,7 +45,8 @@ public class NextPayment extends AppCompatActivity {
     String serverError;
 
     Views.LoadingView loadingView;
-    String user="";
+    String user = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +54,7 @@ public class NextPayment extends AppCompatActivity {
         ButterKnife.bind(this);
         type = getIntent().getStringExtra("type");
         user = getIntent().getStringExtra("user");
-        loadingView=new Views.LoadingView(this);
+        loadingView = new Views.LoadingView(this);
         initListener();
     }
 
@@ -69,13 +70,16 @@ public class NextPayment extends AppCompatActivity {
                         finish();
                     } else if (response.getResult().getCode().equals("100.100.101")) {
                         showToast(getString(R.string.inValidCardNumber));
-                    }else if(response.getResult().getCode().equals("100.100.700")){
+                    } else if (response.getResult().getCode().equals("100.100.700")) {
                         showToast(response.getResult().getDescription());
-                    }
+                    } else if (response.getResult().getCode().equals("200.300.404")) {
+                        showToast(response.getResult().getDescription());
+                    } else if (response.getResult().getCode() != null) {
+                        showToast(response.getResult().getDescription());
 
-                    else if (response.getResult().getCode().equals(newtworkException)){
+                    } else if (response.getResult().getCode().equals(newtworkException)) {
                         showToast(poorConnection);
-                    }else {
+                    } else {
                         showToast(serverError);
                     }
 

@@ -91,14 +91,14 @@
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Naqlah Owner"
+                android:text="@string/naqlaOwner"
                 />
             <RadioButton
                 android:id="@+id/rb_carOWner"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Car Owner"
+                android:text="@string/driverOwner"
                 />
 
         </RadioGroup>

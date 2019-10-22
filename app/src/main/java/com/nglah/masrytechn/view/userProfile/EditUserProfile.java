@@ -81,7 +81,9 @@ public class EditUserProfile extends AppCompatActivity {
 
 
     }
-    @OnClick(R.id.list)void  back(){
+
+    @OnClick(R.id.list)
+    void back() {
         finish();
     }
 
@@ -179,12 +181,16 @@ public class EditUserProfile extends AppCompatActivity {
         viewModel = ViewModelProviders.of(this).get(ViewModelUser.class);
         viewModel.makeRegister().observe(this, new Observer<RegisterResponse>() {
             @Override
-            public void onChanged(RegisterResponse registerResponse) {
+            public void onChanged(RegisterResponse response) {
                 loadingView.dismiss();
-                if (registerResponse.getId() != null) {
+                if (response.getStatus()) {
                     goToMain();
+                } else if (response.getMessage() != null && response.getMessage().equals(newtworkException)) {
+                    showToast(poorConnection);
+                } else if (response.getMessage() != null) {
+                    showToast(response.getMessage());
                 } else {
-                    showToast("error happen tray again later");
+                    showToast(serverError);
                 }
 
             }
@@ -198,16 +204,13 @@ public class EditUserProfile extends AppCompatActivity {
                 if (response.getStatus()) {
                     showToast(updateSuccessful);
                     finish();
-
                 } else if (response.getMessage() != null && response.getMessage().equals(newtworkException)) {
 
                     showToast(poorConnection);
 
-                } else if (response.getMessage()!=null){
+                } else if (response.getMessage() != null) {
                     showToast(response.getMessage());
-                }
-
-                else {
+                } else {
                     showToast(serverError);
                 }
 

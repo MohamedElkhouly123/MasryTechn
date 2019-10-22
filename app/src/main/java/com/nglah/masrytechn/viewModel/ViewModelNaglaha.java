@@ -26,9 +26,12 @@ public class ViewModelNaglaha extends ViewModel {
     }
 
     public void addNaglahToServer(AddNaqlaRequest request) {
-//
-//        request.setToP("");
-//        request.setNaglahType("");
+
+        if (request.getToP()==null){
+            request.setToP("");
+
+        }
+        request.setNaglahType("");
         NaglahRepository.getInstance().addNaglahaRepository(request)
                 .subscribe(new Observer<AddNaqlahaResponse>() {
                     @Override

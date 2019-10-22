@@ -62,8 +62,6 @@ public class NaglahRepository {
                     @Override
                     public void onNext(AddNaqlahaResponse response ) {
                         emitter.onNext(response);
-
-
                     }
 
                     @Override
