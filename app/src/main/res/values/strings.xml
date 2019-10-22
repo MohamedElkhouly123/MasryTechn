@@ -5,9 +5,11 @@
 
     </array>
     <array name="carsType">
-        <item>Toyota</item>
-        <item>Mazda</item>
-        <item>Lancer</item>
+        <item>تويتا</item>
+        <item>لانسر</item>
+        <item>مرسيدس</item>
+        <item>شيفروليه</item>
+        <item>ماذدا</item>
 
     </array>
 

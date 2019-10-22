@@ -272,6 +272,7 @@
                 android:fontFamily="@font/lemon"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_16ssp"
+                android:maxLength="14"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_marginStart="@dimen/_10sdp"
                 app:layout_constraintBottom_toBottomOf="parent"

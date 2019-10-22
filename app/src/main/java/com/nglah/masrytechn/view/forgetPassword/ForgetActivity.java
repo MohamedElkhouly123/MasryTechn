@@ -33,7 +33,6 @@ public class ForgetActivity extends AppCompatActivity {
     @BindView(R.id.rb_forgetPassword_carOWner)
     RadioButton rb_carOwner;
 
-
     @BindString(R.string.networkException)
     String newtworkException;
     @BindString(R.string.poorConnection)
