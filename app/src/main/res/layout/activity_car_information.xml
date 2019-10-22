@@ -140,7 +140,7 @@
                 android:gravity="center"
                 android:id="@+id/et_maxWeight"
                 android:layout_weight="1"
-                android:hint=")كجم(اقصى وزن  "
+                android:hint="اقصى وزن (كجم)"
                 android:textColorHint="@color/mdtp_white"
                 android:textSize="@dimen/_14ssp"
                 android:textColor="#000"
