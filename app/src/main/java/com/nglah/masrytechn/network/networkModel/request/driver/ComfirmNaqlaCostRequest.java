@@ -3,16 +3,12 @@ package com.nglah.masrytechn.network.networkModel.request.driver;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class AcceptNqlahRequest {
-
+public class ComfirmNaqlaCostRequest {
 
     @SerializedName("driverId")
     @Expose
     private Integer driverId;
     @SerializedName("naqlaId")
-    @Expose
-    private Integer price;
-    @SerializedName("price")
     @Expose
     private Integer naqlaId;
 
@@ -24,14 +20,6 @@ public class AcceptNqlahRequest {
         this.driverId = driverId;
     }
 
-    public Integer getPrice() {
-        return price;
-    }
-
-    public void setPrice(Integer price) {
-        this.price = price;
-    }
-
     public Integer getNaqlaId() {
         return naqlaId;
     }
@@ -39,4 +27,5 @@ public class AcceptNqlahRequest {
     public void setNaqlaId(Integer naqlaId) {
         this.naqlaId = naqlaId;
     }
+
 }

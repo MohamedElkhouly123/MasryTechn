@@ -4,9 +4,11 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.nglah.masrytechn.network.networkModel.request.driver.AcceptNqlahRequest;
+import com.nglah.masrytechn.network.networkModel.request.driver.ComfirmNaqlaCostRequest;
 import com.nglah.masrytechn.network.networkModel.request.driver.GetAllNaqlaRequest;
 import com.nglah.masrytechn.network.networkModel.request.driver.UserHistoryRequest;
 import com.nglah.masrytechn.network.networkModel.response.driver.AcceptNaqlahaResponse;
+import com.nglah.masrytechn.network.networkModel.response.driver.ComfirmNaqlaCostResponse;
 import com.nglah.masrytechn.network.networkModel.response.driver.GetAllNaqlaResponse;
 import com.nglah.masrytechn.network.networkModel.response.driver.UserHistoryResponse;
 import com.nglah.masrytechn.repository.DriverRepository;
@@ -19,6 +21,7 @@ public class DriverViewModel extends ViewModel {
     private MutableLiveData<GetAllNaqlaResponse> getNAqlaForDriver = new MutableLiveData<>();
     private MutableLiveData<AcceptNaqlahaResponse> acceptNaqlaresponse = new MutableLiveData<>();
     private MutableLiveData<UserHistoryResponse> userHistoryresponse = new MutableLiveData<>();
+    private MutableLiveData<ComfirmNaqlaCostResponse> confirmCostResponse = new MutableLiveData<>();
 
 
     public MutableLiveData<GetAllNaqlaResponse> getAllNaqla() {
@@ -126,4 +129,41 @@ public class DriverViewModel extends ViewModel {
                 });
 
     }
+
+
+    public MutableLiveData<ComfirmNaqlaCostResponse> getConfirmCost() {
+        return confirmCostResponse;
+    }
+
+    public void confirmCostToServer(int driverID, int naqlaId) {
+
+        ComfirmNaqlaCostRequest request = new ComfirmNaqlaCostRequest();
+        request.setDriverId(driverID);
+        request.setNaqlaId(naqlaId);
+
+        DriverRepository.getInstance().confirmCostRepository(request)
+                .subscribe(new Observer<ComfirmNaqlaCostResponse>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(ComfirmNaqlaCostResponse value) {
+                        confirmCostResponse.postValue(value);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        confirmCostResponse.postValue(null);
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+
+    }
 }
+

@@ -59,7 +59,7 @@ public class Accepted_User_Info extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accepted__user__info);
         ButterKnife.bind(this);
-        loadingView=new Views.LoadingView(this);
+        loadingView = new Views.LoadingView(this);
         data = (GetAllNaqlaResponse.Datum) getIntent().getSerializableExtra("data");
         initListener();
         if (data != null) {
@@ -77,7 +77,7 @@ public class Accepted_User_Info extends AppCompatActivity {
                 loadingView.dismiss();
 
                 if (response != null) {
-                    if (response.getStatus() && response.getMsg().equals("Naqla has been accepted successfully")) {
+                    if (response.getStatus() && response.getMsg().equals("done")) {
                         finish();
                     } else if (response.getMsg().equals(newtworkException)) {
                         showToast(poorConnection);
@@ -93,29 +93,25 @@ public class Accepted_User_Info extends AppCompatActivity {
     }
 
     private void updateUi() {
-        tv_naqlaOwner.setText(data.getUser().getFname()+" "+data.getUser().getLname());
+        tv_naqlaOwner.setText(data.getUser().getFname() + " " + data.getUser().getLname());
         tv_orderType.setText(data.getNaglahType());
         tv_date.setText(data.getNaqlaDate());
         tv_time.setText(data.getNaqlaTime());
         tv_thingType.setText(data.getElementType());
         tv_city.setText(data.getToP());
         tv_detail.setText(data.getDetails());
-
     }
 
     @OnClick(R.id.bt_ok)
     void acceptNAqlah() {
         if (!TextUtils.isEmpty(et_price.getText().toString())) {
             loadingView.show();
-
             AcceptNqlahRequest request = new AcceptNqlahRequest();
-            request.setDriverId(loggedInUser.getId());
-            request.setNaqlaId(data.getId()+"");
-            request.setPrice(et_price.getText().toString());
+            request.setDriverId(Integer.parseInt(loggedInUser.getId()));
+            request.setNaqlaId(data.getId());
+            request.setPrice(Integer.parseInt(et_price.getText().toString()));
             viewModel.acceptNaqlaToServer(request);
-
         }
-
     }
 
     private void showToast(String m) {

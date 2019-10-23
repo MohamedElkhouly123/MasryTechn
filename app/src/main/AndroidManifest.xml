@@ -12,7 +12,8 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.NoActionBar">
-        <activity android:name=".view.historyUSer.Historydetail"></activity>
+        <activity android:name=".view.chat.ChatActivity"></activity>
+        <activity android:name=".view.historyUSer.Historydetail" />
         <activity android:name=".view.historyUSer.History" />
         <activity android:name=".view.payment.NextPayment" />
         <activity android:name=".view.main.Main2Activity_Driver" />

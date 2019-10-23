@@ -1,9 +1,11 @@
 package com.nglah.masrytechn.repository;
 
 import com.nglah.masrytechn.network.networkModel.request.driver.AcceptNqlahRequest;
+import com.nglah.masrytechn.network.networkModel.request.driver.ComfirmNaqlaCostRequest;
 import com.nglah.masrytechn.network.networkModel.request.driver.GetAllNaqlaRequest;
 import com.nglah.masrytechn.network.networkModel.request.driver.UserHistoryRequest;
 import com.nglah.masrytechn.network.networkModel.response.driver.AcceptNaqlahaResponse;
+import com.nglah.masrytechn.network.networkModel.response.driver.ComfirmNaqlaCostResponse;
 import com.nglah.masrytechn.network.networkModel.response.driver.GetAllNaqlaResponse;
 import com.nglah.masrytechn.network.networkModel.response.driver.UserHistoryResponse;
 import com.nglah.masrytechn.network.webservices.NaglahaWebServices;
@@ -139,6 +141,41 @@ public class DriverRepository {
                         UserHistoryResponse response = new UserHistoryResponse();
                         response.setStatus(false);
                         response.setMessage(e.toString());
+                        emitter.onNext(response);
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+            }
+        });
+
+    }
+
+    public Observable<ComfirmNaqlaCostResponse> confirmCostRepository(final ComfirmNaqlaCostRequest request) {
+        return Observable.create(new ObservableOnSubscribe<ComfirmNaqlaCostResponse>() {
+            @Override
+            public void subscribe(final ObservableEmitter<ComfirmNaqlaCostResponse> emitter) {
+
+                naglahaWebServices.confirmCost(request).subscribeOn(Schedulers.io()).
+                        observeOn(Schedulers.io()).subscribe(new Observer<ComfirmNaqlaCostResponse>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(ComfirmNaqlaCostResponse response) {
+                        emitter.onNext(response);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        ComfirmNaqlaCostResponse response = new ComfirmNaqlaCostResponse();
+                        response.setStatus(false);
+                        response.setMsg(e.toString());
                         emitter.onNext(response);
                     }
 

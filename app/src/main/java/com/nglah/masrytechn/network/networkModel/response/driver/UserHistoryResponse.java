@@ -7,7 +7,6 @@ import java.io.Serializable;
 import java.util.List;
 
 public class UserHistoryResponse {
-
     public class Datum implements Serializable {
 
         @SerializedName("id")
@@ -66,7 +65,7 @@ public class UserHistoryResponse {
         private String token;
         @SerializedName("driver")
         @Expose
-        private Driver driver;
+        private List<Driver> driver = null;
 
         public Integer getId() {
             return id;
@@ -212,15 +211,16 @@ public class UserHistoryResponse {
             this.token = token;
         }
 
-        public Driver getDriver() {
+        public List<Driver> getDriver() {
             return driver;
         }
 
-        public void setDriver(Driver driver) {
+        public void setDriver(List<Driver> driver) {
             this.driver = driver;
         }
 
     }
+
 
     public class Driver implements Serializable {
 
@@ -278,6 +278,9 @@ public class UserHistoryResponse {
         @SerializedName("IDnumber")
         @Expose
         private String iDnumber;
+        @SerializedName("Price")
+        @Expose
+        private String price;
 
         public Integer getId() {
             return id;
@@ -423,8 +426,15 @@ public class UserHistoryResponse {
             this.iDnumber = iDnumber;
         }
 
-    }
+        public String getPrice() {
+            return price;
+        }
 
+        public void setPrice(String price) {
+            this.price = price;
+        }
+
+    }
 
     @SerializedName("status")
     @Expose
@@ -434,6 +444,7 @@ public class UserHistoryResponse {
     private List<Datum> data = null;
 
     private String message;
+
     public Boolean getStatus() {
         return status;
     }

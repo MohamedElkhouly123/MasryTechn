@@ -18,7 +18,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.nglah.masrytechn.Listener;
 import com.nglah.masrytechn.R;
 import com.nglah.masrytechn.network.networkModel.response.driver.UserHistoryResponse;
-import com.nglah.masrytechn.view.Accepted_Info.Accepted_User_Info;
 import com.nglah.masrytechn.view.Utils.CheckNetwork;
 import com.nglah.masrytechn.view.adapter.MyHistoryAdapter;
 import com.nglah.masrytechn.viewModel.DriverViewModel;
@@ -191,5 +190,10 @@ public class History extends AppCompatActivity implements Listener {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        viewModel.getHistoryFromServer(loggedInUser.getId());
 
+    }
 }

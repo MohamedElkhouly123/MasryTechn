@@ -2,6 +2,7 @@ package com.nglah.masrytechn.network.webservices;
 
 import com.nglah.masrytechn.network.networkModel.request.Payment.PaymentRequest;
 import com.nglah.masrytechn.network.networkModel.request.driver.AcceptNqlahRequest;
+import com.nglah.masrytechn.network.networkModel.request.driver.ComfirmNaqlaCostRequest;
 import com.nglah.masrytechn.network.networkModel.request.driver.GetAllNaqlaRequest;
 import com.nglah.masrytechn.network.networkModel.request.driver.UserHistoryRequest;
 import com.nglah.masrytechn.network.networkModel.request.naglaha.AddNaqlaRequest;
@@ -9,6 +10,7 @@ import com.nglah.masrytechn.network.networkModel.response.driver.AcceptNaqlahaRe
 import com.nglah.masrytechn.network.networkModel.response.Naglaha.AddNaqlahaResponse;
 import com.nglah.masrytechn.network.networkModel.response.Naglaha.AllDriverResponse;
 import com.nglah.masrytechn.network.networkModel.response.Payment.PaymentResponse;
+import com.nglah.masrytechn.network.networkModel.response.driver.ComfirmNaqlaCostResponse;
 import com.nglah.masrytechn.network.networkModel.response.driver.GetAllNaqlaResponse;
 import com.nglah.masrytechn.network.networkModel.response.driver.UserHistoryResponse;
 
@@ -36,7 +38,7 @@ public interface NaglahaWebServices {
     Observable<GetAllNaqlaResponse> getAllNaqla(@Body GetAllNaqlaRequest request);
 
 
-    @POST("acceptNaqla")
+    @POST("addNaqlaToDriver")
     @Headers({"Content-Type: application/json"})
     Observable<AcceptNaqlahaResponse> acceptNaqlaha(@Body AcceptNqlahRequest request);
 
@@ -45,5 +47,8 @@ public interface NaglahaWebServices {
     @Headers({"Content-Type: application/json"})
     Observable<UserHistoryResponse> getMyHistory(@Body UserHistoryRequest request);
 
+    @POST("acceptNaqla")
+    @Headers({"Content-Type: application/json"})
+    Observable<ComfirmNaqlaCostResponse> confirmCost(@Body ComfirmNaqlaCostRequest request);
 
 }
