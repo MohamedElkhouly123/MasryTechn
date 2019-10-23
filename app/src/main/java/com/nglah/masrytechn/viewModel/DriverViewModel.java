@@ -5,8 +5,10 @@ import androidx.lifecycle.ViewModel;
 
 import com.nglah.masrytechn.network.networkModel.request.driver.AcceptNqlahRequest;
 import com.nglah.masrytechn.network.networkModel.request.driver.GetAllNaqlaRequest;
-import com.nglah.masrytechn.network.networkModel.response.AcceptNaqlahaResponse;
+import com.nglah.masrytechn.network.networkModel.request.driver.UserHistoryRequest;
+import com.nglah.masrytechn.network.networkModel.response.driver.AcceptNaqlahaResponse;
 import com.nglah.masrytechn.network.networkModel.response.driver.GetAllNaqlaResponse;
+import com.nglah.masrytechn.network.networkModel.response.driver.UserHistoryResponse;
 import com.nglah.masrytechn.repository.DriverRepository;
 
 import io.reactivex.Observer;
@@ -16,6 +18,8 @@ public class DriverViewModel extends ViewModel {
 
     private MutableLiveData<GetAllNaqlaResponse> getNAqlaForDriver = new MutableLiveData<>();
     private MutableLiveData<AcceptNaqlahaResponse> acceptNaqlaresponse = new MutableLiveData<>();
+    private MutableLiveData<UserHistoryResponse> userHistoryresponse = new MutableLiveData<>();
+
 
     public MutableLiveData<GetAllNaqlaResponse> getAllNaqla() {
         return getNAqlaForDriver;
@@ -78,6 +82,41 @@ public class DriverViewModel extends ViewModel {
                     @Override
                     public void onError(Throwable e) {
                         acceptNaqlaresponse.postValue(null);
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+
+    }
+
+
+    public MutableLiveData<UserHistoryResponse> getUSerHistory() {
+        return userHistoryresponse;
+    }
+
+    public void getHistoryFromServer(String id) {
+
+        UserHistoryRequest request = new UserHistoryRequest();
+        request.setUserId(id);
+
+        DriverRepository.getInstance().userHistoryRepository(request)
+                .subscribe(new Observer<UserHistoryResponse>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(UserHistoryResponse value) {
+                        userHistoryresponse.postValue(value);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        userHistoryresponse.postValue(null);
                     }
 
                     @Override

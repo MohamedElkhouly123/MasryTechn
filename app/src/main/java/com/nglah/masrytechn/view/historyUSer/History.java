@@ -1,4 +1,4 @@
-package com.nglah.masrytechn.view.All_Naglas;
+package com.nglah.masrytechn.view.historyUSer;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,10 +17,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.nglah.masrytechn.Listener;
 import com.nglah.masrytechn.R;
-import com.nglah.masrytechn.network.networkModel.response.driver.GetAllNaqlaResponse;
+import com.nglah.masrytechn.network.networkModel.response.driver.UserHistoryResponse;
 import com.nglah.masrytechn.view.Accepted_Info.Accepted_User_Info;
 import com.nglah.masrytechn.view.Utils.CheckNetwork;
-import com.nglah.masrytechn.view.adapter.AllNaqlahAdapter;
+import com.nglah.masrytechn.view.adapter.MyHistoryAdapter;
 import com.nglah.masrytechn.viewModel.DriverViewModel;
 
 import java.util.List;
@@ -32,7 +32,7 @@ import butterknife.OnClick;
 
 import static com.nglah.masrytechn.model.UserModel.loggedInUser;
 
-public class All_Nagla extends AppCompatActivity implements Listener {
+public class History extends AppCompatActivity implements Listener {
 
     @BindView(R.id.rv_allDriver)
     RecyclerView rv_branches;
@@ -56,21 +56,22 @@ public class All_Nagla extends AppCompatActivity implements Listener {
     String noDataFound;
 
 
-    private List<GetAllNaqlaResponse.Datum> list;
+    private List<UserHistoryResponse.Datum> list;
 
     RecyclerView.LayoutManager layoutManager;
-    AllNaqlahAdapter adapter;
+    MyHistoryAdapter adapter;
     DriverViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_all__nagla);
+        setContentView(R.layout.activity_history);
         ButterKnife.bind(this);
         initListener();
         initAdapter();
         getDataFromServer();
     }
+
 
     @OnClick(R.id.list)
     void backto() {
@@ -87,7 +88,7 @@ public class All_Nagla extends AppCompatActivity implements Listener {
         if (new CheckNetwork(this).getConnected()) {
             showLoading();
 
-            viewModel.getAllNaqlaFromServer(loggedInUser.getId());
+            viewModel.getHistoryFromServer(loggedInUser.getId());
 
         } else {
             errorNetwork();
@@ -97,7 +98,7 @@ public class All_Nagla extends AppCompatActivity implements Listener {
     private void initAdapter() {
         layoutManager = new LinearLayoutManager(this);
         rv_branches.setLayoutManager(layoutManager);
-        adapter = new AllNaqlahAdapter(list, this, this::onClick);
+        adapter = new MyHistoryAdapter(list, this, this::onClick);
         rv_branches.setAdapter(adapter);
     }
 
@@ -148,16 +149,16 @@ public class All_Nagla extends AppCompatActivity implements Listener {
     @Override
     public void onClick(int position) {
 
-        Intent intent = new Intent(this, Accepted_User_Info.class);
+        Intent intent = new Intent(this, Historydetail.class);
         intent.putExtra("data", list.get(position));
         startActivity(intent);
     }
 
     private void initListener() {
         viewModel = ViewModelProviders.of(this).get(DriverViewModel.class);
-        viewModel.getAllNaqla().observe(this, new Observer<GetAllNaqlaResponse>() {
+        viewModel.getUSerHistory().observe(this, new Observer<UserHistoryResponse>() {
             @Override
-            public void onChanged(GetAllNaqlaResponse response) {
+            public void onChanged(UserHistoryResponse response) {
                 dismissLoading();
                 if (response != null && response.getStatus()) {
                     if (response.getData() != null && response.getData().size() > 0) {

@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.nglah.masrytechn.R;
+import com.nglah.masrytechn.view.historyUSer.History;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -70,7 +71,8 @@ public class UserProfile extends AppCompatActivity {
             intent.putExtra("type", "edit");
             startActivity(intent);
         } else if (id == R.id.naglaty) {
-
+            Intent intent = new Intent(this, History.class);
+            startActivity(intent);
         }
         return true;
     }

@@ -6,8 +6,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@android:color/white"
+    tools:context=".view.historyUSer.History">
 
-    tools:context=".view.All_Naglas.All_Nagla">
+
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -42,7 +43,7 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="@dimen/_20sdp"
                 android:layout_marginEnd="@dimen/_20sdp"
-                android:text="النقلات المطلوبه"
+                android:text=" نقلاتي"
                 android:textAlignment="center"
                 android:textColor="#fff"
                 android:fontFamily="@font/arabfont"
@@ -110,5 +111,4 @@
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
-
 </LinearLayout>

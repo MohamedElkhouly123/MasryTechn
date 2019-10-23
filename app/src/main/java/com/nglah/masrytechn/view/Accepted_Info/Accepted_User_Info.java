@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.nglah.masrytechn.R;
 import com.nglah.masrytechn.network.networkModel.request.driver.AcceptNqlahRequest;
-import com.nglah.masrytechn.network.networkModel.response.AcceptNaqlahaResponse;
+import com.nglah.masrytechn.network.networkModel.response.driver.AcceptNaqlahaResponse;
 import com.nglah.masrytechn.network.networkModel.response.driver.GetAllNaqlaResponse;
 import com.nglah.masrytechn.view.Utils.Dialog.Views;
 import com.nglah.masrytechn.viewModel.DriverViewModel;

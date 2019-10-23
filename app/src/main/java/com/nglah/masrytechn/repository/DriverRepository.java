@@ -2,8 +2,10 @@ package com.nglah.masrytechn.repository;
 
 import com.nglah.masrytechn.network.networkModel.request.driver.AcceptNqlahRequest;
 import com.nglah.masrytechn.network.networkModel.request.driver.GetAllNaqlaRequest;
-import com.nglah.masrytechn.network.networkModel.response.AcceptNaqlahaResponse;
+import com.nglah.masrytechn.network.networkModel.request.driver.UserHistoryRequest;
+import com.nglah.masrytechn.network.networkModel.response.driver.AcceptNaqlahaResponse;
 import com.nglah.masrytechn.network.networkModel.response.driver.GetAllNaqlaResponse;
+import com.nglah.masrytechn.network.networkModel.response.driver.UserHistoryResponse;
 import com.nglah.masrytechn.network.webservices.NaglahaWebServices;
 
 import io.reactivex.Observable;
@@ -102,6 +104,41 @@ public class DriverRepository {
                         AcceptNaqlahaResponse response = new AcceptNaqlahaResponse();
                         response.setStatus(false);
                         response.setMsg(e.toString());
+                        emitter.onNext(response);
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+            }
+        });
+
+    }
+
+    public Observable<UserHistoryResponse> userHistoryRepository(final UserHistoryRequest request) {
+        return Observable.create(new ObservableOnSubscribe<UserHistoryResponse>() {
+            @Override
+            public void subscribe(final ObservableEmitter<UserHistoryResponse> emitter) {
+
+                naglahaWebServices.getMyHistory(request).subscribeOn(Schedulers.io()).
+                        observeOn(Schedulers.io()).subscribe(new Observer<UserHistoryResponse>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(UserHistoryResponse response) {
+                        emitter.onNext(response);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        UserHistoryResponse response = new UserHistoryResponse();
+                        response.setStatus(false);
+                        response.setMessage(e.toString());
                         emitter.onNext(response);
                     }
 

@@ -1,4 +1,4 @@
-package com.nglah.masrytechn.network.networkModel.response;
+package com.nglah.masrytechn.network.networkModel.response.driver;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
