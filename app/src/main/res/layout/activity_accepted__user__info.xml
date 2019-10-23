@@ -303,7 +303,7 @@
                 android:gravity="center"
                 android:ems="10"
                 android:hint="السعر"
-                android:inputType="phone"
+                android:inputType="number"
                 android:layout_marginStart="@dimen/_20sdp"
                 android:layout_marginEnd="@dimen/_20sdp"
                 android:minLines="1"

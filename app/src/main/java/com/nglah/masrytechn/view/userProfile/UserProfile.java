@@ -22,18 +22,14 @@ public class UserProfile extends AppCompatActivity {
 
     @BindView(R.id.tv_userName)
     TextView tv_userName;
-
     @BindView(R.id.tv_name)
     TextView tv_name;
-
     @BindView(R.id.tv_email)
     TextView tv_email;
-
     @BindView(R.id.tv_phone)
     TextView tv_phone;
     @BindView(R.id.driver_name)
     TextView tv__fullName;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +41,12 @@ public class UserProfile extends AppCompatActivity {
         setSupportActionBar(toolbar);
         updateUi();
     }
-    @OnClick(R.id.list)void  back(){
+
+    @OnClick(R.id.list)
+    void back() {
         finish();
     }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -70,6 +69,8 @@ public class UserProfile extends AppCompatActivity {
             Intent intent = new Intent(this, EditUserProfile.class);
             intent.putExtra("type", "edit");
             startActivity(intent);
+        } else if (id == R.id.naglaty) {
+
         }
         return true;
     }
