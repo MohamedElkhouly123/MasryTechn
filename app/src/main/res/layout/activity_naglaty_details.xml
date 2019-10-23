@@ -4,12 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#535252"
-    tools:context=".view.Accepted_Info.Accepted_Info">
+    tools:context=".view.Accepted_Info.NaglatyDetails">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-    >
+        >
 
         <TextView
             android:id="@+id/tv_details"
@@ -19,8 +18,9 @@
             android:layout_marginLeft="19dp"
             android:layout_marginTop="@dimen/_15sdp"
             android:paddingTop="@dimen/_20sdp"
-            android:text="Details"
-            android:textColor="#535252"
+            android:textAlignment="center"
+            android:text="التفاصيل"
+            android:textColor="#fff"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_sector" />
@@ -38,7 +38,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -46,45 +45,96 @@
             android:layout_marginBottom="@dimen/_25sdp"
 
             android:gravity="center"
-            android:orientation="horizontal"
-            android:weightSum="2"
+            android:orientation="vertical"
             app:layout_constraintBottom_toTopOf="@+id/bt_ok"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_details"
             app:layout_constraintVertical_bias="1.0">
+            <LinearLayout
+                android:weightSum="2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                >
+                <TextView
+                    android:id="@+id/driver"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="19dp"
+                    android:layout_marginLeft="19dp"
+                    android:layout_marginBottom="28dp"
+                    android:text="سائق النقله"
+                    android:textColor="@color/mdtp_white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tv_price"
-                android:layout_width="wrap_content"
+
+                <TextView
+                    android:id="@+id/driverName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:inputType="textAutoComplete"
+                    android:text="name"
+                    android:textColor="#fff"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:weightSum="2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+
+                >
+                <TextView
+                    android:id="@+id/tv_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="السعر"
+                    android:textColor="@color/mdtp_white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/et_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bottonshape"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:minLines="1"
+                    android:text="ادخل السعر"
+                    android:textColor="#535252"
+                    android:textColorHint="#535252"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+            <EditText
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="السعر"
-                android:textColor="@color/mdtp_white"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-
-            <TextView
-                android:id="@+id/et_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_20sdp"
-                android:layout_marginEnd="@dimen/_20sdp"
-                android:layout_weight="1"
-                android:background="@drawable/bottonshape"
-                android:ems="10"
-                android:gravity="center"
-                android:inputType="number"
-                android:minLines="1"
-                android:text="ادخل السعر"
-                android:textColor="#535252"
-                android:textColorHint="#535252"
-                android:textSize="20sp" />
-
-
+                android:hint="اكتب تعليقك"
+                android:padding="@dimen/_10ssp"
+                android:textColorHint="#fff"
+                android:inputType="textMultiLine"
+                android:layout_margin="@dimen/_10sdp"
+                android:textAlignment="center"
+                />
         </LinearLayout>
+
 
         <TextView
             android:id="@+id/textView3"
@@ -172,7 +222,7 @@
             android:layout_marginStart="19dp"
             android:layout_marginLeft="19dp"
             android:layout_marginBottom="26dp"
-            android:text="المدينة"
+            android:text="من مدينة"
             android:textColor="@color/mdtp_white"
             android:textSize="20sp"
 
@@ -188,7 +238,7 @@
             android:layout_marginStart="19dp"
             android:layout_marginLeft="19dp"
             android:layout_marginBottom="28dp"
-            android:text="القطاع"
+            android:text="الى مدينه"
             android:textColor="@color/mdtp_white"
             android:textSize="20sp"
 
@@ -268,7 +318,7 @@
             android:layout_marginTop="29dp"
             android:layout_marginEnd="227dp"
             android:layout_marginRight="227dp"
-            android:text="الجنوبى"
+            android:text="جده"
             android:textColor="#fff"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
