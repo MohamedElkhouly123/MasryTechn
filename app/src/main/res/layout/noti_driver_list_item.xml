@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:elevation="5dp"
     app:cardCornerRadius="15dp"
-    android:layout_margin="@dimen/_5sdp"
+    android:layout_margin="@dimen/_3sdp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:orientation="vertical"
-        android:layout_marginBottom="15dp">
+        android:layout_marginBottom="5dp">
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -27,7 +27,7 @@
             android:id="@+id/tv_driver_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Driver Name"
+            android:text="اسم السائق"
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="#fff"/>
@@ -37,8 +37,8 @@
             android:layout_height="wrap_content"
             android:text="T: 21547896532"
             android:textColor="#fff"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginEnd="@dimen/_15sdp"
             android:layout_below="@id/tv_driver_name"/>
 </LinearLayout>
 
@@ -61,6 +61,40 @@
             android:text=". 1400 SR"
             android:textColor="#fff"
             />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            >
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|center"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_15sdp"
+                android:textSize="@dimen/_10ssp"
+                android:fontFamily="@font/janna"
+                android:background="@drawable/bottonshape2"
+                android:text="تاكيد"
+                android:textColor="@color/black"
+                />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|center"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_15sdp"
+                android:textSize="@dimen/_10ssp"
+                android:fontFamily="@font/janna"
+                android:background="@drawable/bottonshape2"
+                android:text="ابدا شات"
+                android:textColor="@color/black"
+                />
+        </LinearLayout>
 
     </LinearLayout>
 

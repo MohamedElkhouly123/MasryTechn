@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:elevation="5dp"
     app:cardCornerRadius="15dp"
-    android:layout_margin="@dimen/_5sdp"
+    android:layout_margin="@dimen/_3sdp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
@@ -30,7 +30,7 @@
             android:layout_alignParentLeft="true"
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginLeft="15dp"
-            android:text="Nglah Name"
+            android:text="اسم النقله"
             android:textColor="#fff"
             android:textSize="20sp" />
         <TextView

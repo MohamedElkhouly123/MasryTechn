@@ -10,14 +10,11 @@
         android:color="#000000" />
 
     <padding
-        android:bottom="5dp"
-        android:left="10dp"
-        android:right="10dp"
-        android:top="5dp" />
+       />
 
     <corners
         android:topLeftRadius="15dp"
-        android:bottomRightRadius="25dp"
+        android:bottomRightRadius="20dp"
         />
 
 </shape>
