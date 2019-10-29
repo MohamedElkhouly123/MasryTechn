@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.util.List;
 
 public class UserHistoryResponse {
+
     public class Datum implements Serializable {
 
         @SerializedName("id")
@@ -281,6 +282,9 @@ public class UserHistoryResponse {
         @SerializedName("Price")
         @Expose
         private String price;
+        @SerializedName("rate")
+        @Expose
+        private Integer rate;
 
         public Integer getId() {
             return id;
@@ -434,7 +438,16 @@ public class UserHistoryResponse {
             this.price = price;
         }
 
+        public Integer getRate() {
+            return rate;
+        }
+
+        public void setRate(Integer rate) {
+            this.rate = rate;
+        }
+
     }
+
 
     @SerializedName("status")
     @Expose
@@ -442,8 +455,16 @@ public class UserHistoryResponse {
     @SerializedName("data")
     @Expose
     private List<Datum> data = null;
+    String message;
 
-    private String message;
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
     public Boolean getStatus() {
         return status;
@@ -461,11 +482,4 @@ public class UserHistoryResponse {
         this.data = data;
     }
 
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
 }

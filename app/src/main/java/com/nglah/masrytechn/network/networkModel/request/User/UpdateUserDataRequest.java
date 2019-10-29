@@ -5,18 +5,18 @@ import com.google.gson.annotations.SerializedName;
 
 public class UpdateUserDataRequest {
 
-    @SerializedName("userName")
+    @SerializedName("id")
     @Expose
-    private String userName;
+    private String id;
     @SerializedName("fname")
     @Expose
     private String fname;
-    @SerializedName("OldEmail")
-    @Expose
-    private String oldEmail;
     @SerializedName("lname")
     @Expose
     private String lname;
+    @SerializedName("userName")
+    @Expose
+    private String userName;
     @SerializedName("Password")
     @Expose
     private String password;
@@ -27,12 +27,12 @@ public class UpdateUserDataRequest {
     @Expose
     private String email;
 
-    public String getUserName() {
-        return userName;
+    public String getId() {
+        return id;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getFname() {
@@ -43,20 +43,20 @@ public class UpdateUserDataRequest {
         this.fname = fname;
     }
 
-    public String getOldEmail() {
-        return oldEmail;
-    }
-
-    public void setOldEmail(String oldEmail) {
-        this.oldEmail = oldEmail;
-    }
-
     public String getLname() {
         return lname;
     }
 
     public void setLname(String lname) {
         this.lname = lname;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {

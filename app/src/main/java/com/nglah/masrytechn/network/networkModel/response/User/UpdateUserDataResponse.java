@@ -7,6 +7,7 @@ import java.util.List;
 
 public class UpdateUserDataResponse {
 
+
     @SerializedName("status")
     @Expose
     private Boolean status;
@@ -117,5 +118,4 @@ public class UpdateUserDataResponse {
     public void setToken(String token) {
         this.token = token;
     }
-
 }

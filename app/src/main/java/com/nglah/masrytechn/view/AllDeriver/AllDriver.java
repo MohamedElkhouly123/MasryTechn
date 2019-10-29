@@ -143,9 +143,9 @@ public class AllDriver extends AppCompatActivity implements Listener {
     @Override
     public void onClick(int position) {
 
-//        Intent intent=new Intent(this, Accepted_Info.class);
-//        intent.putExtra("branch",list.get(position));
-//        startActivity(intent);
+        Intent intent=new Intent(this, DriverDetail.class);
+        intent.putExtra("data",list.get(position));
+        startActivity(intent);
     }
 
     private void initListener() {

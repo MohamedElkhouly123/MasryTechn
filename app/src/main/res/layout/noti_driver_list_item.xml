@@ -62,39 +62,7 @@
             android:textColor="#fff"
             />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            >
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top|center"
-                android:layout_marginLeft="@dimen/_15sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginRight="@dimen/_15sdp"
-                android:textSize="@dimen/_10ssp"
-                android:fontFamily="@font/janna"
-                android:background="@drawable/bottonshape2"
-                android:text="تاكيد"
-                android:textColor="@color/black"
-                />
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top|center"
-                android:layout_marginLeft="@dimen/_15sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginRight="@dimen/_15sdp"
-                android:textSize="@dimen/_10ssp"
-                android:fontFamily="@font/janna"
-                android:background="@drawable/bottonshape2"
-                android:text="ابدا شات"
-                android:textColor="@color/black"
-                />
-        </LinearLayout>
 
     </LinearLayout>
 

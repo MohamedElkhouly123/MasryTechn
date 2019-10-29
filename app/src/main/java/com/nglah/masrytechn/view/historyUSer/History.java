@@ -148,7 +148,7 @@ public class History extends AppCompatActivity implements Listener {
     @Override
     public void onClick(int position) {
 
-        Intent intent = new Intent(this, Historydetail.class);
+        Intent intent = new Intent(this, NaglatyDetails.class);
         intent.putExtra("data", list.get(position));
         startActivity(intent);
     }

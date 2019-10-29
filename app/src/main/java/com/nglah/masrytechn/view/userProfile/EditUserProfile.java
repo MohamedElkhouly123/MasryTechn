@@ -158,7 +158,6 @@ public class EditUserProfile extends AppCompatActivity {
                     request.setFname(et_firstName.getText().toString());
                     request.setLname(et_familyName.getText().toString());
                     request.setEmail(et_email.getText().toString());
-                    request.setOldEmail(loggedInUser.getEmail());
                     request.setMobileNumber(et_phone.getText().toString());
                     request.setUserName(et_useName.getText().toString());
                     request.setPassword(et_password.getText().toString());

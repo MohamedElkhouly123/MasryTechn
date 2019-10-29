@@ -1,10 +1,12 @@
 package com.nglah.masrytechn.repository;
 
 import com.nglah.masrytechn.network.networkModel.request.driver.AcceptNqlahRequest;
+import com.nglah.masrytechn.network.networkModel.request.driver.AddEvaluationRequest;
 import com.nglah.masrytechn.network.networkModel.request.driver.ComfirmNaqlaCostRequest;
 import com.nglah.masrytechn.network.networkModel.request.driver.GetAllNaqlaRequest;
 import com.nglah.masrytechn.network.networkModel.request.driver.UserHistoryRequest;
 import com.nglah.masrytechn.network.networkModel.response.driver.AcceptNaqlahaResponse;
+import com.nglah.masrytechn.network.networkModel.response.driver.AddEvaluationResponse;
 import com.nglah.masrytechn.network.networkModel.response.driver.ComfirmNaqlaCostResponse;
 import com.nglah.masrytechn.network.networkModel.response.driver.GetAllNaqlaResponse;
 import com.nglah.masrytechn.network.networkModel.response.driver.UserHistoryResponse;
@@ -174,6 +176,41 @@ public class DriverRepository {
                     @Override
                     public void onError(Throwable e) {
                         ComfirmNaqlaCostResponse response = new ComfirmNaqlaCostResponse();
+                        response.setStatus(false);
+                        response.setMsg(e.toString());
+                        emitter.onNext(response);
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+            }
+        });
+
+    }
+
+    public Observable<AddEvaluationResponse> addEvaluationRepository(final AddEvaluationRequest request) {
+        return Observable.create(new ObservableOnSubscribe<AddEvaluationResponse>() {
+            @Override
+            public void subscribe(final ObservableEmitter<AddEvaluationResponse> emitter) {
+
+                naglahaWebServices.addEvluation(request).subscribeOn(Schedulers.io()).
+                        observeOn(Schedulers.io()).subscribe(new Observer<AddEvaluationResponse>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(AddEvaluationResponse response) {
+                        emitter.onNext(response);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        AddEvaluationResponse response = new AddEvaluationResponse();
                         response.setStatus(false);
                         response.setMsg(e.toString());
                         emitter.onNext(response);

@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.nglah.masrytechn.R;
+import com.nglah.masrytechn.view.chat.ChatActivity;
 import com.nglah.masrytechn.view.historyUSer.History;
 
 import butterknife.BindView;
@@ -71,7 +72,7 @@ public class UserProfile extends AppCompatActivity {
             intent.putExtra("type", "edit");
             startActivity(intent);
         } else if (id == R.id.naglaty) {
-            Intent intent = new Intent(this, History.class);
+            Intent intent = new Intent(this, ChatActivity.class);
             startActivity(intent);
         }
         return true;

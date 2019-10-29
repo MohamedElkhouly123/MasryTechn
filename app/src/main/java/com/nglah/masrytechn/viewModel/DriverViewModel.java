@@ -4,10 +4,12 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.nglah.masrytechn.network.networkModel.request.driver.AcceptNqlahRequest;
+import com.nglah.masrytechn.network.networkModel.request.driver.AddEvaluationRequest;
 import com.nglah.masrytechn.network.networkModel.request.driver.ComfirmNaqlaCostRequest;
 import com.nglah.masrytechn.network.networkModel.request.driver.GetAllNaqlaRequest;
 import com.nglah.masrytechn.network.networkModel.request.driver.UserHistoryRequest;
 import com.nglah.masrytechn.network.networkModel.response.driver.AcceptNaqlahaResponse;
+import com.nglah.masrytechn.network.networkModel.response.driver.AddEvaluationResponse;
 import com.nglah.masrytechn.network.networkModel.response.driver.ComfirmNaqlaCostResponse;
 import com.nglah.masrytechn.network.networkModel.response.driver.GetAllNaqlaResponse;
 import com.nglah.masrytechn.network.networkModel.response.driver.UserHistoryResponse;
@@ -22,6 +24,7 @@ public class DriverViewModel extends ViewModel {
     private MutableLiveData<AcceptNaqlahaResponse> acceptNaqlaresponse = new MutableLiveData<>();
     private MutableLiveData<UserHistoryResponse> userHistoryresponse = new MutableLiveData<>();
     private MutableLiveData<ComfirmNaqlaCostResponse> confirmCostResponse = new MutableLiveData<>();
+    private MutableLiveData<AddEvaluationResponse> addEvluationResponse = new MutableLiveData<>();
 
 
     public MutableLiveData<GetAllNaqlaResponse> getAllNaqla() {
@@ -165,5 +168,38 @@ public class DriverViewModel extends ViewModel {
                 });
 
     }
-}
 
+
+    public MutableLiveData<AddEvaluationResponse> getAddEvluationResponse() {
+        return addEvluationResponse;
+    }
+
+    public void sendEvaluationToServer(AddEvaluationRequest request) {
+
+
+        DriverRepository.getInstance().addEvaluationRepository(request)
+                .subscribe(new Observer<AddEvaluationResponse>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(AddEvaluationResponse value) {
+                        addEvluationResponse.postValue(value);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        addEvluationResponse.postValue(null);
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+
+    }
+
+}

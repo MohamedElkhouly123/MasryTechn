@@ -12,9 +12,9 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.NoActionBar">
-        <activity android:name=".view.Accepted_Info.NaglatyDetails"></activity>
+        <activity android:name=".view.AllDeriver.DriverDetail"></activity>
+        <activity android:name=".view.historyUSer.NaglatyDetails" />
         <activity android:name=".view.chat.ChatActivity" />
-        <activity android:name=".view.historyUSer.Historydetail" />
         <activity android:name=".view.historyUSer.History" />
         <activity android:name=".view.payment.NextPayment" />
         <activity android:name=".view.main.Main2Activity_Driver" />
