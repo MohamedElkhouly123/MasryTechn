@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/All_Drivers"
-        android:title="كل السائقين"
+        android:title="@string/allDrivers"
         app:showAsAction="never"
 
         />

@@ -1,82 +1,125 @@
 <resources>
     <array name="users">
-        <item>صاحب نقله</item>
-        <item>سائق</item>
+        <item>Naglah Owner</item>
+        <item>driver</item>
     </array>
     <array name="carsType">
-        <item>تويتا</item>
-        <item>لانسر</item>
-        <item>مرسيدس</item>
-        <item>شيفروليه</item>
-        <item>ماذدا</item>
+        <item>Touta</item>
+        <item>Lancar</item>
+        <item>Mercedes</item>
+        <item>Chevrolet</item>
+        <item>Mazda</item>
     </array>
 
-    <string name="app_name">نقله</string>
-    <string name="create_new_account">انشاء حساب جديد</string>
-    <string name="forget_password">نسيان كلمه المرور؟</string>
-    <string name="login">تسجيل الدخول</string>
-    <string name="email">الايميل</string>
-    <string name="noUserName">لايوجد اسم مستخدم</string>
-    <string name="noPassword">لايوجد كلمخ مرور  </string>
-    <string name="register">انشاء حساب جديد</string>
-    <string name="password">كلمه مرور </string>
-    <string name="phone">رقم الهاتف</string>
-    <string name="name">الاسم</string>
-    <string name="noPhone">لايوجد رقم هاتف</string>
+    <string name="app_name">Naglah</string>
+    <string name="create_new_account">Create new account</string>
+    <string name="forget_password">Forget Password?</string>
+    <string name="login">Sign In</string>
+    <string name="email">Email</string>
+    <string name="noUserName">No user name</string>
+    <string name="noPassword">No password  </string>
+    <string name="register">Create new account</string>
+    <string name="password">Password </string>
+    <string name="phone">Phone</string>
+    <string name="name">Name</string>
+    <string name="noPhone">No Phone number</string>
 
-    <string name="noEmail">لايوجد ايميل</string>
-    <string name="enterCode">ادخل الكود هنا </string>
-    <string name="userType">نوع المستخدم</string>
-    <string name="completeData">اكمل البيانات</string>
-    <string name="shortPassword">كلمه المرور يجب الا تقل عن 6 حروف</string>
-    <string name="poorConnection">اتصل بالانترنت ضعيف</string>
-    <string name="serverError">خطا ف الخادم</string>
-    <string name="uploadImage">رفع صوره</string>
+    <string name="noEmail">No Email</string>
+    <string name="enterCode">Enter the code here </string>
+    <string name="userType">User type</string>
+    <string name="completeData">Complete data</string>
+    <string name="shortPassword">Password must be at least 6 characters long</string>
+    <string name="poorConnection">Internet connection is poor</string>
+    <string name="serverError">Server error</string>
+    <string name="uploadImage">Upload Photo</string>
     <string name="networkException">java.net.SocketTimeoutException: timeout</string>
 
 
-    <string name="date_and_time_order">اختار وقت الرحله</string>
-    <string name="immediately">الان</string>
-    <string name="later">فيما بعد</string>
-    <string name="date">التاريخ</string>
-    <string name="day">اليوم</string>
-    <string name="cancel">الغاء</string>
-    <string name="submit">ارسال</string>
-    <string name="time">الوقت</string>
-    <string name="about_order">تفاصيل اكتر عن الطلب</string>
-    <string name="car_info">معلومات السياره</string>
-    <string name="car_type">نوع السياره</string>
-    <string name="choose_car_image">اختار صوره السياره</string>
-    <string name="panal_id">رقم اللوحه</string>
-    <string name="maximum_weight">اقصي وزن</string>
-    <string name="driver_name">اسم السواق</string>
-    <string name="city">المدينه</string>
-    <string name="ok">تم</string>
-    <string name="userNameError">الايميل او كلمه المرور غير صحيحه </string>
-    <string name="selectTypeOfLogin">اختار نوع المستخدم</string>
-    <string name="order_owner">صاحب الطلب</string>
-    <string name="order_type">نوع الطلب</string>
-    <string name="nglah_type">نوع النقله</string>
-    <string name="details">تفاصيل النقله</string>
-    <string name="price">السعر</string>
+    <string name="date_and_time_order">Select the trip time</string>
+    <string name="immediately">Now</string>
+    <string name="later">Later</string>
+    <string name="date">Date</string>
+    <string name="day">Today</string>
+    <string name="cancel">Cancel</string>
+    <string name="submit">Submit</string>
+    <string name="time">Time</string>
+    <string name="about_order">More details</string>
+    <string name="car_info">Car information</string>
+    <string name="car_type">Car type</string>
+    <string name="choose_car_image">Select the image of the car</string>
+    <string name="panal_id">Panal number</string>
+    <string name="maximum_weight">Maximum weight (kgm)</string>
+    <string name="driver_name">Driver name</string>
+    <string name="city">City</string>
+    <string name="country">Country</string>
+    <string name="region">Region</string>
+
+    <string name="ok">Ok</string>
+    <string name="userNameError">The email or password is incorrect </string>
+    <string name="selectTypeOfLogin">Select user type</string>
+    <string name="order_owner">request owner</string>
+    <string name="order_type">request type</string>
+    <string name="nglah_type">Naglah type</string>
+    <string name="details">Naglah details</string>
+    <string name="price">Price</string>
     <string name="order_page">Order Page</string>
-    <string name="errorCode">الكود غير صحيح</string>
-    <string name="complteData">اكمل البيانات</string>
-    <string name="no_data_found">لايوجد بيانات </string>
-    <string name="userName">سم المستخدم</string>
-    <string name="send">ارسل</string>
-    <string name="updateSuccessful">تم التعديل بنجاح</string>
-    <string name="recharge_card">اعاده الشحن</string>
-    <string name="card_number">رقم البطاقه</string>
-    <string name="card_holder">المبلغ</string>
-    <string name="month">الشهر</string>
-    <string name="year">السنه</string>
-    <string name="cvv">رقم التحقق</string>
-    <string name="pay">ادفع</string>
-    <string name="money">money</string>
-    <string name="addNaqlahaSuccessful">تم اضافه النقله بنجاح</string>
-    <string name="successfulTransaction">تمت العمليه بنجاح</string>
-    <string name="inValidCardNumber">رقم بطاقه غير صالح </string>
-    <string name="naqlaOwner">صاحب نقله</string>
-    <string name="driverOwner">صاحب سياره</string>
+    <string name="order_Date">Order date</string>
+    <string name="errorCode">Invalid code</string>
+    <string name="complteData">Complete data</string>
+    <string name="no_data_found">No data </string>
+    <string name="userName">User name</string>
+    <string name="send">Send</string>
+    <string name="updateSuccessful">Update success</string>
+    <string name="recharge_card">Recharge</string>
+    <string name="card_number">Card number</string>
+    <string name="card_holder">The amount</string>
+    <string name="month">Month</string>
+    <string name="year">Year</string>
+    <string name="cvv">Cvv</string>
+    <string name="pay">Pay</string>
+    <string name="money">Money</string>
+    <string name="addNaqlahaSuccessful">Add Naqlaha Successful</string>
+    <string name="successfulTransaction">Successful Transaction</string>
+    <string name="inValidCardNumber">InValid Card Number</string>
+    <string name="naqlaOwner">Naglah owner</string>
+    <string name="driverOwner">Car owner</string>
+    <string name="driverInfo">Driver information</string>
+
+    <string name="Required_transfers">Required transfers</string>
+    <string name="available_drivers">Available drivers</string>
+    <string name="select_your_things">Select your things</string>
+    <string name="select_your_thing">Select your thing</string>
+    <string name="next">Next</string>
+
+    <string name="driverNationality">Driver nationality</string>
+    <string name="license_number">license number</string>
+    <string name="FirstName">First Name</string>
+    <string name="secondName">Second name</string>
+    <string name="ID_Number">ID Number</string>
+
+    <string name="userInfo">User information</string>
+    <string name="myNaglah">My trips</string>
+    <string name="confirm">confirm</string>
+    <string name="naglah">Naglah</string>
+    <string name="requestNaglah">Request Naglah</string>
+    <string name="My_wallet">My wallet</string>
+    <string name="myInfo">My Info</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="edit">Edit</string>
+    <string name="allDrivers">All Drivers</string>
+    <string name="naglah_place">Select Trip Place</string>
+    <string name="inside_City">Inside City</string>
+    <string name="betweenCities">Between Cities</string>
+    <string name="evaluate_the_driver">Evaluate the driver (rate 0 to 5)</string>
+    <string name="evaluate">Evaluate</string>
+    <string name="payData">Pay Data</string>
+    <string name="The_trial_period">The trial period</string>
+    <string name="Participation">Participation</string>
+    <string name="byTrip">By Trip</string>
+    <string name="myWallet">My electronic Wallet</string>
+    <string name="enter_subbmit_number">Enter subbmit number</string>
+    <string name="set">set</string>
+    <string name="chat">Chat</string>
+    <string name="naglahName">Naglah Name</string>
+
 </resources>

@@ -12,7 +12,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="top"
-        android:hint="ادخل رمز التاكيد"
+        android:hint="@string/enter_subbmit_number"
         android:inputType="number"
 
         />

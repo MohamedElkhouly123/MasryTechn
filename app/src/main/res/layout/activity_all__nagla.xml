@@ -42,7 +42,7 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="@dimen/_20sdp"
                 android:layout_marginEnd="@dimen/_20sdp"
-                android:text="النقلات المطلوبه"
+                android:text="@string/Required_transfers"
                 android:textAlignment="center"
                 android:textColor="#fff"
                 android:fontFamily="@font/arabfont"

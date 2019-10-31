@@ -1,0 +1,128 @@
+<resources>
+    <array name="users">
+        <item>صاحب نقله</item>
+        <item>سائق</item>
+    </array>
+    <array name="carsType">
+        <item>تويتا</item>
+        <item>لانسر</item>
+        <item>مرسيدس</item>
+        <item>شيفروليه</item>
+        <item>ماذدا</item>
+    </array>
+
+    <string name="app_name">نقله</string>
+    <string name="create_new_account">انشاء حساب جديد</string>
+    <string name="forget_password">نسيان كلمه المرور؟</string>
+    <string name="login">تسجيل الدخول</string>
+    <string name="email">الايميل</string>
+    <string name="noUserName">لايوجد اسم مستخدم</string>
+    <string name="noPassword">لايوجد كلمخ مرور</string>
+    <string name="register">انشاء حساب جديد</string>
+    <string name="password">كلمه مرور </string>
+    <string name="phone">رقم الهاتف</string>
+    <string name="name">الاسم</string>
+    <string name="noPhone">لايوجد رقم هاتف</string>
+
+    <string name="noEmail">لايوجد ايميل</string>
+    <string name="enterCode">ادخل الكود هنا </string>
+    <string name="userType">نوع المستخدم</string>
+    <string name="completeData">اكمل البيانات</string>
+    <string name="shortPassword">كلمه المرور يجب الا تقل عن 6 حروف</string>
+    <string name="poorConnection">الاتصال بالانترنت ضعيف</string>
+    <string name="serverError">خطا ف الخادم</string>
+    <string name="uploadImage">رفع صوره</string>
+    <string name="networkException">java.net.SocketTimeoutException: timeout</string>
+
+
+    <string name="date_and_time_order">حدد وقت النقله</string>
+    <string name="immediately">الان</string>
+    <string name="later">فيما بعد</string>
+    <string name="date">التاريخ</string>
+    <string name="day">اليوم</string>
+    <string name="cancel">الغاء</string>
+    <string name="submit">ارسال</string>
+    <string name="time">الوقت</string>
+    <string name="about_order">تفاصيل اكتر عن الطلب</string>
+    <string name="car_info">معلومات السياره</string>
+    <string name="car_type">نوع السياره</string>
+    <string name="choose_car_image">اختار صوره السياره</string>
+    <string name="panal_id">رقم اللوحه</string>
+    <string name="maximum_weight">اقصى وزن (كجم)</string>
+    <string name="driver_name">اسم السواق</string>
+    <string name="city">المدينه</string>
+    <string name="country">الدوله</string>
+    <string name="region">المنطقه</string>
+
+    <string name="ok">تم</string>
+    <string name="userNameError">الايميل او كلمه المرور غير صحيحه </string>
+    <string name="selectTypeOfLogin">اختار نوع المستخدم</string>
+    <string name="order_owner">صاحب الطلب</string>
+    <string name="order_type">نوع الطلب</string>
+    <string name="nglah_type">نوع النقله</string>
+    <string name="details">تفاصيل النقله</string>
+    <string name="price">السعر</string>
+    <string name="order_page">صفحه الطلب</string>
+    <string name="order_Date">تاريخ الطلب</string>
+    <string name="errorCode">الكود غير صحيح</string>
+    <string name="complteData">اكمل البيانات</string>
+    <string name="no_data_found">لايوجد بيانات </string>
+    <string name="userName">سم المستخدم</string>
+    <string name="send">ارسل</string>
+    <string name="updateSuccessful">تم التعديل بنجاح</string>
+    <string name="recharge_card">اعاده الشحن</string>
+    <string name="card_number">رقم البطاقه</string>
+    <string name="card_holder">المبلغ</string>
+    <string name="month">الشهر</string>
+    <string name="year">السنه</string>
+    <string name="cvv">رقم التحقق</string>
+    <string name="pay">ادفع</string>
+    <string name="money">money</string>
+    <string name="addNaqlahaSuccessful">تم اضافه النقله بنجاح</string>
+    <string name="successfulTransaction">تمت العمليه بنجاح</string>
+    <string name="inValidCardNumber">رقم بطاقه غير صالح </string>
+    <string name="naqlaOwner">صاحب نقله</string>
+    <string name="driverOwner">صاحب سياره</string>
+    <string name="driverInfo">معلومات السائق</string>
+
+    <string name="Required_transfers">النقلات المطلوبه</string>
+    <string name="available_drivers">السائقين المتاحين</string>
+    <string name="select_your_things">اختر اغراضك</string>
+    <string name="select_your_thing">قم باختيار اغراضك</string>
+    <string name="next">التالى</string>
+
+    <string name="driverNationality">جنسيه السائق</string>
+    <string name="license_number">رقم رخصه السائق</string>
+    <string name="FirstName">الاسم الاول</string>
+    <string name="secondName">اسم الاب</string>
+    <string name="ID_Number">رقم هويه السائق</string>
+
+    <string name="userInfo">معلومات المستخدم</string>
+    <string name="myNaglah">نقلاتي</string>
+    <string name="confirm">تاكيد</string>
+    <string name="naglah">نقله</string>
+    <string name="requestNaglah">طلب نقله</string>
+    <string name="My_wallet">محفظتى</string>
+    <string name="myInfo">معلوماتى الشخصيه</string>
+    <string name="sign_out">تسجيل الخروج</string>
+    <string name="edit">تعديل</string>
+    <string name="allDrivers">كل السائقين</string>
+    <string name="naglah_place">قم باختيار مكان النقله</string>
+    <string name="inside_City">داخل المدينه</string>
+    <string name="betweenCities">بين المدن</string>
+    <string name="evaluate_the_driver">قيم السائق بالدرجات اعلي تقيم 5 واقل تقيم 0</string>
+    <string name="evaluate">تقيم</string>
+    <string name="payData">بيانات الدفع</string>
+
+    <string name="The_trial_period">الفتره التجريبيه</string>
+    <string name="Participation">اشتراك</string>
+    <string name="byTrip">بالنقله</string>
+    <string name="myWallet">محفظتى الالكترونيه</string>
+    <string name="enter_subbmit_number">ادخل رمز التاكيد</string>
+    <string name="set">احفظ</string>
+    <string name="chat">محادثه</string>
+    <string name="naglahName">اسم النقله</string>
+
+
+
+</resources>

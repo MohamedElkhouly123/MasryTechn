@@ -76,7 +76,7 @@
             android:textSize="@dimen/_15ssp"
             android:fontFamily="@font/janna"
             android:background="@drawable/bottonshape"
-            android:text="الفتره التجريبيه"
+            android:text="@string/The_trial_period"
             android:textColor="@color/black"
             />
 
@@ -90,22 +90,7 @@
             android:textSize="@dimen/_15ssp"
             android:fontFamily="@font/janna"
             android:background="@drawable/bottonshape"
-            android:text="اشتراك"
-            android:textColor="@color/black"
-            />
-
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top|center"
-            android:layout_marginLeft="@dimen/_57sdp"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:layout_marginRight="@dimen/_57sdp"
-            android:textSize="@dimen/_15ssp"
-            android:fontFamily="@font/janna"
-            android:background="@drawable/bottonshape"
-            android:text="بالنقله"
+            android:text="@string/Participation"
             android:textColor="@color/black"
             />
 
@@ -120,7 +105,22 @@
             android:textSize="@dimen/_15ssp"
             android:fontFamily="@font/janna"
             android:background="@drawable/bottonshape"
-            android:text="محفظتى الالكترونيه"
+            android:text="@string/byTrip"
+            android:textColor="@color/black"
+            />
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center"
+            android:layout_marginLeft="@dimen/_57sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_57sdp"
+            android:textSize="@dimen/_15ssp"
+            android:fontFamily="@font/janna"
+            android:background="@drawable/bottonshape"
+            android:text="@string/myWallet"
             android:textColor="@color/black"
             />
 

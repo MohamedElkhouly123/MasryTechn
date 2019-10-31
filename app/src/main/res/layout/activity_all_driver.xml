@@ -41,7 +41,7 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="@dimen/_20sdp"
                 android:layout_marginEnd="@dimen/_20sdp"
-                android:text="السائقين المتاحين"
+                android:text="@string/available_drivers"
                 android:textAlignment="center"
                 android:textColor="#fff"
                 android:fontFamily="@font/arabfont"

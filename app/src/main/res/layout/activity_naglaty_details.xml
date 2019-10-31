@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="نوع الطلب"
+                android:text="@string/order_type"
                 android:textColor="@color/mdtp_white"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -63,7 +63,7 @@
                 android:layout_weight="1"
                 android:textColor="@color/mdtp_white"
                 android:textSize="20sp"
-                android:text="تاريخ الطلب"
+                android:text="@string/order_Date"
                 android:textStyle="bold"
                 />
 
@@ -98,7 +98,7 @@
                 android:layout_weight="1"
                 android:textColor="@color/mdtp_white"
                 android:textSize="20sp"
-                android:text="الوقت"
+                android:text="@string/date"
                 android:textStyle="bold"
                 />
             <TextView
@@ -129,7 +129,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_weight="1"
-                android:text="نوع النقله"
+                android:text="@string/nglah_type"
                 android:textColor="@color/mdtp_white"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -163,7 +163,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_weight="1"
-                android:text="المدينه"
+                android:text="@string/city"
                 android:textColor="@color/mdtp_white"
                 android:textStyle="bold"
 
@@ -230,7 +230,7 @@
             android:layout_marginLeft="20dp"
             android:textStyle="bold"
             android:textSize="20sp"
-            android:text="تفاصيل النقله"
+            android:text="@string/details"
             android:gravity="center" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -247,7 +247,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_50sdp"
             android:background="@android:color/white"
-            android:hint="قيم السائق بالدرجات اعلي تقيم 5 واقل تقيم 0 "
+            android:hint="@string/evaluate_the_driver"
             android:gravity="center"
             android:inputType="number"
             android:textColorHint="@android:color/black"
@@ -263,7 +263,7 @@
             android:layout_gravity="center_horizontal"
             android:textColor="#535252"
             android:background="@drawable/btn_style"
-            android:text="تقيم"
+            android:text="@string/evaluate"
             android:layout_marginBottom="@dimen/_30sdp"
             android:textSize="@dimen/_14ssp"
             android:textStyle="bold"

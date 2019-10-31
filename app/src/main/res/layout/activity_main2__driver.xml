@@ -46,7 +46,7 @@
                         android:layout_marginTop="8dp"
 
                         android:layout_marginBottom="4dp"
-                        android:text="نقله"
+                        android:text="@string/naglah"
                         android:textColor="#fff"
                         android:fontFamily="@font/lemon"
                         android:textSize="@dimen/_14ssp"
@@ -111,7 +111,7 @@
                         android:layout_marginBottom="6dp"
                         android:background="@drawable/bottonshape"
                         android:fontFamily="@font/janna"
-                        android:text="طلب نقله"
+                        android:text="@string/requestNaglah"
                         android:textColor="#000000"
                         android:textSize="@dimen/_11ssp" />
 
@@ -129,7 +129,7 @@
                         android:layout_marginBottom="6dp"
                         android:background="@drawable/bottonshape"
                         android:fontFamily="@font/janna"
-                        android:text="المعلومات الشخصيه"
+                        android:text="@string/myInfo"
                         android:textColor="#000000"
                         android:textSize="@dimen/_11ssp"
 
@@ -159,7 +159,7 @@
                         android:layout_marginRight="8dp"
                         android:background="@drawable/bottonshape"
                         android:fontFamily="@font/janna"
-                        android:text="محفظتى"
+                        android:text="@string/My_wallet"
                         android:textColor="#000000"
                         android:textSize="@dimen/_11ssp" />
 
@@ -174,7 +174,7 @@
                         android:layout_marginRight="8dp"
                         android:background="@drawable/bottonshape"
                         android:fontFamily="@font/janna"
-                        android:text="تسجيل الخروج"
+                        android:text="@string/sign_out"
                         android:textColor="#000000"
                         android:textSize="@dimen/_11ssp"
 

@@ -59,7 +59,7 @@
         android:layout_marginStart="8dp"
         android:fontFamily="@font/lemon"
         android:layout_marginTop="@dimen/_10sdp"
-        android:text="قم باختيار مكان النقلة"
+        android:text="@string/naglah_place"
         android:textColor="@color/mdtp_white"
         android:textSize="@dimen/_16ssp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -87,7 +87,7 @@
             android:layout_gravity="center_horizontal"
             android:textSize="@dimen/_16ssp"
             android:textColor="@color/black"
-            android:text="بين المدن"
+            android:text="@string/betweenCities"
             android:fontFamily="@font/lemon"/>
         <Button
             android:id="@+id/insideCity"
@@ -98,7 +98,7 @@
             android:layout_gravity="center_horizontal"
             android:textSize="@dimen/_16ssp"
             android:textColor="@color/black"
-            android:text="داخل المدينة"
+            android:text="@string/inside_City"
             android:fontFamily="@font/lemon"
             android:layout_marginBottom="@dimen/_60sdp"/>
 

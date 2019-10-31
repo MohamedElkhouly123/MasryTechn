@@ -48,7 +48,7 @@
                         android:layout_marginStart="@dimen/_20sdp"
                         android:layout_marginEnd="@dimen/_20sdp"
                         android:fontFamily="@font/arabfont"
-                        android:text="معلومات السائق"
+                        android:text="@string/driverInfo"
                         android:textAlignment="center"
                         android:textColor="#fff"
                         android:textSize="@dimen/_14ssp"
@@ -76,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/_16ssp"
                 android:fontFamily="@font/lemon"
-                android:text="driver name"
+                android:text="@string/driver_name"
                 android:textColor="@color/mdtp_white"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="@dimen/_10sdp"
@@ -106,10 +106,10 @@
 
                     <TextView
                         android:id="@+id/textView"
-                        android:layout_width="@dimen/_120sdp"
+                        android:layout_width="@dimen/_130sdp"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/lemon"
-                        android:text="جنسية السائق"
+                        android:text="@string/driverNationality"
                         android:textColor="#037D8D"
                         android:textSize="@dimen/_16ssp"
                         android:layout_marginEnd="@dimen/_20sdp"
@@ -142,10 +142,10 @@
 
                     <TextView
                         android:id="@+id/textView2"
-                        android:layout_width="@dimen/_120sdp"
+                        android:layout_width="@dimen/_130sdp"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/lemon"
-                        android:text="رقم رخصة السائق"
+                        android:text="@string/license_number"
                         android:textColor="#037D8D"
                         android:layout_marginEnd="@dimen/_20sdp"
                         android:layout_marginStart="@dimen/_20sdp"
@@ -178,10 +178,10 @@
 
                     <TextView
                         android:id="@+id/textView3"
-                        android:layout_width="@dimen/_120sdp"
+                        android:layout_width="@dimen/_130sdp"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/lemon"
-                        android:text="الاسم الاول"
+                        android:text="@string/FirstName"
                         android:layout_marginEnd="@dimen/_20sdp"
                         android:layout_marginStart="@dimen/_20sdp"
                         android:textColor="#037D8D"
@@ -214,10 +214,10 @@
 
                     <TextView
                         android:id="@+id/textView4"
-                        android:layout_width="@dimen/_120sdp"
+                        android:layout_width="@dimen/_130sdp"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/lemon"
-                        android:text="اسم الاب"
+                        android:text="@string/secondName"
                         android:layout_marginEnd="@dimen/_20sdp"
                         android:layout_marginStart="@dimen/_20sdp"
                         android:textColor="#037D8D"
@@ -250,10 +250,10 @@
 
                     <TextView
                         android:id="@+id/textView6"
-                        android:layout_width="@dimen/_120sdp"
+                        android:layout_width="@dimen/_130sdp"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/lemon"
-                        android:text="رقم هويه السائق"
+                        android:text="@string/ID_Number"
                         android:layout_marginEnd="@dimen/_20sdp"
                         android:layout_marginStart="@dimen/_20sdp"
                         android:textColor="#037D8D"
@@ -286,10 +286,10 @@
 
                     <TextView
                         android:id="@+id/textView7"
-                        android:layout_width="@dimen/_120sdp"
+                        android:layout_width="@dimen/_130sdp"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/lemon"
-                        android:text="رقم الجوال"
+                        android:text="@string/phone"
                         android:layout_marginEnd="@dimen/_20sdp"
                         android:layout_marginStart="@dimen/_20sdp"
                         android:textColor="#037D8D"
@@ -322,10 +322,10 @@
 
                     <TextView
                         android:id="@+id/textView8"
-                        android:layout_width="@dimen/_120sdp"
+                        android:layout_width="@dimen/_130sdp"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/lemon"
-                        android:text="البريد الالكترونى"
+                        android:text="@string/email"
                         android:layout_marginEnd="@dimen/_20sdp"
                         android:layout_marginStart="@dimen/_20sdp"
                         android:textColor="#037D8D"
@@ -358,10 +358,10 @@
 
                     <TextView
                         android:id="@+id/textView9"
-                        android:layout_width="@dimen/_120sdp"
+                        android:layout_width="@dimen/_130sdp"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/lemon"
-                        android:text="اسم المستخدم"
+                        android:text="@string/userName"
                         android:layout_marginEnd="@dimen/_20sdp"
                         android:layout_marginStart="@dimen/_20sdp"
                         android:textColor="#037D8D"
@@ -399,7 +399,7 @@
                     android:layout_marginTop="@dimen/_25sdp"
                     android:layout_marginBottom="@dimen/_20sdp"
                     android:fontFamily="@font/arabfont"
-                    android:text="معلومات السياره"
+                    android:text="@string/car_info"
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_19ssp"
@@ -418,10 +418,10 @@
 
                     <TextView
                         android:id="@+id/textView11"
-                        android:layout_width="@dimen/_120sdp"
+                        android:layout_width="@dimen/_130sdp"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/lemon"
-                        android:text="نوع العربيه"
+                        android:text="@string/car_type"
                         android:textColor="#037D8D"
                         android:textSize="@dimen/_16ssp"
                         android:layout_marginEnd="@dimen/_20sdp"
@@ -454,10 +454,10 @@
 
                     <TextView
                         android:id="@+id/textView22"
-                        android:layout_width="@dimen/_120sdp"
+                        android:layout_width="@dimen/_130sdp"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/lemon"
-                        android:text="رقم اللوحه"
+                        android:text="@string/panal_id"
                         android:textColor="#037D8D"
                         android:layout_marginEnd="@dimen/_20sdp"
                         android:layout_marginStart="@dimen/_20sdp"
@@ -490,10 +490,10 @@
 
                     <TextView
                         android:id="@+id/textView33"
-                        android:layout_width="@dimen/_120sdp"
+                        android:layout_width="@dimen/_130sdp"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/lemon"
-                        android:text="اقصى وزن"
+                        android:text="@string/maximum_weight"
                         android:layout_marginEnd="@dimen/_20sdp"
                         android:layout_marginStart="@dimen/_20sdp"
                         android:textColor="#037D8D"
@@ -527,10 +527,10 @@
 
                     <TextView
                         android:id="@+id/textView55"
-                        android:layout_width="@dimen/_120sdp"
+                        android:layout_width="@dimen/_130sdp"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/lemon"
-                        android:text="المدينه"
+                        android:text="@string/city"
                         android:layout_marginEnd="@dimen/_20sdp"
                         android:layout_marginStart="@dimen/_20sdp"
                         android:textColor="#037D8D"

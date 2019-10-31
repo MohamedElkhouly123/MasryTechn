@@ -15,7 +15,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/_17sdp"
             android:gravity="center"
-            android:text="صفحه الطلب"
+            android:text="@string/order_page"
             android:textColor="@android:color/white"
             android:textSize="30dp"
             android:textStyle="bold" />
@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="صاحب الطلب"
+                android:text="@string/order_owner"
                 android:textColor="@color/mdtp_white"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -67,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="نوع الطلب"
+                android:text="@string/order_type"
                 android:textColor="@color/mdtp_white"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -104,7 +104,7 @@
                 android:layout_weight="1"
                 android:textColor="@color/mdtp_white"
                 android:textSize="20sp"
-                android:text="تاريخ الطلب"
+                android:text="@string/order_Date"
                 android:textStyle="bold"
                 />
 
@@ -139,7 +139,7 @@
                 android:layout_weight="1"
                 android:textColor="@color/mdtp_white"
                 android:textSize="20sp"
-                android:text="الوقت"
+                android:text="@string/date"
                 android:textStyle="bold"
                 />
             <TextView
@@ -170,7 +170,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_weight="1"
-                android:text="نوع النقله"
+                android:text="@string/nglah_type"
                 android:textColor="@color/mdtp_white"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -204,7 +204,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_weight="1"
-                android:text="المدينه"
+                android:text="@string/city"
                 android:textColor="@color/mdtp_white"
                 android:textStyle="bold"
 
@@ -270,7 +270,7 @@
             android:layout_marginLeft="20dp"
             android:textStyle="bold"
             android:textSize="20sp"
-            android:text="تفاصيل النقله"
+            android:text="@string/details"
             android:gravity="center" />
 
         <LinearLayout
@@ -291,7 +291,7 @@
                 android:textStyle="bold"
                 android:layout_marginLeft="10dp"
                 android:textSize="20sp"
-                android:text="السعر"
+                android:text="@string/price"
                 />
 
 
@@ -324,7 +324,7 @@
             android:layout_gravity="center_horizontal"
             android:textColor="#535252"
             android:background="@drawable/btn_style"
-            android:text="تاكيد"
+            android:text="@string/submit"
             android:layout_marginBottom="@dimen/_30sdp"
             android:textSize="@dimen/_14ssp"
             android:textStyle="bold"
